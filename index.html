@@ -1,83 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mi Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Guillermo Mateos | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body class="bg-gray-900 text-gray-100 font-sans">
 
-  <!-- Header -->
-  <header class="bg-white shadow">
-    <div class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold">Guillermo Mateos</h1>
-      <nav>
-        <a href="#proyectos" class="mx-2 text-gray-600 hover:text-black">Proyectos</a>
-        <a href="#skills" class="mx-2 text-gray-600 hover:text-black">Habilidades</a>
-        <a href="#contacto" class="mx-2 text-gray-600 hover:text-black">Contacto</a>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header class="bg-gray-800/50 backdrop-blur-sm fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-white">GM<span class="text-blue-400">.</span></h1>
+            <nav>
+                <a href="#proyectos" class="mx-3 text-gray-300 hover:text-blue-400 transition-colors">Proyectos</a>
+                <a href="#skills" class="mx-3 text-gray-300 hover:text-blue-400 transition-colors">Habilidades</a>
+                <a href="#contacto" class="mx-3 text-gray-300 hover:text-blue-400 transition-colors">Contacto</a>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Hero -->
-  <section class="text-center py-12 px-4 bg-gradient-to-b from-white to-gray-100">
-    <img src="https://i.pravatar.cc/150?u=guillermo" alt="Foto de perfil" class="w-32 h-32 rounded-full mx-auto mb-4">
-    <h2 class="text-3xl font-semibold mb-2">Desarrollador Full Stack</h2>
-    <p class="text-gray-600 max-w-xl mx-auto">Soy un desarrollador con experiencia en Laravel, Angular, Tailwind y más. Me gusta crear aplicaciones web funcionales, limpias y modernas.</p>
-  </section>
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+        <div class="text-center">
+            <img src="https://i.pravatar.cc/150?u=guillermo" alt="Foto de perfil" class="w-32 h-32 rounded-full mx-auto mb-8 ring-2 ring-blue-400 p-1">
+            <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Full Stack Developer</h2>
+            <p class="text-gray-400 max-w-xl mx-auto leading-relaxed">Desarrollador especializado en crear experiencias web modernas y escalables, con dominio en Laravel, Angular y tecnologías cloud.</p>
+        </div>
+    </section>
 
-  <!-- Proyectos -->
-  <section id="proyectos" class="max-w-6xl mx-auto px-4 py-12">
-    <h3 class="text-2xl font-bold mb-6 text-center">Proyectos</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-xl shadow p-4">
-        <h4 class="text-lg font-semibold">FunkMoes</h4>
-        <p class="text-sm text-gray-600">Tienda de camisetas con Laravel y Tailwind. Carrito, login y panel de admin.</p>
-      </div>
-      <div class="bg-white rounded-xl shadow p-4">
-        <h4 class="text-lg font-semibold">CataVinos</h4>
-        <p class="text-sm text-gray-600">App de catas de vino con modo oscuro, chatbot y traducción.</p>
-      </div>
-      <div class="bg-white rounded-xl shadow p-4">
-        <h4 class="text-lg font-semibold">Model3D Hub</h4>
-        <p class="text-sm text-gray-600">Marketplace de modelos 3D con perfiles, seguidores y sistema de compra.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Proyectos -->
+    <section id="proyectos" class="max-w-6xl mx-auto px-4 py-20">
+        <h3 class="text-3xl font-bold mb-12 text-center text-white">Proyectos Destacados</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all cursor-pointer border border-gray-700">
+                <h4 class="text-xl font-semibold text-blue-400 mb-3">FunkMoes</h4>
+                <p class="text-gray-400">Tienda de camisetas con Laravel y Tailwind. Carrito, login y panel de admin.</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all cursor-pointer border border-gray-700">
+                <h4 class="text-xl font-semibold text-blue-400 mb-3">CataVinos</h4>
+                <p class="text-gray-400">App de catas de vino con modo oscuro, chatbot y traducción.</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all cursor-pointer border border-gray-700">
+                <h4 class="text-xl font-semibold text-blue-400 mb-3">Model3D Hub</h4>
+                <p class="text-gray-400">Marketplace de modelos 3D con perfiles, seguidores y sistema de compra.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Habilidades -->
-  <section id="skills" class="bg-gray-200 py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <h3 class="text-2xl font-bold mb-6 text-center">Habilidades</h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <span class="bg-white p-3 rounded shadow">Laravel</span>
-        <span class="bg-white p-3 rounded shadow">Angular</span>
-        <span class="bg-white p-3 rounded shadow">Tailwind CSS</span>
-        <span class="bg-white p-3 rounded shadow">PostgreSQL</span>
-        <span class="bg-white p-3 rounded shadow">Docker</span>
-        <span class="bg-white p-3 rounded shadow">NestJS</span>
-        <span class="bg-white p-3 rounded shadow">JWT</span>
-        <span class="bg-white p-3 rounded shadow">GitHub</span>
-      </div>
-    </div>
-  </section>
+    <!-- Habilidades -->
+    <section id="skills" class="bg-gray-800/50 py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-12 text-center text-white">Tecnologías</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Laravel</span>
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Angular</span>
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Tailwind CSS</span>
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">PostgreSQL</span>
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Docker</span>
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">NestJS</span>
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">JWT</span>
+                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">GitHub</span>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contacto -->
-  <section id="contacto" class="max-w-6xl mx-auto px-4 py-12">
-    <h3 class="text-2xl font-bold mb-6 text-center">Contacto</h3>
-    <form class="max-w-xl mx-auto space-y-4">
-      <input type="text" placeholder="Tu nombre" class="w-full p-3 border rounded">
-      <input type="email" placeholder="Tu correo" class="w-full p-3 border rounded">
-      <textarea placeholder="Tu mensaje" class="w-full p-3 border rounded h-32"></textarea>
-      <button type="submit" class="bg-black text-white px-6 py-2 rounded hover:bg-gray-800">Enviar</button>
-    </form>
-  </section>
+    <!-- Contacto -->
+    <section id="contacto" class="max-w-6xl mx-auto px-4 py-20">
+        <h3 class="text-3xl font-bold mb-12 text-center text-white">Contacto</h3>
+        <form class="max-w-xl mx-auto space-y-6">
+            <input type="text" placeholder="Tu nombre" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-400 focus:outline-none text-white">
+            <input type="email" placeholder="Tu correo" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-400 focus:outline-none text-white">
+            <textarea placeholder="Tu mensaje" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-400 focus:outline-none text-white h-32"></textarea>
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity">Enviar mensaje</button>
+        </form>
+    </section>
 
-  <!-- Footer -->
-  <footer class="text-center text-sm text-gray-500 py-6 bg-white border-t">
-    © 2025 Guillermo Mateos. Todos los derechos reservados.
-  </footer>
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-500 py-8 border-t border-gray-800">
+        © 2025 Guillermo Mateos. Todos los derechos reservados.
+    </footer>
 
 </body>
 </html>
