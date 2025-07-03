@@ -5,79 +5,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Guillermo Mateos | Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animaciones personalizadas */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 1s cubic-bezier(.4,0,.2,1) both;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0;}
+            100% { opacity: 1;}
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both;
+        }
+        .animate-delay-1 { animation-delay: .2s;}
+        .animate-delay-2 { animation-delay: .4s;}
+        .animate-delay-3 { animation-delay: .6s;}
+        .animate-delay-4 { animation-delay: .8s;}
+        .animate-delay-5 { animation-delay: 1s;}
+        .animate-pulse-slow {
+            animation: pulse 2.5s cubic-bezier(.4,0,.6,1) infinite;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script>
+        // Resalta el enlace activo en el menú al hacer scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = ['about', 'experience', 'projects', 'skills'];
+            const navLinks = sections.map(id => document.querySelector(`nav a[href="#${id}"]`));
+
+            function onScroll() {
+                let scrollPos = window.scrollY + 120; // Ajuste para header fijo
+                let activeIndex = 0;
+                sections.forEach((id, idx) => {
+                    const section = document.getElementById(id);
+                    if (section && section.offsetTop <= scrollPos) {
+                        activeIndex = idx;
+                    }
+                });
+                navLinks.forEach((link, idx) => {
+                    if (link) {
+                        if (idx === activeIndex) {
+                            link.classList.add('text-purple-400');
+                            link.classList.remove('text-gray-200');
+                        } else {
+                            link.classList.remove('text-purple-400');
+                            link.classList.add('text-gray-200');
+                        }
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // Scroll animado extra para navegadores que no soportan scroll-behavior
+            navLinks.forEach(link => {
+                if (link) {
+                    link.addEventListener('click', function (e) {
+                        const href = link.getAttribute('href');
+                        if (href && href.startsWith('#')) {
+                            const target = document.querySelector(href);
+                            if (target) {
+                                e.preventDefault();
+                                window.scrollTo({
+                                    top: target.offsetTop - 80, // Ajuste para header
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
+<body class="bg-[#18141f] text-gray-100 font-sans">
 
     <!-- Header -->
-    <header class="bg-gray-800/50 backdrop-blur-sm fixed w-full z-10">
+    <header class="bg-gradient-to-r from-[#18141f] via-[#241a2e] to-[#18141f] backdrop-blur-sm fixed w-full z-20 animate-fadeIn border-b border-[#2d223b]/60">
         <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <h1 class="text-2xl font-bold text-white">GM<span class="text-blue-400">.</span></h1>
-            <nav>
-                <a href="#proyectos" class="mx-3 text-gray-300 hover:text-blue-400 transition-colors">Proyectos</a>
-                <a href="#skills" class="mx-3 text-gray-300 hover:text-blue-400 transition-colors">Habilidades</a>
-                <a href="#contacto" class="mx-3 text-gray-300 hover:text-blue-400 transition-colors">Contacto</a>
+            <h1 class="text-2xl font-bold text-white tracking-tight">GM<span class="text-purple-300">.</span></h1>
+            <nav class="space-x-2 md:space-x-6">
+                <a href="#about" class="text-gray-200 hover:text-purple-300 transition-colors duration-300 font-medium">Sobre mí</a>
+                <a href="#experience" class="text-gray-200 hover:text-purple-300 transition-colors duration-300 font-medium">Experiencia</a>
+                <a href="#projects" class="text-gray-200 hover:text-purple-300 transition-colors duration-300 font-medium">Proyectos</a>
+                <a href="#skills" class="text-gray-200 hover:text-purple-300 transition-colors duration-300 font-medium">Tecnologías</a>
+                <!-- Espacio para futuras secciones -->
+                <!-- <a href="#education" class="text-gray-200 hover:text-purple-300 transition-colors duration-300 font-medium">Educación</a> -->
             </nav>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
-        <div class="text-center">
-            <img src="https://i.pravatar.cc/150?u=guillermo" alt="Foto de perfil" class="w-32 h-32 rounded-full mx-auto mb-8 ring-2 ring-blue-400 p-1">
-            <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Full Stack Developer</h2>
-            <p class="text-gray-400 max-w-xl mx-auto leading-relaxed">Desarrollador especializado en crear experiencias web modernas y escalables, con dominio en Laravel, Angular y tecnologías cloud.</p>
+    <!-- Hero / About -->
+    <section id="about" class="min-h-screen flex items-center justify-center py-32 px-4 bg-gradient-to-b from-[#18141f] via-[#241a2e] to-[#18141f] animate-fadeInUp">
+        <div class="flex flex-col md:flex-row items-center max-w-5xl w-full gap-12">
+            <div class="flex-shrink-0">
+                <img src="perfilsin.png" alt="Foto de perfil"
+                    class="w-48 h-48 rounded-full mx-auto mb-8 md:mb-0 ring-2 ring-purple-300 p-1 shadow-lg animate-pulse-slow transition-transform duration-500 hover:scale-105 bg-[#18141f]">
+            </div>
+            <div class="text-center md:text-left flex-1">
+                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-300 via-fuchsia-400 to-blue-300 text-transparent bg-clip-text drop-shadow-lg animate-fadeInUp animate-delay-1">Guillermo Mateos</h2>
+                <h3 class="text-xl font-semibold mb-4 text-purple-200 animate-fadeInUp animate-delay-2">Full Stack Developer</h3>
+                <p class="text-gray-200 max-w-xl mx-auto md:mx-0 leading-relaxed animate-fadeInUp animate-delay-3">
+                    Desarrollador especializado en crear experiencias web modernas y escalables, con dominio en Laravel, Angular y tecnologías cloud.
+                </p>
+                <!-- Espacio para añadir más información personal o un botón de descarga de CV -->
+                <!-- <a href="cv.pdf" class="inline-block mt-6 px-6 py-2 bg-purple-700 text-white rounded-lg font-semibold hover:bg-purple-800 transition">Descargar CV</a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section id="experience" class="max-w-6xl mx-auto px-4 py-20">
+        <h3 class="text-3xl font-bold mb-12 text-center text-white animate-fadeInUp">Experiencia</h3>
+        <div class="space-y-8">
+            <!-- Ejemplo de experiencia, puedes duplicar este bloque para más -->
+            <div class="flex flex-col md:flex-row md:items-center md:gap-8 bg-[#201a2b] rounded-lg p-6 border border-[#2d223b] shadow-md animate-fadeInUp animate-delay-1">
+                <div class="flex-1">
+                    <h4 class="text-xl font-semibold text-purple-200">Empresa Ejemplo</h4>
+                    <span class="text-sm text-gray-400">Full Stack Developer · 2022 - Presente</span>
+                    <p class="mt-2 text-gray-300">Descripción breve de tus responsabilidades, logros y tecnologías utilizadas.</p>
+                </div>
+                <!-- <div class="mt-4 md:mt-0">
+                    <span class="inline-block px-3 py-1 bg-purple-900/40 text-purple-200 rounded-full text-xs">Remoto</span>
+                </div> -->
+            </div>
+            <!-- ...más experiencias aquí... -->
         </div>
     </section>
 
     <!-- Proyectos -->
-    <section id="proyectos" class="max-w-6xl mx-auto px-4 py-20">
-        <h3 class="text-3xl font-bold mb-12 text-center text-white">Proyectos Destacados</h3>
+    <section id="projects" class="max-w-6xl mx-auto px-4 py-20">
+        <h3 class="text-3xl font-bold mb-12 text-center text-white animate-fadeInUp">Proyectos Destacados</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all cursor-pointer border border-gray-700">
-                <h4 class="text-xl font-semibold text-blue-400 mb-3">FunkMoes</h4>
-                <p class="text-gray-400">Tienda de camisetas con Laravel y Tailwind. Carrito, login y panel de admin.</p>
+            <div class="bg-gradient-to-br from-[#201a2b] via-[#241a2e] to-[#18141f] rounded-xl p-6 hover:from-[#2a2040] hover:to-[#18141f] transition-all cursor-pointer border border-[#2d223b] shadow-lg hover:shadow-purple-900/30 animate-fadeInUp animate-delay-1 group">
+                <h4 class="text-xl font-semibold text-purple-200 mb-3 group-hover:text-fuchsia-300 transition-colors duration-300">FunkMoes</h4>
+                <p class="text-gray-300 group-hover:text-white transition-colors duration-300">Tienda de camisetas con Laravel y Tailwind. Carrito, login y panel de admin.</p>
             </div>
-            <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all cursor-pointer border border-gray-700">
-                <h4 class="text-xl font-semibold text-blue-400 mb-3">CataVinos</h4>
-                <p class="text-gray-400">App de catas de vino con modo oscuro, chatbot y traducción.</p>
+            <div class="bg-gradient-to-br from-[#201a2b] via-[#241a2e] to-[#18141f] rounded-xl p-6 hover:from-[#2a2040] hover:to-[#18141f] transition-all cursor-pointer border border-[#2d223b] shadow-lg hover:shadow-purple-900/30 animate-fadeInUp animate-delay-2 group">
+                <h4 class="text-xl font-semibold text-purple-200 mb-3 group-hover:text-fuchsia-300 transition-colors duration-300">CataVinos</h4>
+                <p class="text-gray-300 group-hover:text-white transition-colors duration-300">App de catas de vino con modo oscuro, chatbot y traducción.</p>
             </div>
-            <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-700/50 transition-all cursor-pointer border border-gray-700">
-                <h4 class="text-xl font-semibold text-blue-400 mb-3">Model3D Hub</h4>
-                <p class="text-gray-400">Marketplace de modelos 3D con perfiles, seguidores y sistema de compra.</p>
+            <div class="bg-gradient-to-br from-[#201a2b] via-[#241a2e] to-[#18141f] rounded-xl p-6 hover:from-[#2a2040] hover:to-[#18141f] transition-all cursor-pointer border border-[#2d223b] shadow-lg hover:shadow-purple-900/30 animate-fadeInUp animate-delay-3 group">
+                <h4 class="text-xl font-semibold text-purple-200 mb-3 group-hover:text-fuchsia-300 transition-colors duration-300">Model3D Hub</h4>
+                <p class="text-gray-300 group-hover:text-white transition-colors duration-300">Marketplace de modelos 3D con perfiles, seguidores y sistema de compra.</p>
             </div>
+            <!-- Espacio para más proyectos -->
         </div>
     </section>
 
-    <!-- Habilidades -->
-    <section id="skills" class="bg-gray-800/50 py-20">
+    <!-- Tecnologías -->
+    <section id="skills" class="bg-gradient-to-r from-[#18141f] via-[#241a2e] to-[#18141f] py-20">
         <div class="max-w-6xl mx-auto px-4">
-            <h3 class="text-3xl font-bold mb-12 text-center text-white">Tecnologías</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-white animate-fadeInUp">Tecnologías</h3>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Laravel</span>
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Angular</span>
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Tailwind CSS</span>
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">PostgreSQL</span>
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">Docker</span>
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">NestJS</span>
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">JWT</span>
-                <span class="bg-gray-900 p-4 rounded-lg border border-gray-700 hover:border-blue-400 transition-colors">GitHub</span>
+                <!-- ...existing code for each technology card... -->
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-1">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" alt="Laravel" class="w-12 h-12 mb-2 mx-auto" />
+                    <span class="text-gray-200 hover:text-white">Laravel</span>
+                </div>
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-2">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg" alt="Angular" class="w-12 h-12 mb-2 mx-auto" />
+                    <span class="text-gray-200 hover:text-white">Angular</span>
+                </div>
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS" class="w-12 h-12 mb-2 mx-auto" />
+                    <span class="text-gray-200 hover:text-white">Tailwind CSS</span>
+                </div>
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-4">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg" alt="PostgreSQL" class="w-12 h-12 mb-2 mx-auto" />
+                    <span class="text-gray-200 hover:text-white">PostgreSQL</span>
+                </div>
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-1">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" alt="Docker" class="w-12 h-12 mb-2 mx-auto" />
+                    <span class="text-gray-200 hover:text-white">Docker</span>
+                </div>
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-2">
+                    <!-- NestJS logo SVG inline for best compatibility -->
+                    <span class="w-12 h-12 mb-2 mx-auto flex items-center justify-center bg-white rounded-full">
+                        <svg viewBox="0 0 256 256" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path d="M204.8 128c0-42.4-34.4-76.8-76.8-76.8S51.2 85.6 51.2 128c0 42.4 34.4 76.8 76.8 76.8s76.8-34.4 76.8-76.8z" fill="#ea2845"/>
+                                <path d="M128 0C57.3 0 0 57.3 0 128c0 70.7 57.3 128 128 128s128-57.3 128-128C256 57.3 198.7 0 128 0zm0 240c-61.9 0-112-50.1-112-112S66.1 16 128 16s112 50.1 112 112-50.1 112-112 112z" fill="#ea2845"/>
+                            </g>
+                        </svg>
+                    </span>
+                    <span class="text-gray-200 hover:text-white">NestJS</span>
+                </div>
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-3">
+                    <!-- JWT logo SVG inline for best compatibility -->
+                    <span class="w-12 h-12 mb-2 mx-auto flex items-center justify-center bg-white rounded-full">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <g>
+                                <path fill="#323330" d="M16 0a16 16 0 1 0 0 32A16 16 0 0 0 16 0zm0 29.09A13.09 13.09 0 1 1 29.09 16 13.1 13.1 0 0 1 16 29.09z"/>
+                                <path fill="#EA2845" d="M16 7.27a8.73 8.73 0 1 0 8.73 8.73A8.74 8.74 0 0 0 16 7.27zm0 15.46A6.73 6.73 0 1 1 22.73 16 6.74 6.74 0 0 1 16 22.73z"/>
+                            </g>
+                        </svg>
+                    </span>
+                    <span class="text-gray-200 hover:text-white">JWT</span>
+                </div>
+                <div class="flex flex-col items-center bg-[#201a2b] p-4 rounded-lg border border-[#2d223b] hover:border-purple-300 transition-colors duration-300 shadow-md hover:shadow-purple-900/20 animate-fadeInUp animate-delay-4">
+                    <span class="w-12 h-12 mb-2 mx-auto flex items-center justify-center bg-white rounded-full">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-8 h-8" />
+                    </span>
+                    <span class="text-gray-200 hover:text-white">GitHub</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="max-w-6xl mx-auto px-4 py-20">
-        <h3 class="text-3xl font-bold mb-12 text-center text-white">Contacto</h3>
-        <form class="max-w-xl mx-auto space-y-6">
-            <input type="text" placeholder="Tu nombre" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-400 focus:outline-none text-white">
-            <input type="email" placeholder="Tu correo" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-400 focus:outline-none text-white">
-            <textarea placeholder="Tu mensaje" class="w-full p-4 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-400 focus:outline-none text-white h-32"></textarea>
-            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity">Enviar mensaje</button>
-        </form>
+    <!-- Educación (opcional, para futuro) -->
+    <!--
+    <section id="education" class="max-w-6xl mx-auto px-4 py-20">
+        <h3 class="text-3xl font-bold mb-12 text-center text-white animate-fadeInUp">Educación</h3>
+        <div class="space-y-8">
+            <div class="bg-[#201a2b] rounded-lg p-6 border border-[#2d223b] shadow-md animate-fadeInUp animate-delay-1">
+                <h4 class="text-xl font-semibold text-purple-200">Universidad Ejemplo</h4>
+                <span class="text-sm text-gray-400">Grado en Ingeniería Informática · 2018 - 2022</span>
+                <p class="mt-2 text-gray-300">Descripción breve de la formación, logros, etc.</p>
+            </div>
+        </div>
     </section>
+    -->
 
     <!-- Footer -->
-    <footer class="text-center text-sm text-gray-500 py-8 border-t border-gray-800">
+    <footer class="text-center text-sm text-gray-400 py-8 border-t border-[#2d223b]/60 bg-[#18141f] animate-fadeInUp animate-delay-4">
         © 2025 Guillermo Mateos. Todos los derechos reservados.
     </footer>
 
