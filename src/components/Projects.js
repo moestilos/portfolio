@@ -10,7 +10,7 @@ class Projects {
             {
                 name: 'Vuela21',
                 image: 'public/images/vuela21o.png',
-                description: 'Aplicación de paquetes de transporte. Experiencia de usuario moderna y responsive.',
+                description: 'Aplicación de paquetes de transporte, realizada durante las prácticas en Codearts SL para el Cliente. Experiencia de usuario moderna y responsive.',
                 technologies: ['Angular', 'Tailwind CSS', 'TypeScript', 'Node.js', 'Symfony', 'Postman']
             }
         ];
