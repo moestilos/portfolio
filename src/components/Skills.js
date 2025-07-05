@@ -18,7 +18,13 @@ class Skills {
             { name: 'GitHub', icon: null, hoverColor: 'purple-200', customSvg: true },
             { name: 'Git', icon: 'git/git-original.svg', hoverColor: 'orange-200' },
             { name: 'Linux', icon: 'linux/linux-original.svg', hoverColor: 'green-200' },
-            { name: 'Postman', icon: 'postman/postman-plain.svg', hoverColor: 'orange-200' }
+            { name: 'Postman', icon: 'postman/postman-plain.svg', hoverColor: 'orange-200' },
+            { name: 'Illustrator', icon: 'illustrator/illustrator-line.svg', hoverColor: 'orange-300' },
+            { name: 'Photoshop', icon: 'photoshop/photoshop-original.svg', hoverColor: 'blue-400' },
+            { name: 'Figma', icon: 'figma/figma-original.svg', hoverColor: 'pink-400' },
+            { name: 'Xd', icon: 'xd/xd-original.svg', hoverColor: 'pink-300' },
+            { name: 'Eclipse', icon: 'eclipse/eclipse-original.svg', hoverColor: 'purple-400' },
+            { name: 'PHP', icon: 'php/php-original.svg', hoverColor: 'purple-200' }
         ];
 
         return `
