@@ -1,8 +1,8 @@
 class Header {
     render() {
         return `
-        <header class="fixed top-0 left-0 w-full z-50 bg-[#18141f]/90 backdrop-blur border-b border-[#2d223b]/60 shadow-lg transition-all duration-300">
-            <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <header class="relative md:fixed md:top-0 md:left-0 w-full z-50 bg-[#18141f]/90 backdrop-blur border-b border-[#2d223b]/60 shadow-lg transition-all duration-300">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-center md:justify-between">
                 <a href="#" class="flex items-center gap-2 group relative">
                     <span class="text-2xl font-bold text-white tracking-tight group-hover:text-purple-300 transition-all duration-300 
                         relative before:absolute before:inset-0  before:scale-x-0 before:origin-right before:transition-transform before:duration-300
@@ -15,7 +15,7 @@ class Header {
                         transition-transform duration-300 origin-left"></div>
                 </a>
                 
-                <button id="menu-toggle" class="md:hidden flex items-center px-3 py-2 rounded text-gray-200 hover:text-white 
+                <button id="menu-toggle" class="hidden flex items-center px-3 py-2 rounded text-gray-200 hover:text-white 
                     focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 
                     hover:bg-purple-500/10" aria-label="Abrir menú">
                     <svg class="h-7 w-7 transform transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
