@@ -21,7 +21,8 @@ class Experience {
                 Sobre mí
             </h4>
             <p class="text-gray-300 text-sm leading-relaxed">
-                Soy una persona comprometida, trabajadora y tranquila, apasionada por el desarrollo web, especialmente en Frontend. Me motiva afrontar nuevos desafíos y mejorar constantemente mis habilidades.
+                Soy una persona proactiva y entusiasta con una gran pasión por el desarrollo Frontend. Me impulsa la curiosidad por dominar nuevas tecnologías y enfrentar retos que me permitan crecer profesionalmente.
+                Estoy motivado por aportar valor en proyectos innovadores y seguir aprendiendo cada día. Busco una oportunidad donde contribuir con energía, compromiso y seguir desarrollándome en equipo.
             </p>
             <div class="flex flex-wrap gap-2 mt-auto pt-4">
                 <span class="bg-purple-900/30 text-purple-200 rounded-full px-3 py-1 text-xs font-medium">Edad: 21</span>
