@@ -49,11 +49,38 @@ class Skills {
                 alt="${skill.name}" 
                 class="w-10 h-10 mb-2 transform transition-all duration-300 group-hover:scale-110" />`;
 
+        const officialUrls = {
+            'Laravel': 'https://laravel.com',
+            'Angular': 'https://angular.io',
+            'HTML5': 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+            'CSS3': 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+            'Tailwind': 'https://tailwindcss.com',
+            'React': 'https://reactjs.org',
+            'Symfony': 'https://symfony.com',
+            'PostgreSQL': 'https://www.postgresql.org',
+            'Docker': 'https://www.docker.com',
+            'JavaScript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+            'TypeScript': 'https://www.typescriptlang.org',
+            'Java': 'https://www.oracle.com/java',
+            'VS Code': 'https://code.visualstudio.com',
+            'NestJS': 'https://nestjs.com',
+            'GitHub': 'https://github.com',
+            'Git': 'https://git-scm.com',
+            'Linux': 'https://www.linux.org',
+            'Postman': 'https://www.postman.com',
+            'Illustrator': 'https://www.adobe.com/products/illustrator.html',
+            'Photoshop': 'https://www.adobe.com/products/photoshop.html',
+            'Figma': 'https://www.figma.com',
+            'Xd': 'https://www.adobe.com/products/xd.html',
+            'Eclipse': 'https://www.eclipse.org',
+            'PHP': 'https://www.php.net'
+        };
+
         return `
-        <div class="group flex flex-col items-center p-4 rounded-lg bg-[#18141f]/50 hover:bg-[#2d223b] border border-[#2d223b]/50 hover:border-purple-500/30 transition-all duration-300 transform hover:scale-[1.05]">
+        <a href="${officialUrls[skill.name] || '#'}" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center p-4 rounded-lg bg-[#18141f]/50 hover:bg-[#2d223b] border border-[#2d223b]/50 hover:border-purple-500/30 transition-all duration-300 transform hover:scale-[1.05] cursor-pointer">
             ${icon}
             <span class="text-gray-300 text-sm group-hover:text-${skill.hoverColor} transition-colors">${skill.name}</span>
-        </div>`;
+        </a>`;
     }
 
     getGithubSvg() {
