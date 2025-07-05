@@ -3,15 +3,21 @@ class Skills {
         const skills = [
             { name: 'Laravel', icon: 'laravel/laravel-original.svg', hoverColor: 'purple-200' },
             { name: 'Angular', icon: 'angularjs/angularjs-plain.svg', hoverColor: 'red-200' },
+            { name: 'HTML5', icon: 'html5/html5-original.svg', hoverColor: 'orange-400' },
+            { name: 'CSS3', icon: 'css3/css3-original.svg', hoverColor: 'blue-400' },
             { name: 'Tailwind', icon: 'tailwindcss/tailwindcss-original.svg', hoverColor: 'cyan-200' },
             { name: 'React', icon: 'react/react-original.svg', hoverColor: 'blue-200' },
             { name: 'Symfony', icon: 'symfony/symfony-original.svg', hoverColor: 'gray-200' },
             { name: 'PostgreSQL', icon: 'postgresql/postgresql-plain.svg', hoverColor: 'blue-200' },
             { name: 'Docker', icon: 'docker/docker-plain.svg', hoverColor: 'cyan-200' },
             { name: 'JavaScript', icon: 'javascript/javascript-plain.svg', hoverColor: 'yellow-200' },
-            { name: 'VS Code', icon: 'vscode/vscode-plain.svg', hoverColor: 'blue-200' },
+            { name: 'TypeScript', icon: 'typescript/typescript-original.svg', hoverColor: 'blue-200' },
+            { name: 'Java', icon: 'java/java-original.svg', hoverColor: 'yellow-600' },
+            { name: 'VS Code', icon: 'vscode/vscode-original.svg', hoverColor: 'blue-200' },
             { name: 'NestJS', icon: 'nestjs/nestjs-original.svg', hoverColor: 'red-200' },
             { name: 'GitHub', icon: null, hoverColor: 'purple-200', customSvg: true },
+            { name: 'Git', icon: 'git/git-original.svg', hoverColor: 'orange-200' },
+            { name: 'Linux', icon: 'linux/linux-original.svg', hoverColor: 'green-200' },
             { name: 'Postman', icon: 'postman/postman-plain.svg', hoverColor: 'orange-200' }
         ];
 
