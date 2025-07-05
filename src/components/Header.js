@@ -1,7 +1,7 @@
 class Header {
     render() {
         return `
-        <header class="bg-[#18141f]/90 backdrop-blur fixed top-0 left-0 w-full z-[100] border-b border-[#2d223b]/60 shadow-lg transition-all duration-300">
+        <header class="bg-[#18141f]/90 backdrop-blur sticky top-0 left-0 w-full z-50 border-b border-[#2d223b]/60 shadow-lg transition-all duration-300">
             <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
                 <a href="#" class="flex items-center gap-2 group relative">
                     <span class="text-2xl font-bold text-white tracking-tight group-hover:text-purple-300 transition-all duration-300 

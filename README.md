@@ -1,0 +1,62 @@
+# Portfolio Personal - moestilos
+
+![Portfolio Preview](./public/preview.png)
+
+## 🚀 Descripción
+Mi portfolio personal donde muestro mi experiencia como desarrollador y los proyectos en los que he trabajado. Construido con tecnologías modernas y un diseño minimalista enfocado en la experiencia de usuario.
+
+## ✨ Características
+- Diseño responsivo y moderno
+- Animaciones suaves y transiciones elegantes
+- Modo oscuro por defecto con tema personalizado
+- Secciones organizadas para mostrar experiencia y proyectos
+- Optimizado para SEO
+- Navegación fluida entre secciones
+
+## 🛠 Tecnologías
+- HTML5
+- JavaScript
+- TailwindCSS
+- CSS3
+- Custom Web Components
+
+## 🔧 Instalación
+
+1. Clona el repositorio
+```bash
+git clone https://github.com/tuusuario/portfolio.git
+```
+
+2. Instala las dependencias
+```bash
+npm install
+```
+
+3. Inicia el servidor de desarrollo
+```bash
+npm run dev
+```
+
+## 📁 Estructura del Proyecto
+```
+portfolio/
+├── src/
+│   ├── components/
+│   ├── styles/
+│   └── utils/
+├── public/
+│   └── assets/
+├── index.html
+└── README.md
+```
+
+## 🤝 Contribuciones
+Las sugerencias y pull requests son bienvenidas. Para cambios importantes, por favor abre primero un issue para discutir qué te gustaría cambiar.
+
+## 📝 Licencia
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## 📫 Contacto
+- Website: [tuwebsite.com](https://tuwebsite.com)
+- GitHub: [@tuusuario](https://github.com/tuusuario)
+- LinkedIn: [Tu Nombre](https://linkedin.com/in/tunombre)
