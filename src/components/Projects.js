@@ -17,7 +17,7 @@ class Projects {
 
         return `
         <section id="projects" class="max-w-6xl mx-auto px-4 py-20">
-            <h3 class="text-3xl font-bold mb-12 text-center text-white animate-fadeInUp">Proyectos Destacados</h3>
+            <h3 class="text-3xl font-bold mb-12 text-center text-white animate-fadeInUp">Proyectos</h3>
             <div class="flex flex-col gap-12">
                 ${projects.map((project, index) => this.renderProject(project, index)).join('')}
             </div>
@@ -26,7 +26,7 @@ class Projects {
 
     renderProject(project, index) {
         return `
-        <div class="flex flex-col md:flex-row bg-gradient-to-br from-[#201a2b] via-[#241a2b] to-[#18141f] rounded-xl p-8 border border-[#2d223b] shadow-lg hover:shadow-purple-900/30 animate-fadeInUp animate-delay-${index + 1} group transform hover:scale-[1.01] duration-300 transition-all">
+        <div class="flex flex-col md:flex-row bg-gradient-to-br from-[#201a2b] via-[#241a2b] to-[#18141f] rounded-xl p-8 border border-[#2d223b] shadow-lg hover:shadow-purple-900/30 animate-fadeInUp animate-delay-${index + 1} group transform hover:scale-105 duration-300 transition-all">
             <div class="md:w-1/3 flex items-center justify-center mb-6 md:mb-0">
                 <img src="${project.image}" alt="${project.name}"
                     class="w-full max-w-xs rounded-lg object-cover object-center bg-[#18141f] border border-[#2d223b]
