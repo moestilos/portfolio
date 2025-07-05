@@ -1,0 +1,35 @@
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+.animate-fadeInUp { animation: fadeInUp 1s cubic-bezier(.4,0,.2,1) both; }
+
+@keyframes fadeIn {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+.animate-fadeIn { animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both; }
+.animate-delay-1 { animation-delay: .2s;}
+.animate-delay-2 { animation-delay: .4s;}
+.animate-delay-3 { animation-delay: .6s;}
+.animate-delay-4 { animation-delay: .8s;}
+.animate-delay-5 { animation-delay: 1s;}
+.animate-pulse-slow { animation: pulse 2.5s cubic-bezier(.4,0,.6,1) infinite; }
+
+html { scroll-behavior: smooth; }
+
+#stars-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    display: block;
+    pointer-events: none;
+}
+
+body > *:not(#stars-bg) {
+    position: relative;
+    z-index: 1;
+}
