@@ -23,8 +23,20 @@ class About {
                         <br><br>
                         Me considero una persona responsable, resolutiva y con gran capacidad de adaptación. Disfruto aprendiendo nuevas tecnologías y trabajando en equipo para aportar soluciones eficientes y creativas.
                     </p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4 animate-fadeInUp animate-delay-5">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 animate-fadeInUp animate-delay-5 mt-6">
                         ${this.renderSocialLinks()}
+                        <a href="/Guillermo%20Mateos%20Santos%20CV.pdf" 
+                           target="_blank" rel="noopener" download aria-label="Ver o descargar CV"
+                           class="flex items-center gap-2 bg-[#232136] hover:bg-[#2d223b] text-gray-200 px-4 py-2 rounded-full font-medium shadow transition">
+                            <!-- Ícono de CV actualizado -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                              <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                              <path d="M11 12.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0" />
+                              <path d="M13 11l1.5 6l1.5 -6" />
+                            </svg>
+                            <span>Descargar CV</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -59,3 +71,4 @@ class About {
         `).join('');
     }
 }
+
