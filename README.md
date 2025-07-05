@@ -20,22 +20,7 @@ Mi portfolio personal donde muestro mi experiencia como desarrollador y los proy
 - CSS3
 - Custom Web Components
 
-## 🔧 Instalación
 
-1. Clona el repositorio
-```bash
-git clone https://github.com/tuusuario/portfolio.git
-```
-
-2. Instala las dependencias
-```bash
-npm install
-```
-
-3. Inicia el servidor de desarrollo
-```bash
-npm run dev
-```
 
 ## 📁 Estructura del Proyecto
 ```
