@@ -1,6 +1,6 @@
 # Portfolio Personal - moestilos
 
-![Portfolio Preview](./public/preview.png)
+
 
 ## 🚀 Descripción
 Mi portfolio personal donde muestro mi experiencia como desarrollador y los proyectos en los que he trabajado. Construido con tecnologías modernas y un diseño minimalista enfocado en la experiencia de usuario.
@@ -57,6 +57,6 @@ Las sugerencias y pull requests son bienvenidas. Para cambios importantes, por f
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## 📫 Contacto
-- Website: [tuwebsite.com](https://tuwebsite.com)
-- GitHub: [@tuusuario](https://github.com/tuusuario)
-- LinkedIn: [Tu Nombre](https://linkedin.com/in/tunombre)
+- Website: [Portfolio.com](https://moestilos.github.io/portfolio/#)
+- GitHub: [@moestilos](https://github.com/moestilos)
+- LinkedIn: [Guillermo Mateos Santos Aguilera](https://www.linkedin.com/in/guillermo-mateos-de-los-santos-aguilera-02427b260/)
