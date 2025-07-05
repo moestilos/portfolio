@@ -9,6 +9,9 @@ class Navigation {
         this.setupEventListeners();
         this.handleResize();
         this.menuToggle.setAttribute('aria-expanded', 'false');
+        window.addEventListener('scroll', () => this.updateOnScroll());
+        // Set initial indicator location
+        setTimeout(() => this.updateOnScroll(), 500);
     }
 
     setupEventListeners() {
@@ -24,6 +27,16 @@ class Navigation {
         this.mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 this.handleNavLinkClick();
+            });
+            // Scroll and move indicator on hover
+            link.addEventListener('mouseenter', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    const section = document.querySelector(targetId);
+                    if (section) section.scrollIntoView({ behavior: 'smooth' });
+                }
+                this.moveIndicator(link);
             });
         });
 
@@ -64,6 +77,33 @@ class Navigation {
         } else {
             this.mainNav.classList.add('hidden');
             this.menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    moveIndicator(link) {
+        const indicator = document.getElementById('nav-indicator');
+        const rect = link.getBoundingClientRect();
+        const navRect = this.mainNav.getBoundingClientRect();
+        const leftPos = rect.left - navRect.left;
+        indicator.style.left = `${leftPos}px`;
+        indicator.style.width = `${rect.width}px`;
+    }
+    // Move indicator on page scroll based on visible section
+    updateOnScroll() {
+        const sections = [
+            { id: 'about', selector: '#main-nav a[href="#about"]' },
+            { id: 'experience', selector: '#main-nav a[href="#experience"]' },
+            { id: 'projects', selector: '#main-nav a[href="#projects"]' },
+            { id: 'skills', selector: '#main-nav a[href="#skills"]' }
+        ];
+        const scrollPos = window.scrollY + window.innerHeight / 3;
+        for (let sec of sections) {
+            const el = document.getElementById(sec.id);
+            if (el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
+                const link = document.querySelector(sec.selector);
+                this.moveIndicator(link);
+                break;
+            }
         }
     }
 }

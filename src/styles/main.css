@@ -29,7 +29,8 @@ html { scroll-behavior: smooth; }
     pointer-events: none;
 }
 
-body > *:not(#stars-bg) {
+/* Exclude header from relative positioning so fixed header stays static */
+body > *:not(#stars-bg):not(header) {
     position: relative;
     z-index: 1;
 }
