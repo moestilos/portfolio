@@ -3,45 +3,69 @@ class Projects {
         const projects = [
             {
                 name: 'FunkMoes',
+                num: '01',
                 image: 'public/images/pro1.png',
-                description: 'Tienda de camisetas desarrollada con Laravel y Tailwind CSS. Incluye funcionalidades de carrito de compra, autenticación de usuarios y panel de administración.',
-                technologies: ['Laravel', 'Tailwind CSS', 'MySQL', 'PHP', 'PhpMyAdmin']
+                description: 'Tienda online de camisetas con carrito de compras, autenticación de usuarios, pasarela de pagos y panel de administración completo. Diseño moderno y experiencia de usuario cuidada al detalle.',
+                technologies: ['Laravel', 'PHP', 'Tailwind CSS', 'MySQL', 'PhpMyAdmin'],
+                type: 'E-commerce · Full Stack',
+                color: '#a855f7'
             },
             {
                 name: 'Vuela21',
+                num: '02',
                 image: 'public/images/vuela21o.png',
-                description: 'Aplicación de paquetes de transporte, realizada durante las prácticas en Codearts SL para el Cliente. Experiencia de usuario moderna y responsive.',
-                technologies: ['Angular', 'Tailwind CSS', 'TypeScript', 'Node.js', 'Symfony', 'Postman']
+                description: 'Aplicación de gestión de paquetes de transporte, desarrollada durante las prácticas en CodeArts SL para un cliente real. Arquitectura robusta con API REST, interfaz responsive y experiencia de usuario moderna.',
+                technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'Symfony', 'Node.js', 'Postman'],
+                type: 'Gestión · Full Stack',
+                color: '#818cf8'
             }
         ];
 
         return `
-        <section id="projects" class="max-w-6xl mx-auto px-4 py-20">
-            <h3 class="text-3xl font-bold mb-12 text-center text-white animate-fadeInUp">Proyectos</h3>
-            <div class="flex flex-col gap-12">
-                ${projects.map((project, index) => this.renderProject(project, index)).join('')}
+        <section id="projects" class="section-pad">
+            <div class="container-xl">
+                <div class="reveal" style="text-align:center;margin-bottom:1rem;">
+                    <span class="section-label">Proyectos</span>
+                </div>
+                <h2 class="section-title reveal reveal-delay-1">Mi trabajo reciente</h2>
+                <p class="section-subtitle reveal reveal-delay-2">
+                    Proyectos reales construidos con tecnologías modernas, enfocados en la calidad, la performance y la experiencia de usuario.
+                </p>
+
+                <div class="projects-grid">
+                    ${projects.map((p, i) => this.renderProject(p, i)).join('')}
+                </div>
             </div>
-        </section>`;
+        </section>
+        <div class="section-divider"></div>`;
     }
 
     renderProject(project, index) {
         return `
-        <div class="flex flex-col md:flex-row bg-gradient-to-br from-[#201a2b] via-[#241a2b] to-[#18141f] rounded-xl p-8 border border-[#2d223b] shadow-lg hover:shadow-purple-900/30 animate-fadeInUp animate-delay-${index + 1} group transform hover:scale-105 duration-300 transition-all">
-            <div class="md:w-1/3 flex items-center justify-center mb-6 md:mb-0">
-                <img src="${project.image}" alt="${project.name}"
-                    class="w-full max-w-xs rounded-lg object-cover object-center bg-[#18141f] border border-[#2d223b]
-                           transform -rotate-6 hover:rotate-0 transition-transform duration-500 hover:scale-110 shadow-xl"
-                />
+        <div class="project-card glass-card ${index % 2 !== 0 ? 'reverse' : ''} reveal">
+            <div class="project-image-wrap">
+                <img src="${project.image}" alt="${project.name}" loading="lazy" />
+                <div class="project-image-overlay">
+                    <span style="color:white;font-weight:700;font-size:1rem;text-shadow:0 2px 10px rgba(0,0,0,0.5)">
+                        Ver proyecto
+                    </span>
+                </div>
             </div>
-            <div class="md:w-2/3 md:pl-10 flex flex-col justify-center">
-                <h4 class="text-2xl font-bold text-purple-200 mb-3 group-hover:text-fuchsia-300 transition-colors duration-300">${project.name}</h4>
-                <p class="text-gray-300 mb-4 text-lg group-hover:text-white transition-colors duration-300">
-                    ${project.description}
-                </p>
-                <div class="flex flex-wrap gap-2 mt-4">
-                    ${project.technologies.map(tech => `
-                        <span class="bg-[#2d223b] text-gray-200 px-3 py-1 rounded-full text-sm font-medium hover:bg-purple-900/40 transition-colors">${tech}</span>
-                    `).join('')}
+
+            <div class="project-info">
+                <div class="project-num">${project.num} — ${project.type}</div>
+                <h3 class="project-title">${project.name}</h3>
+                <p class="project-desc">${project.description}</p>
+                <div class="project-tech-list">
+                    ${project.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                </div>
+                <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+                    <a href="#contact" class="project-link">
+                        Solicitar proyecto similar
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>`;
