@@ -45,6 +45,29 @@ const FALLBACK_PROJECTS: Project[] = [
   },
   {
     num: '02',
+    name: 'MoePDF',
+    tagline: 'Generador profesional de facturas en PDF para freelancers',
+    description: 'SaaS de generación de facturas PDF diseñado para autónomos y freelancers. Flujo guiado en 3 pasos: selección de perfil profesional, formulario personalizado y generación de factura. Preview gratuito con descarga de pago vía Stripe y panel de administración con métricas.',
+    highlights: [
+      'Plantillas multi-perfil: diseñador web, freelancer, entrenador personal, fotógrafo',
+      'Integración de pagos con Stripe y confirmación vía webhooks',
+      'Control de acceso por roles con Row-Level Security en Supabase',
+    ],
+    image: 'images/moepdf.png',
+    type: 'SaaS · Full Stack',
+    year: '2026',
+    slices: [
+      { name: 'Next.js / TS',  pct: 40, color: '#000000' },
+      { name: 'Tailwind CSS',  pct: 20, color: '#38bdf8' },
+      { name: 'Supabase',      pct: 20, color: '#3ecf8e' },
+      { name: 'Stripe',        pct: 10, color: '#635bff' },
+      { name: 'React PDF',     pct: 10, color: '#e34c26' },
+    ],
+    demoUrl: 'https://moe-pqp8vsy15-moestilos-projects.vercel.app/',
+    codeUrl: 'https://github.com/moestilos/MoePDF',
+  },
+  {
+    num: '03',
     name: 'FunkMoes',
     tagline: 'E-commerce de camisetas con panel de admin',
     description: 'Tienda online desarrollada de cero: catálogo, carrito, autenticación JWT, pasarela de pagos Stripe y panel de administración completo. Diseño centrado en conversión con experiencia de compra fluida.',
@@ -65,7 +88,7 @@ const FALLBACK_PROJECTS: Project[] = [
     codeUrl: 'https://github.com/moestilos',
   },
   {
-    num: '03',
+    num: '04',
     name: 'Vuela21',
     tagline: 'Sistema de gestión de envíos para cliente real',
     description: 'Aplicación de gestión de envíos para cliente real (CodeArts SL). API REST desacoplada con Symfony, frontend Angular responsive y flujos operacionales optimizados para reducir fricción en el día a día.',
@@ -86,7 +109,7 @@ const FALLBACK_PROJECTS: Project[] = [
     codeUrl: 'https://github.com/moestilos',
   },
   {
-    num: '04',
+    num: '05',
     name: 'Portfolio moestilos',
     tagline: 'Portfolio personal de alto impacto visual',
     description: 'Portfolio Angular 17 standalone + Tailwind CSS con sistema de diseño editorial completo. Typewriter animado, donut charts SVG, scroll reveal, fondo de blobs animados y optimización para conversión freelance.',
