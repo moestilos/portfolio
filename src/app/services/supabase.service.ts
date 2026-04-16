@@ -154,4 +154,30 @@ export class SupabaseService {
   deleteProject(id: string) {
     return this.supabase.from('projects').delete().eq('id', id);
   }
+
+  // ─── STORAGE (project images) ─────────────────────────────────────────────
+
+  private readonly BUCKET = 'project-images';
+
+  /** Upload image file, returns { url, error } */
+  async uploadProjectImage(file: File): Promise<{ url: string | null; error: string | null }> {
+    const ext = file.name.split('.').pop()?.toLowerCase() ?? 'png';
+    const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+
+    const { error } = await this.supabase.storage
+      .from(this.BUCKET)
+      .upload(path, file, { cacheControl: '3600', upsert: false });
+
+    if (error) return { url: null, error: error.message };
+
+    const { data } = this.supabase.storage.from(this.BUCKET).getPublicUrl(path);
+    return { url: data.publicUrl, error: null };
+  }
+
+  /** Delete image by its full public URL */
+  async deleteProjectImage(publicUrl: string): Promise<void> {
+    const parts = publicUrl.split(`/storage/v1/object/public/${this.BUCKET}/`);
+    if (parts.length < 2) return;
+    await this.supabase.storage.from(this.BUCKET).remove([parts[1]]);
+  }
 }
