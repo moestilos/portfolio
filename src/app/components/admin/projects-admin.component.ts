@@ -119,6 +119,27 @@ const EMPTY: AdminProject = {
     /* ── Grid helpers ── */
     .row-2 { display: grid; gap: .75rem; grid-template-columns: 1fr 1fr; }
 
+    /* ── GitHub fetch button ── */
+    .gh-fetch-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600;
+      background: rgba(255,255,255,.05); border: 1px solid var(--border);
+      color: var(--text-2); cursor: pointer; transition: all .2s;
+    }
+    .gh-fetch-btn:hover { border-color: rgba(245,158,11,.4); color: var(--accent); }
+    .gh-fetch-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .gh-fetch-btn.fetched { border-color: rgba(34,197,94,.3); color: #4ade80; }
+
+    /* ── Tech preview pills ── */
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .tech-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 500;
+      background: rgba(255,255,255,.04); border: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .tech-pill-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
     /* ── Image upload zone ── */
     .upload-zone {
       position: relative; border: 2px dashed var(--border); border-radius: 12px;
@@ -461,9 +482,39 @@ const EMPTY: AdminProject = {
               </div>
               <div>
                 <label class="lbl">GitHub URL</label>
-                <input class="fi" [(ngModel)]="form.code_url" placeholder="https://github.com/..." />
+                <input class="fi" [(ngModel)]="form.code_url" placeholder="https://github.com/user/repo"
+                       (blur)="onGithubUrlChange()" />
               </div>
             </div>
+
+            <!-- GitHub auto-import hint -->
+            @if (isGithubUrl(form.code_url)) {
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <button class="gh-fetch-btn" [class.fetched]="ghFetched"
+                        [disabled]="ghFetching" (click)="fetchGithubLanguages()">
+                  @if (ghFetching) {
+                    <svg width="12" height="12" viewBox="0 0 24 24" style="animation: spin .8s linear infinite;">
+                      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".25"/>
+                      <path d="M12 2a10 10 0 019.95 9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    Importando...
+                  } @else if (ghFetched) {
+                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Stack importado
+                  } @else {
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    Importar stack desde GitHub
+                  }
+                </button>
+                <span style="font-size:10px; color:var(--text-3);">
+                  Detecta los lenguajes automáticamente
+                </span>
+              </div>
+            }
 
             <!-- ── Highlights ── -->
             <div>
@@ -487,13 +538,36 @@ const EMPTY: AdminProject = {
             </div>
 
             <!-- ── Stack ── -->
-            <span class="section-title">Stack tecnológico</span>
-
             <div>
-              <label class="lbl">JSON del stack</label>
-              <textarea class="fi" [(ngModel)]="form.tech" rows="2"
-                        placeholder='[{"name":"Angular","pct":60,"color":"#dd0031"}]'
-                        style="resize:vertical; font-family:var(--mono); font-size:11px;"></textarea>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="section-title" style="margin:0;">Stack tecnológico</span>
+                @if (isGithubUrl(form.code_url) && !ghFetched) {
+                  <button class="gh-fetch-btn" [disabled]="ghFetching" (click)="fetchGithubLanguages()"
+                          style="padding:3px 8px; font-size:10px;">
+                    @if (ghFetching) { Importando... } @else { Importar de GitHub }
+                  </button>
+                }
+              </div>
+
+              <!-- Visual preview of current tech -->
+              @if (parsedTech.length > 0) {
+                <div class="tech-pills">
+                  @for (t of parsedTech; track t.name) {
+                    <span class="tech-pill">
+                      <span class="tech-pill-dot" [style.background]="t.color"></span>
+                      {{ t.name }} · {{ t.pct }}%
+                    </span>
+                  }
+                </div>
+              }
+
+              <div style="margin-top:8px;">
+                <label class="lbl">JSON del stack (editable)</label>
+                <textarea class="fi" [(ngModel)]="form.tech" rows="2"
+                          (ngModelChange)="onTechChange()"
+                          placeholder='[{"name":"Angular","pct":60,"color":"#dd0031"}]'
+                          style="resize:vertical; font-family:var(--mono); font-size:11px;"></textarea>
+              </div>
             </div>
 
             <div>
@@ -598,6 +672,11 @@ export class ProjectsAdminComponent implements OnInit {
   uploadProgress = 0;
   isDragOver = false;
 
+  // GitHub auto-import
+  ghFetching = false;
+  ghFetched  = false;
+  parsedTech: { name: string; pct: number; color: string }[] = [];
+
   // Delete confirmation
   deleteTarget: AdminProject | null = null;
   deleting = false;
@@ -629,6 +708,8 @@ export class ProjectsAdminComponent implements OnInit {
     this.imagePreview = null;
     this.imageFile    = null;
     this.formError    = '';
+    this.ghFetched    = false;
+    this.parsedTech   = [];
     this.showModal    = true;
   }
 
@@ -638,6 +719,8 @@ export class ProjectsAdminComponent implements OnInit {
     this.imagePreview = null;
     this.imageFile    = null;
     this.formError    = '';
+    this.ghFetched    = false;
+    try { this.parsedTech = JSON.parse(this.form.tech || '[]'); } catch { this.parsedTech = []; }
     this.showModal    = true;
   }
 
@@ -781,6 +864,101 @@ export class ProjectsAdminComponent implements OnInit {
     if (this.fileInput?.nativeElement) {
       this.fileInput.nativeElement.value = '';
     }
+  }
+
+  // ─── GITHUB LANGUAGES ─────────────────────────────────────────────────────
+
+  /** Known language → color map (matches GitHub linguist colors) */
+  private readonly LANG_COLORS: Record<string, string> = {
+    'JavaScript':  '#f1e05a', 'TypeScript': '#3178c6', 'HTML':       '#e34c26',
+    'CSS':         '#563d7c', 'SCSS':       '#c6538c', 'PHP':        '#4F5D95',
+    'Python':      '#3572A5', 'Java':       '#b07219', 'Kotlin':     '#A97BFF',
+    'Swift':       '#F05138', 'Ruby':       '#701516', 'Go':         '#00ADD8',
+    'Rust':        '#dea584', 'C':          '#555555', 'C++':        '#f34b7d',
+    'C#':          '#178600', 'Dart':       '#00B4AB', 'Vue':        '#41b883',
+    'Shell':       '#89e051', 'Dockerfile': '#384d54', 'Blade':      '#f7523f',
+    'Twig':        '#c1d026', 'Hack':       '#878787', 'Makefile':   '#427819',
+    'Less':        '#1d365d', 'Sass':       '#a53b70', 'Astro':      '#ff5a03',
+    'Svelte':      '#ff3e00', 'Lua':        '#000080', 'R':          '#198CE7',
+    'Elixir':      '#6e4a7e', 'Haskell':    '#5e5086', 'Scala':      '#c22d40',
+    'Perl':        '#0298c3', 'Objective-C':'#438eff', 'Nix':        '#7e7eff',
+  };
+
+  isGithubUrl(url: string): boolean {
+    return /^https?:\/\/(www\.)?github\.com\/[\w.-]+\/[\w.-]+/i.test(url ?? '');
+  }
+
+  /** Extract owner/repo from GitHub URL */
+  private parseGithubRepo(url: string): { owner: string; repo: string } | null {
+    const m = url.match(/github\.com\/([\w.-]+)\/([\w.-]+)/);
+    return m ? { owner: m[1], repo: m[2].replace(/\.git$/, '') } : null;
+  }
+
+  onGithubUrlChange(): void {
+    this.ghFetched = false;
+  }
+
+  onTechChange(): void {
+    try {
+      this.parsedTech = JSON.parse(this.form.tech || '[]');
+    } catch {
+      this.parsedTech = [];
+    }
+  }
+
+  async fetchGithubLanguages(): Promise<void> {
+    const parsed = this.parseGithubRepo(this.form.code_url);
+    if (!parsed) { this.formError = 'URL de GitHub no válida'; return; }
+
+    this.ghFetching = true;
+    this.formError  = '';
+
+    try {
+      const res = await fetch(`https://api.github.com/repos/${parsed.owner}/${parsed.repo}/languages`);
+      if (!res.ok) {
+        if (res.status === 404) {
+          this.formError = 'Repositorio no encontrado. ¿Es privado?';
+        } else {
+          this.formError = `Error de GitHub: ${res.status}`;
+        }
+        this.ghFetching = false;
+        return;
+      }
+
+      const data: Record<string, number> = await res.json();
+      const total = Object.values(data).reduce((a, b) => a + b, 0);
+
+      if (total === 0) {
+        this.formError = 'El repositorio no tiene lenguajes detectados';
+        this.ghFetching = false;
+        return;
+      }
+
+      // Convert to tech array with percentages, filter out < 2%
+      const tech = Object.entries(data)
+        .map(([name, bytes]) => ({
+          name,
+          pct: Math.round((bytes / total) * 100),
+          color: this.LANG_COLORS[name] ?? '#888888',
+        }))
+        .filter(t => t.pct >= 2)
+        .sort((a, b) => b.pct - a.pct);
+
+      // Adjust to sum to 100
+      const sum = tech.reduce((a, t) => a + t.pct, 0);
+      if (tech.length > 0 && sum !== 100) {
+        tech[0].pct += (100 - sum);
+      }
+
+      this.form.tech  = JSON.stringify(tech);
+      this.parsedTech = tech;
+      this.ghFetched  = true;
+      this.showToast(`Stack importado: ${tech.map(t => t.name).join(', ')}`, 'success');
+    } catch (err) {
+      this.formError = 'Error conectando con GitHub';
+    }
+
+    this.ghFetching = false;
   }
 
   // ─── TOAST ───────────────────────────────────────────────────────────────
