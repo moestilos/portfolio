@@ -35,8 +35,16 @@ import { environment } from '../../../environments/environment';
           </div>
         }
 
-        <!-- Password input -->
+        <!-- Login inputs -->
         <div class="w-full flex flex-col gap-3">
+          <input
+            type="text"
+            [(ngModel)]="username"
+            placeholder="Usuario"
+            (keyup.enter)="login()"
+            class="w-full px-4 py-3 rounded-xl text-sm outline-none"
+            style="background:var(--surface-2); border:1px solid var(--border); color:var(--text-1);"
+          />
           <input
             type="password"
             [(ngModel)]="password"
@@ -63,6 +71,7 @@ import { environment } from '../../../environments/environment';
   `,
 })
 export class LoginComponent {
+  username = '';
   password = '';
   loading  = false;
   error    = '';
@@ -71,14 +80,14 @@ export class LoginComponent {
 
   login(): void {
     this.error = '';
-    if (!this.password) { this.error = 'Introduce la contraseña'; return; }
+    if (!this.username || !this.password) { this.error = 'Rellena usuario y contraseña'; return; }
     this.loading = true;
 
-    if (this.password === environment.adminPassword) {
+    if (this.username === environment.adminUser && this.password === environment.adminPassword) {
       sessionStorage.setItem('moe_admin', 'true');
       this.router.navigate(['/admin']);
     } else {
-      this.error   = 'Contraseña incorrecta';
+      this.error   = 'Usuario o contraseña incorrectos';
       this.loading = false;
     }
   }
