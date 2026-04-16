@@ -32,7 +32,7 @@ export class SupabaseService {
           autoRefreshToken: true,
           persistSession: true,
           detectSessionInUrl: true,
-          lock: async (_name: string, _acquireTimeout: number, fn: () => Promise<unknown>) => fn(),
+          lock: <R>(_name: string, _acquireTimeout: number, fn: () => Promise<R>): Promise<R> => fn(),
         }
       }
     );
