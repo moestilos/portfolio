@@ -22,6 +22,7 @@ export class SupabaseService {
   // Stream del usuario actual — null = no autenticado
   user$ = new BehaviorSubject<User | null>(null);
   session$ = new BehaviorSubject<Session | null>(null);
+  ready$ = new BehaviorSubject<boolean>(false);
 
   constructor() {
     this.supabase = createClient(
@@ -43,10 +44,11 @@ export class SupabaseService {
       this.user$.next(session?.user ?? null);
     });
 
-    // Cargar sesión inicial
+    // Cargar sesión inicial — marca ready$ cuando termine
     this.supabase.auth.getSession().then(({ data }) => {
       this.session$.next(data.session);
       this.user$.next(data.session?.user ?? null);
+      this.ready$.next(true);
     });
   }
 
