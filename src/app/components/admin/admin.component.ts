@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SupabaseService, DashboardStats, DayStat } from '../../services/supabase.service';
+import { ProjectsAdminComponent } from './projects-admin.component';
 
 interface KpiCard {
   label:    string;
@@ -14,7 +15,7 @@ interface KpiCard {
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ProjectsAdminComponent],
   styles: [`
     :host { display: block; min-height: 100vh; background: var(--bg); font-family: var(--font); }
 
@@ -273,40 +274,7 @@ interface KpiCard {
 
         <!-- ── PROJECTS VIEW ── -->
         @if (view === 'projects') {
-          <div class="flex items-center justify-between mb-6">
-            <div>
-              <h2 class="text-base font-bold" style="color:var(--text-1);">Proyectos</h2>
-              <p class="text-xs" style="color:var(--text-3);">Gestión del catálogo</p>
-            </div>
-          </div>
-
-          <div class="rounded-xl overflow-hidden"
-               style="border:1px solid var(--border); background:var(--surface);">
-            <!-- Table header -->
-            <div class="grid gap-4 px-5 py-3 text-xs font-semibold tracking-widest uppercase"
-                 style="color:var(--text-3); font-family:var(--mono); border-bottom:1px solid var(--border);
-                        grid-template-columns:40px 1fr 120px 70px;">
-              <span>#</span><span>Proyecto</span><span>Tipo</span><span>Año</span>
-            </div>
-            @for (p of portfolioProjects; track p.num) {
-              <div class="grid gap-4 px-5 py-4 items-center text-sm transition-colors duration-150"
-                   style="grid-template-columns:40px 1fr 120px 70px; border-bottom:1px solid var(--border);"
-                   onmouseover="this.style.background='rgba(255,255,255,.02)'"
-                   onmouseout="this.style.background='transparent'">
-                <span class="text-xs tabular-nums font-semibold" style="color:var(--accent); font-family:var(--mono);">{{ p.num }}</span>
-                <div class="flex flex-col gap-0.5 min-w-0">
-                  <span class="font-semibold truncate" style="color:var(--text-1);">{{ p.name }}</span>
-                  <span class="text-xs truncate" style="color:var(--text-3);">{{ p.tagline }}</span>
-                </div>
-                <span class="tag text-xs" style="justify-self:start;">{{ p.type.split('·')[0].trim() }}</span>
-                <span class="text-xs tabular-nums" style="color:var(--text-3); font-family:var(--mono);">{{ p.year }}</span>
-              </div>
-            }
-          </div>
-
-          <p class="text-xs mt-4 text-center" style="color:var(--text-3);">
-            La gestión completa de proyectos (añadir/editar/eliminar) estará disponible próximamente.
-          </p>
+          <app-projects-admin />
         }
 
       }
@@ -331,13 +299,6 @@ export class AdminComponent implements OnInit {
     { key: 'projects'  as const, label: 'Proyectos' },
   ];
 
-  // Reference to portfolio projects (read-only for now)
-  portfolioProjects = [
-    { num: '01', name: 'Estiumsew',          tagline: 'Landing page tienda artesanal de costura',       type: 'Landing Page · Frontend', year: '2025' },
-    { num: '02', name: 'FunkMoes',           tagline: 'E-commerce de camisetas con panel de admin',     type: 'E-commerce · Full Stack',  year: '2024' },
-    { num: '03', name: 'Vuela21',            tagline: 'Sistema de gestión de envíos para cliente real', type: 'SaaS · Full Stack',         year: '2025' },
-    { num: '04', name: 'Portfolio moestilos',tagline: 'Portfolio personal de alto impacto visual',      type: 'Portfolio · Frontend',      year: '2025' },
-  ];
 
   get today(): string {
     return new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
@@ -354,7 +315,7 @@ export class AdminComponent implements OnInit {
       { label: 'Visitas totales', value: s?.totalViews ?? 0,    sub: `${s?.viewsToday ?? 0} hoy`,          color: '#f59e0b', icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' },
       { label: 'Esta semana',     value: s?.viewsThisWeek ?? 0, sub: 'últimos 7 días',                      color: '#c084fc', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
       { label: 'Descargas CV',   value: s?.totalCvDowns ?? 0,  sub: `${s?.cvDownsToday ?? 0} hoy`,         color: '#67e8f9', icon: 'M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
-      { label: 'Proyectos',      value: this.portfolioProjects.length, sub: 'en portfolio',                color: '#4ade80', icon: 'M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z' },
+      { label: 'Proyectos',      value: '—',                           sub: 'ver sección',                 color: '#4ade80', icon: 'M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z' },
     ];
   }
 

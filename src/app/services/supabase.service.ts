@@ -133,4 +133,25 @@ export class SupabaseService {
       cvDownsByDay:  cvDownsByDay.data ?? [],
     };
   }
+
+  // ─── PROJECTS CRUD ────────────────────────────────────────────────────────
+
+  getProjects() {
+    return this.supabase
+      .from('projects')
+      .select('*')
+      .order('position', { ascending: true });
+  }
+
+  createProject(payload: Record<string, unknown>) {
+    return this.supabase.from('projects').insert(payload);
+  }
+
+  updateProject(id: string, payload: Record<string, unknown>) {
+    return this.supabase.from('projects').update(payload).eq('id', id);
+  }
+
+  deleteProject(id: string) {
+    return this.supabase.from('projects').delete().eq('id', id);
+  }
 }
