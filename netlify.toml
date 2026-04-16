@@ -1,6 +1,6 @@
 # ─── Build settings ──────────────────────────────────────────────────────────
 [build]
-  command   = "npm run build"
+  command   = "npm run build -- --base-href=/"
   publish   = "dist/portfolio/browser"
 
 [build.environment]
