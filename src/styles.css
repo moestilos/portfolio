@@ -33,8 +33,12 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 72px;
+    scroll-padding-top: 60px;
     background-color: #0a0a0a;
+  }
+
+  @media (min-width: 640px) {
+    html { scroll-padding-top: 72px; }
   }
 
   body {
@@ -302,17 +306,45 @@ nav {
    MOBILE MENU
    ============================================================ */
 .mobile-overlay {
-  display: none;
   position: fixed;
   inset: 0;
   z-index: 90;
   background: rgba(10,10,10,0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-.mobile-overlay.open { display: flex; }
+.mobile-overlay.open {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+.mobile-overlay a {
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease, color 0.2s ease;
+}
+.mobile-overlay.open a {
+  transform: translateY(0);
+  opacity: 1;
+}
+.mobile-overlay.open a:nth-child(2) { transition-delay: 0.05s; }
+.mobile-overlay.open a:nth-child(3) { transition-delay: 0.1s; }
+.mobile-overlay.open a:nth-child(4) { transition-delay: 0.15s; }
+.mobile-overlay.open a:nth-child(5) { transition-delay: 0.2s; }
+.mobile-overlay.open a:nth-child(6) { transition-delay: 0.25s; }
+.mobile-overlay.open a:nth-child(7) { transition-delay: 0.3s; }
+
+/* Active link highlight in mobile menu */
+.mobile-overlay a:active {
+  color: var(--accent) !important;
+}
 
 /* ============================================================
    HERO GRADIENT WORD
@@ -390,6 +422,14 @@ nav {
 /* Ensure all sections sit above blobs */
 main > * { position: relative; z-index: 1; }
 nav, footer { position: relative; z-index: 2; }
+
+/* Reduce blob sizes on mobile for performance */
+@media (max-width: 640px) {
+  .bg-blob-1 { width: 400px; height: 400px; filter: blur(80px); }
+  .bg-blob-2 { width: 320px; height: 320px; filter: blur(90px); }
+  .bg-blob-3 { width: 220px; height: 220px; filter: blur(60px); }
+  .bg-blob-4 { display: none; }
+}
 
 /* ============================================================
    EXPERIENCE ITEMS — animation-driven (no IntersectionObserver)
@@ -565,63 +605,131 @@ nav, footer { position: relative; z-index: 2; }
 
 
 /* ============================================================
-   RESPONSIVE — MOBILE OVERRIDES
+   RESPONSIVE — MOBILE-FIRST OVERRIDES
    ============================================================ */
 
-/* Reduce section padding on small screens */
-@media (max-width: 640px) {
+/* ── Extra small (< 375px) ── */
+@media (max-width: 374px) {
+  .container-main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .section-pad {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
-  /* Hero: tighten gaps */
-  #hero .flex.flex-col.gap-8 {
-    gap: 1.5rem;
-  }
+  body { font-size: 14px; }
 
-  /* Stats row: smaller gap and font */
+  /* Hero stats: 2-col wrap instead of row */
   #hero .flex.gap-8 {
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  #hero .flex.gap-8 > div {
+    min-width: 40%;
   }
 
-  /* CTA buttons: wrap nicely */
-  #hero .flex.flex-wrap.gap-3 {
-    gap: 0.625rem;
-  }
-
-  /* Projects: remove left padding on mobile */
-  #projects .sm\:pl-8 {
-    padding-left: 0;
-  }
-
-  /* Experience grid: stack fully on mobile */
-  #experience .sm\:grid-cols-\[140px_1fr\] {
-    grid-template-columns: 1fr;
-  }
-
-  /* About: tighter gap */
-  #about .gap-16 {
-    gap: 2.5rem;
-  }
-
-  /* Services: full-width layout already, just tighten */
-  #services .lg\:grid-cols-\[1fr_320px\] {
-    gap: 2rem;
-  }
-
-  /* Contact: stack form labels */
-  #contact .sm\:grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
+  /* Buttons: full width stack */
+  .btn { padding: 10px 16px; font-size: 12px; width: 100%; justify-content: center; }
 }
 
-/* Tablet tweaks */
-@media (max-width: 768px) {
-  .section-pad {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+/* ── Small phones (375px – 640px) ── */
+@media (max-width: 640px) {
+  .container-main {
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
   }
+
+  .section-pad {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  body { font-size: 14px; line-height: 1.65; }
+
+  /* ── Hero ── */
+  #hero { min-height: auto; padding-top: 5rem; padding-bottom: 3rem; }
+
+  #hero .flex.gap-8 {
+    gap: 1.25rem;
+  }
+
+  #hero .flex.flex-wrap.gap-3 {
+    gap: 0.5rem;
+  }
+
+  /* Hide scroll hint on small screens */
+  .hero-scroll-hint { display: none !important; }
+
+  /* Tighter section headers */
+  .section-pad .mb-14 { margin-bottom: 2rem !important; }
+  .section-pad .mb-16 { margin-bottom: 2.5rem !important; }
+
+  /* ── Section headers: tighter ── */
+  .section-num { font-size: 10px; }
+
+  /* ── Projects ── */
+  #projects .sm\:pl-8 { padding-left: 0; }
+
+  .proj-detail-grid { gap: 0; }
+
+  .proj-browser-wrap { padding: 0.75rem 0.75rem 0; }
+
+  .proj-browser-screen { max-height: 200px; }
+
+  .proj-browser-bar { padding: 7px 10px; gap: 8px; }
+  .proj-dot { width: 6px; height: 6px; }
+  .proj-url-bar { padding: 3px 8px; }
+
+  /* ── Experience ── */
+  #experience .sm\:grid-cols-\[140px_1fr\],
+  #experience .sm\:grid-cols-\[160px_1fr\] {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── About ── */
+  #about .gap-16 { gap: 2rem; }
+  #about .gap-12 { gap: 2rem; }
+
+  /* ── Services ── */
+  #services .lg\:grid-cols-\[1fr_320px\] { gap: 1.5rem; }
+
+  /* ── Contact ── */
+  #contact .sm\:grid-cols-2 { grid-template-columns: 1fr; }
+
+  /* ── Skills: tighter chart ── */
+  #skills .lg\:sticky { position: relative !important; top: auto !important; }
+}
+
+/* ── Tablets (641px – 768px) ── */
+@media (min-width: 641px) and (max-width: 768px) {
+  .section-pad {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .proj-browser-screen { max-height: 260px; }
+}
+
+/* ── Touch-friendly tap targets ── */
+@media (hover: none) and (pointer: coarse) {
+  .btn, .btn-accent, .btn-ghost, .tag, .chip {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Bigger tap area for project rows */
+  .proj-row button { min-height: 56px; }
+
+  /* Disable hover-only effects */
+  .proj-row:hover { background: transparent; }
+  .proj-row:hover .proj-name { transform: none; }
+  .proj-row:hover::before { transform: scaleY(0); }
+  .proj-row.active::before { transform: scaleY(1); }
+  .proj-row.active { background: rgba(255,255,255,0.015); }
 }
 
 /* ============================================================

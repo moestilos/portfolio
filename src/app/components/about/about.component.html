@@ -9,11 +9,11 @@
       <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--text-3); white-space:nowrap;">Sobre mí</span>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
       <!-- LEFT -->
-      <div class="flex flex-col gap-7 reveal">
-        <h2 class="text-3xl md:text-4xl font-black leading-tight" style="color:var(--text-1);">
+      <div class="flex flex-col gap-5 sm:gap-7 reveal">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black leading-tight" style="color:var(--text-1);">
           Desarrollo web que<br>
           <span style="color:var(--accent)">genera negocio</span>
         </h2>
@@ -38,7 +38,7 @@
         </div>
 
         <!-- Values -->
-        <div class="grid grid-cols-2 gap-3 pt-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-2">
           @for (v of values; track v.title) {
             <div class="p-4 rounded-lg transition-colors duration-200"
                  style="background:var(--surface); border:1px solid var(--border);"
@@ -73,10 +73,10 @@
       <div class="flex flex-col gap-4 reveal" style="transition-delay:0.1s;">
 
         <!-- Info card -->
-        <div class="p-6 rounded-xl" style="background:var(--surface); border:1px solid var(--border);">
-          <div class="flex items-start gap-4">
+        <div class="p-4 sm:p-6 rounded-xl" style="background:var(--surface); border:1px solid var(--border);">
+          <div class="flex items-start gap-3 sm:gap-4">
             <img src="images/perfilsin.png" alt="Guillermo"
-                 class="w-16 h-16 rounded-xl object-cover shrink-0"
+                 class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover shrink-0"
                  style="border:1px solid var(--border);"
                  onerror="this.style.display='none'"/>
             <div>

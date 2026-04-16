@@ -52,21 +52,22 @@
 
           <!-- ── Expanded panel ── -->
           @if (expanded === i) {
-            <div class="proj-expand" style="border-bottom:1px solid var(--border); padding:0 14px;">
-              <div class="pb-8 pt-2">
+            <div class="proj-expand" style="border-bottom:1px solid var(--border); padding:0 0.5rem;"
+                 class="proj-expand">
+              <div class="pb-6 sm:pb-8 pt-2">
                 <div class="rounded-xl overflow-hidden" style="border:1px solid var(--border); background:var(--surface);">
 
                   <!-- TOP: Browser mockup + project info side by side -->
                   <div class="proj-detail-grid">
 
                     <!-- LEFT: Info -->
-                    <div class="p-5 sm:p-7 flex flex-col gap-5" style="justify-content:center;">
+                    <div class="p-4 sm:p-7 flex flex-col gap-4 sm:gap-5" style="justify-content:center;">
                       <div>
                         <span class="text-xs tabular-nums"
-                              style="color:var(--text-3); font-family:var(--mono); display:block; margin-bottom:8px;">
+                              style="color:var(--text-3); font-family:var(--mono); display:block; margin-bottom:6px;">
                           {{ p.type }} · {{ p.year }}
                         </span>
-                        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight"
+                        <h3 class="text-xl sm:text-3xl font-bold tracking-tight"
                             style="color:var(--text-1); line-height:1.1; margin:0;">
                           {{ p.name }}
                         </h3>
@@ -150,8 +151,8 @@
                   </div>
 
                   <!-- BOTTOM: Stack info -->
-                  <div class="p-5 sm:p-7" style="border-top:1px solid var(--border);">
-                    <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-6 items-center">
+                  <div class="p-4 sm:p-7" style="border-top:1px solid var(--border);">
+                    <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-4 sm:gap-6 items-center">
 
                       <!-- Stack bars -->
                       <div class="flex flex-col gap-1">
