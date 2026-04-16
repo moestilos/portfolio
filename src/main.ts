@@ -2,8 +2,8 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
-// Polyfill navigator.locks para entornos donde no está disponible
-if (typeof navigator !== 'undefined' && !navigator.locks) {
+// Override navigator.locks para evitar fallos de adquisición de lock en Supabase
+if (typeof navigator !== 'undefined') {
   (navigator as any).locks = {
     request: (_name: string, optionsOrFn: any, fn?: Function) => {
       const cb = typeof optionsOrFn === 'function' ? optionsOrFn : fn!;
