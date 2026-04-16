@@ -1,0 +1,542 @@
+/* ============================================================
+   TAILWIND
+   ============================================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --bg:        #0a0a0a;
+  --surface:   #111111;
+  --surface-2: #1a1a1a;
+  --border:    rgba(255,255,255,0.07);
+  --border-h:  rgba(245,158,11,0.35);
+  --text-1:    #fafaf9;
+  --text-2:    #a1a1aa;
+  --text-3:    #52525b;
+  --accent:    #f59e0b;
+  --accent-l:  #fbbf24;
+  --accent-bg: rgba(245,158,11,0.07);
+  --r:         12px;       /* border-radius base */
+  --font:      'Inter', system-ui, sans-serif;
+  --mono:      'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  ::selection { background: rgba(245,158,11,0.2); color: var(--text-1); }
+
+  a { text-decoration: none; color: inherit; }
+}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+@layer components {
+
+  .container-main {
+    max-width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-pad {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  /* Section header — número + línea + título */
+  .section-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Card base — solo borde, sin blur */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .card:hover {
+    border-color: var(--border-h);
+    background: var(--surface-2);
+  }
+
+  /* Accent chip */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: var(--accent-bg);
+    border: 1px solid rgba(245,158,11,0.2);
+    color: var(--accent-l);
+  }
+
+  /* Tech tag */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tag:hover {
+    border-color: rgba(245,158,11,0.3);
+    color: var(--text-1);
+  }
+
+  /* Button primary */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+  .btn-accent {
+    background: var(--accent);
+    color: #000;
+  }
+  .btn-accent:hover {
+    background: var(--accent-l);
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+  }
+  .btn-ghost:hover {
+    border-color: var(--border-h);
+    color: var(--text-1);
+  }
+
+  /* Availability badge */
+  .avail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.2);
+    color: #34d399;
+  }
+  .avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: pulse-dot 2s ease infinite;
+  }
+
+  /* Form input */
+  .input {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-1);
+    font-size: 14px;
+    font-family: var(--font);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .input::placeholder { color: var(--text-3); }
+  .input:focus { border-color: rgba(245,158,11,0.5); }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes dash-reveal {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+nav {
+  /* Permanent invisible border prevents flash when class is toggled */
+  border-bottom: 1px solid transparent;
+  transition:
+    background           0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-bottom-color  0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow           0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-glass {
+  background: rgba(10,10,10,0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: rgba(255,255,255,0.06);
+  box-shadow: 0 1px 32px rgba(0,0,0,0.35);
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline-track {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+  opacity: 0.25;
+}
+
+.timeline-node {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 6px;
+  box-shadow: 0 0 6px rgba(245,158,11,0.5);
+}
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(10,10,10,0.98);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.mobile-overlay.open { display: flex; }
+
+/* ============================================================
+   HERO GRADIENT WORD
+   ============================================================ */
+.word-accent {
+  color: var(--accent);
+}
+
+/* ============================================================
+   ANIMATED BACKGROUND BLOBS
+   ============================================================ */
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+.bg-blob-1 {
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(245,158,11,0.16) 0%, rgba(245,158,11,0.05) 45%, transparent 70%);
+  filter: blur(100px);
+  top: -25%; left: -20%;
+  animation: drift1 30s ease-in-out infinite;
+}
+.bg-blob-2 {
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(217,119,6,0.13) 0%, rgba(180,83,9,0.04) 50%, transparent 70%);
+  filter: blur(110px);
+  bottom: -10%; right: -15%;
+  animation: drift2 38s ease-in-out infinite;
+}
+.bg-blob-3 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(245,158,11,0.10) 0%, transparent 70%);
+  filter: blur(80px);
+  top: 45%; left: 50%;
+  animation: drift3 24s ease-in-out infinite;
+}
+.bg-blob-4 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(251,191,36,0.08) 0%, transparent 70%);
+  filter: blur(70px);
+  top: 20%; right: 15%;
+  animation: drift4 20s ease-in-out infinite;
+}
+
+@keyframes drift1 {
+  0%   { transform: translate(0px,    0px)   scale(1);    }
+  20%  { transform: translate(90px,   50px)  scale(1.06); }
+  45%  { transform: translate(50px,   150px) scale(0.94); }
+  70%  { transform: translate(-70px,  80px)  scale(1.03); }
+  100% { transform: translate(0px,    0px)   scale(1);    }
+}
+@keyframes drift2 {
+  0%   { transform: translate(0px,     0px)    scale(1);    }
+  25%  { transform: translate(-100px, -80px)   scale(1.08); }
+  55%  { transform: translate(-50px,  -160px)  scale(0.91); }
+  80%  { transform: translate(80px,   -70px)   scale(1.05); }
+  100% { transform: translate(0px,     0px)    scale(1);    }
+}
+@keyframes drift3 {
+  0%   { transform: translate(0px,    0px)   scale(1);    }
+  35%  { transform: translate(-130px, 90px)  scale(1.12); }
+  65%  { transform: translate(70px,  -100px) scale(0.88); }
+  100% { transform: translate(0px,    0px)   scale(1);    }
+}
+@keyframes drift4 {
+  0%   { transform: translate(0px,   0px)   scale(1);    }
+  30%  { transform: translate(-60px, 80px)  scale(1.1);  }
+  60%  { transform: translate(80px,  50px)  scale(0.92); }
+  100% { transform: translate(0px,   0px)   scale(1);    }
+}
+
+/* Ensure all sections sit above blobs */
+main > * { position: relative; z-index: 1; }
+nav, footer { position: relative; z-index: 2; }
+
+/* ============================================================
+   EXPERIENCE ITEMS — animation-driven (no IntersectionObserver)
+   ============================================================ */
+.exp-item {
+  opacity: 0;
+  animation: exp-in 0.42s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes exp-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   PROJECTS — ROW + EXPANDED PANEL
+   ============================================================ */
+
+/* Row base */
+.proj-row {
+  position: relative;
+  transition: background 0.22s ease;
+}
+
+/* Left amber accent bar — slides in on hover / active */
+.proj-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 2px 2px 0;
+}
+.proj-row:hover::before,
+.proj-row.active::before {
+  transform: scaleY(1);
+}
+
+/* Hover: subtle bg lift */
+.proj-row:hover {
+  background: rgba(255, 255, 255, 0.012);
+}
+
+/* Project number */
+.proj-num {
+  color: var(--text-3);
+  transition: color 0.2s ease;
+}
+.proj-row:hover   .proj-num,
+.proj-row.active  .proj-num {
+  color: var(--accent);
+}
+
+/* Project name */
+.proj-name {
+  color: var(--text-1);
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: block;
+}
+.proj-row:hover .proj-name {
+  transform: translateX(3px);
+}
+.proj-row.active .proj-name {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* Toggle +/× icon */
+.proj-toggle {
+  color: var(--text-3);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.proj-row:hover  .proj-toggle,
+.proj-row.active .proj-toggle {
+  border-color: rgba(245,158,11,0.35);
+  color: var(--accent);
+  background: rgba(245,158,11,0.06);
+}
+
+/* Expanded panel animation */
+.proj-expand {
+  animation: proj-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes proj-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE OVERRIDES
+   ============================================================ */
+
+/* Reduce section padding on small screens */
+@media (max-width: 640px) {
+  .section-pad {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Hero: tighten gaps */
+  #hero .flex.flex-col.gap-8 {
+    gap: 1.5rem;
+  }
+
+  /* Stats row: smaller gap and font */
+  #hero .flex.gap-8 {
+    gap: 1.5rem;
+  }
+
+  /* CTA buttons: wrap nicely */
+  #hero .flex.flex-wrap.gap-3 {
+    gap: 0.625rem;
+  }
+
+  /* Projects: remove left padding on mobile */
+  #projects .sm\:pl-8 {
+    padding-left: 0;
+  }
+
+  /* Experience grid: stack fully on mobile */
+  #experience .sm\:grid-cols-\[140px_1fr\] {
+    grid-template-columns: 1fr;
+  }
+
+  /* About: tighter gap */
+  #about .gap-16 {
+    gap: 2.5rem;
+  }
+
+  /* Services: full-width layout already, just tighten */
+  #services .lg\:grid-cols-\[1fr_320px\] {
+    gap: 2rem;
+  }
+
+  /* Contact: stack form labels */
+  #contact .sm\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet tweaks */
+@media (max-width: 768px) {
+  .section-pad {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* ============================================================
+   SKILLS MARQUEE (legacy — no se usa)
+   ============================================================ */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

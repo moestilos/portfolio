@@ -1,0 +1,75 @@
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300"
+     [ngClass]="{ 'nav-glass': scrolled }">
+  <div class="container-main h-full flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#hero" (click)="navigate($event,'#hero')"
+       class="flex items-center gap-2 group">
+      <!-- Monogram mark -->
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <rect width="26" height="26" rx="6" fill="var(--accent)"/>
+        <text x="13" y="18" text-anchor="middle"
+              font-family="Inter,sans-serif" font-size="13" font-weight="800"
+              fill="#000">m</text>
+      </svg>
+      <span class="text-sm font-bold tracking-tight"
+            style="color:var(--text-1)">
+        moestilos<span style="color:var(--accent)">.</span>
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-6">
+      @for (link of links; track link.href) {
+        <a [href]="link.href"
+           (click)="navigate($event, link.href)"
+           class="text-xs font-medium tracking-wide transition-colors duration-200 relative"
+           style="font-family: var(--mono);"
+           [style.color]="isActive(link.href) ? 'var(--accent)' : 'var(--text-3)'"
+           [class.hover:text-white]="!isActive(link.href)">
+          {{ link.label }}
+          @if (isActive(link.href)) {
+            <span class="absolute -bottom-0.5 left-0 right-0 h-px"
+                  style="background:var(--accent); transform-origin:left; animation: line-grow 0.3s ease forwards;"></span>
+          }
+        </a>
+      }
+    </div>
+
+    <!-- Hamburger (desktop: nada) -->
+    <div class="flex items-center">
+      <button class="md:hidden flex flex-col gap-1.5 p-2"
+              (click)="mobileOpen = !mobileOpen" aria-label="Menú">
+        <span class="block w-5 h-px transition-all duration-300"
+              style="background:var(--text-1);"
+              [style.transform]="mobileOpen ? 'rotate(45deg) translate(3px, 3px)' : ''"></span>
+        <span class="block w-5 h-px transition-all duration-300"
+              style="background:var(--text-1);"
+              [style.opacity]="mobileOpen ? '0' : '1'"></span>
+        <span class="block w-5 h-px transition-all duration-300"
+              style="background:var(--text-1);"
+              [style.transform]="mobileOpen ? 'rotate(-45deg) translate(3px,-3px)' : ''"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="mobile-overlay" [ngClass]="{ 'open': mobileOpen }">
+  <div class="flex items-center gap-2 mb-4">
+    <svg width="28" height="28" viewBox="0 0 26 26" fill="none">
+      <rect width="26" height="26" rx="6" fill="var(--accent)"/>
+      <text x="13" y="18" text-anchor="middle"
+            font-family="Inter,sans-serif" font-size="13" font-weight="800"
+            fill="#000">m</text>
+    </svg>
+    <span class="text-lg font-bold" style="color:var(--text-1)">moestilos<span style="color:var(--accent)">.</span></span>
+  </div>
+  @for (link of links; track link.href) {
+    <a [href]="link.href" (click)="navigate($event,link.href)"
+       class="text-xl font-semibold" style="color:var(--text-1)">
+      {{ link.label }}
+    </a>
+  }
+</div>

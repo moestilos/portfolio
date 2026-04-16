@@ -1,0 +1,72 @@
+<!-- ── EXPERIENCE ── -->
+<section id="experience" class="section-pad" style="border-top:1px solid var(--border);">
+  <div class="container-main">
+
+    <!-- Header -->
+    <div class="flex items-center gap-5 mb-12 reveal">
+      <span class="section-num">05</span>
+      <div class="section-rule"></div>
+      <span class="text-xs font-semibold tracking-widest uppercase"
+            style="color:var(--text-3); white-space:nowrap;">Trayectoria</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-2 mb-10 reveal" style="flex-wrap:wrap;">
+      @for (tab of tabs; track tab.key) {
+        <button
+          class="text-xs font-medium rounded-lg transition-all duration-200"
+          style="padding:6px 16px; border:1px solid; cursor:pointer; outline:none; background:transparent;"
+          [style.borderColor]="activeTab === tab.key ? 'rgba(245,158,11,0.4)' : 'rgba(255,255,255,0.07)'"
+          [style.color]="activeTab === tab.key ? 'var(--accent-l)' : 'var(--text-3)'"
+          [style.background]="activeTab === tab.key ? 'rgba(245,158,11,0.07)' : 'transparent'"
+          (click)="setTab(tab.key)">
+          {{ tab.label }}
+        </button>
+      }
+    </div>
+
+    <!-- List -->
+    <div class="flex flex-col">
+      @for (item of filteredItems; track item.title; let i = $index) {
+
+        <div class="exp-item py-7"
+             [style.borderTop]="i > 0 ? '1px solid var(--border)' : 'none'"
+             [style.animationDelay]="(i * 60) + 'ms'">
+
+          <div class="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-3 sm:gap-8">
+
+            <!-- LEFT: date + badge -->
+            <div class="flex sm:flex-col gap-3 sm:gap-2.5 items-start">
+              <span class="text-xs shrink-0 tabular-nums" style="color:var(--text-3); font-family:var(--mono);">
+                {{ item.date }}
+              </span>
+              <span class="shrink-0 inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold"
+                    [style.background]="item.type === 'work' ? 'rgba(245,158,11,0.08)' : 'rgba(56,189,248,0.08)'"
+                    [style.border]="item.type === 'work' ? '1px solid rgba(245,158,11,0.22)' : '1px solid rgba(56,189,248,0.22)'"
+                    [style.color]="item.type === 'work' ? 'var(--accent-l)' : '#67e8f9'">
+                {{ item.badge }}
+              </span>
+            </div>
+
+            <!-- RIGHT: content -->
+            <div class="flex flex-col gap-2">
+              <span class="text-sm font-bold" style="color:var(--text-1);">{{ item.title }}</span>
+              <span class="text-xs" style="color:var(--text-3); font-family:var(--mono);">{{ item.company }}</span>
+              <p class="text-xs leading-relaxed mt-0.5" style="color:var(--text-2);">{{ item.desc }}</p>
+              @if (item.tags && item.tags.length) {
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                  @for (t of item.tags; track t) {
+                    <span class="tag">{{ t }}</span>
+                  }
+                </div>
+              }
+            </div>
+
+          </div>
+        </div>
+
+      }
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,226 @@
+<!-- ── PROJECTS ── -->
+<section id="projects" class="section-pad">
+  <div class="container-main">
+
+    <!-- Section header -->
+    <div class="flex items-center gap-5 mb-16 reveal">
+      <span class="section-num">02</span>
+      <div class="section-rule"></div>
+      <span class="text-xs font-semibold tracking-widest uppercase"
+            style="color:var(--text-3); white-space:nowrap;">Proyectos</span>
+    </div>
+
+    <!-- Project list -->
+    <div class="flex flex-col" style="border-top:1px solid var(--border);">
+      @for (p of projects; track p.num; let i = $index) {
+
+        <div class="reveal" [style.transitionDelay]="(i * 55) + 'ms'">
+
+          <!-- ── Collapsed row ── -->
+          <div class="proj-row" [class.active]="expanded === i"
+               style="border-bottom:1px solid var(--border);">
+            <button
+              class="w-full text-left py-5 sm:py-6 flex items-center gap-4 sm:gap-6"
+              style="background:none; border:none; cursor:pointer; outline:none; padding-left:14px;"
+              (click)="toggle(i)">
+
+              <span class="proj-num text-xs font-semibold shrink-0 tabular-nums"
+                    style="font-family:var(--mono); width:22px;">{{ p.num }}</span>
+
+              <div class="flex flex-col gap-0.5 flex-1 min-w-0">
+                <span class="proj-name text-base sm:text-lg font-bold">{{ p.name }}</span>
+                <span class="text-xs" style="color:var(--text-3);">{{ p.tagline }}</span>
+              </div>
+
+              <div class="hidden sm:flex items-center gap-4 shrink-0">
+                <span class="text-xs tabular-nums" style="color:var(--text-3); font-family:var(--mono);">{{ p.year }}</span>
+                <span class="tag">{{ p.type }}</span>
+              </div>
+
+              <span class="proj-toggle shrink-0 w-7 h-7 rounded-md flex items-center justify-center"
+                    style="border:1px solid var(--border);">
+                <svg width="11" height="11" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor" stroke-width="2.5"
+                     class="transition-transform duration-300"
+                     [style.transform]="expanded === i ? 'rotate(45deg)' : ''">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+
+          <!-- ── Expanded panel ── -->
+          @if (expanded === i) {
+            <div class="proj-expand" style="border-bottom:1px solid var(--border);">
+              <div class="py-1 pb-8">
+                <div class="rounded-xl overflow-hidden" style="border:1px solid var(--border);">
+
+                  <!-- IMAGE BANNER -->
+                  <div class="relative overflow-hidden" style="height:200px;">
+                    <img [src]="p.image" [alt]="p.name"
+                         class="w-full h-full object-cover object-top"
+                         style="opacity:0.5;"
+                         onerror="this.style.display='none'"/>
+                    <!-- Gradient -->
+                    <div class="absolute inset-0 pointer-events-none"
+                         style="background:linear-gradient(115deg,
+                           rgba(17,17,17,0.97) 0%,
+                           rgba(17,17,17,0.75) 42%,
+                           rgba(17,17,17,0.2)  72%,
+                           transparent 100%);"></div>
+                    <!-- Project name + meta -->
+                    <div class="absolute bottom-0 left-0 p-5 sm:p-6">
+                      <span class="text-xs tabular-nums"
+                            style="color:rgba(255,255,255,0.35); font-family:var(--mono); display:block; margin-bottom:6px;">
+                        {{ p.type }} · {{ p.year }}
+                      </span>
+                      <h3 class="text-2xl sm:text-3xl font-bold tracking-tight"
+                          style="color:var(--text-1); line-height:1.1;">
+                        {{ p.name }}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <!-- BODY -->
+                  <div class="p-5 sm:p-7" style="background:var(--surface);">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 items-start">
+
+                      <!-- LEFT -->
+                      <div class="flex flex-col gap-6">
+
+                        <p class="text-sm leading-relaxed" style="color:var(--text-2); max-width:500px;">
+                          {{ p.description }}
+                        </p>
+
+                        @if (p.highlights && p.highlights.length) {
+                          <div class="flex flex-col gap-2">
+                            <span class="text-xs font-semibold tracking-widest uppercase"
+                                  style="color:var(--text-3); font-family:var(--mono);">
+                              Highlights
+                            </span>
+                            @for (h of p.highlights; track h) {
+                              <div class="flex items-start gap-2.5 text-xs leading-relaxed"
+                                   style="color:var(--text-2);">
+                                <span style="color:var(--accent); font-weight:700; flex-shrink:0; margin-top:1px;">→</span>
+                                <span>{{ h }}</span>
+                              </div>
+                            }
+                          </div>
+                        }
+
+                        <!-- Single set of action buttons — no duplicates -->
+                        <div class="flex flex-wrap gap-2.5 pt-1">
+                          @if (p.demoUrl) {
+                            <a [href]="p.demoUrl" target="_blank" rel="noopener"
+                               class="btn btn-accent text-xs" style="padding:8px 18px;">
+                              Ver demo ↗
+                            </a>
+                          }
+                          @if (p.codeUrl) {
+                            <a [href]="p.codeUrl" target="_blank" rel="noopener"
+                               class="btn btn-ghost text-xs" style="padding:8px 18px;">
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.65;">
+                                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                              </svg>
+                              GitHub
+                            </a>
+                          }
+                          <a href="#contact" (click)="go($event,'contact')"
+                             class="btn btn-ghost text-xs" style="padding:8px 18px;">
+                            Proyecto similar →
+                          </a>
+                        </div>
+
+                      </div>
+
+                      <!-- RIGHT: stack bars + color palette -->
+                      <div class="flex flex-col gap-5">
+
+                        <!-- Stack bars -->
+                        <div class="flex flex-col gap-1">
+                          <span class="text-xs font-semibold tracking-widest uppercase"
+                                style="color:var(--text-3); font-family:var(--mono); display:block; margin-bottom:10px;">
+                            Stack
+                          </span>
+                          @for (sl of p.slices; track sl.name) {
+                            <div class="flex items-center gap-2.5 py-0.5">
+                              <div class="flex items-center gap-1.5 shrink-0" style="width:110px;">
+                                <span class="w-1.5 h-1.5 rounded-sm shrink-0"
+                                      [style.background]="sl.color"></span>
+                                <span class="text-xs truncate" style="color:var(--text-2);">{{ sl.name }}</span>
+                              </div>
+                              <div class="flex-1 h-px rounded-full overflow-hidden"
+                                   style="background:rgba(255,255,255,0.07);">
+                                <div class="h-full rounded-full"
+                                     [style.width]="sl.pct + '%'"
+                                     [style.background]="sl.color"
+                                     style="opacity:0.75;"></div>
+                              </div>
+                              <span class="text-xs tabular-nums shrink-0"
+                                    style="color:var(--text-3); width:28px; text-align:right; font-family:var(--mono);">
+                                {{ sl.pct }}%
+                              </span>
+                            </div>
+                          }
+                        </div>
+
+                        <!-- Minimal donut -->
+                        <div class="flex items-center gap-4 pt-4"
+                             style="border-top:1px solid var(--border);">
+                          <svg width="56" height="56" viewBox="0 0 108 108" class="shrink-0">
+                            <circle cx="54" cy="54" [attr.r]="R"
+                                    fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="11"/>
+                            @for (seg of segments(p.slices); track seg.name) {
+                              <circle cx="54" cy="54" [attr.r]="R"
+                                      fill="none"
+                                      [attr.stroke]="seg.color"
+                                      stroke-width="11"
+                                      stroke-linecap="round"
+                                      [attr.stroke-dasharray]="seg.dash + ' ' + seg.gap"
+                                      [attr.stroke-dashoffset]="seg.offset"
+                                      style="transform-origin:center; transform:rotate(-90deg);"/>
+                            }
+                            <text x="54" y="49" text-anchor="middle" dominant-baseline="middle"
+                                  fill="var(--text-1)" font-size="18" font-weight="700"
+                                  font-family="Inter,sans-serif">{{ p.slices.length }}</text>
+                            <text x="54" y="65" text-anchor="middle" dominant-baseline="middle"
+                                  fill="var(--text-3)" font-size="9"
+                                  font-family="Inter,sans-serif">tech</text>
+                          </svg>
+                          <div class="flex flex-col gap-1.5">
+                            <div class="flex flex-wrap gap-1.5">
+                              @for (sl of p.slices; track sl.name) {
+                                <span class="w-2 h-2 rounded-sm"
+                                      [style.background]="sl.color"
+                                      [title]="sl.name + ' · ' + sl.pct + '%'"></span>
+                              }
+                            </div>
+                            <span class="text-xs" style="color:var(--text-3); font-family:var(--mono);">
+                              {{ p.slices.length }} tecnologías
+                            </span>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          }
+
+        </div>
+      }
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-14 reveal">
+      <a href="#contact" (click)="go($event,'contact')" class="btn btn-ghost text-xs">
+        ¿Tienes un proyecto? Hablemos →
+      </a>
+    </div>
+
+  </div>
+</section>
