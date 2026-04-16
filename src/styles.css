@@ -481,6 +481,94 @@ nav, footer { position: relative; z-index: 2; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Project detail grid (info + browser mockup) ── */
+.proj-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .proj-detail-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Browser mockup ── */
+.proj-browser-wrap {
+  padding: 1.25rem 1.25rem 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .proj-browser-wrap {
+    padding: 1.5rem 1.5rem 0;
+  }
+}
+
+.proj-browser {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-bottom: none;
+  background: #0a0a0a;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.proj-browser:hover {
+  transform: translateY(-4px);
+}
+
+.proj-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.proj-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.proj-url-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.04);
+  min-width: 0;
+}
+
+.proj-browser-screen {
+  overflow: hidden;
+  max-height: 320px;
+}
+
+.proj-browser-screen img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Slow scroll on hover to reveal full page */
+.proj-browser:hover .proj-browser-screen img {
+  transform: translateY(calc(-100% + 320px));
+}
+
 
 /* ============================================================
    RESPONSIVE — MOBILE OVERRIDES
