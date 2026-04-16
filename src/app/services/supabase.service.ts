@@ -32,6 +32,7 @@ export class SupabaseService {
           autoRefreshToken: true,
           persistSession: true,
           detectSessionInUrl: true,
+          lock: async (_name: string, _acquireTimeout: number, fn: () => Promise<unknown>) => fn(),
         }
       }
     );
@@ -56,7 +57,6 @@ export class SupabaseService {
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/admin`,
-        queryParams: { hd: 'gmail.com', login_hint: environment.adminEmail },
       },
     }).then(() => undefined);
   }
