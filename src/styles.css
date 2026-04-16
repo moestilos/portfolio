@@ -36,14 +36,26 @@
     scroll-padding-top: 72px;
   }
 
+  html {
+    background-color: #0a0a0a;
+  }
+
   body {
-    background: var(--bg);
+    background: #0a0a0a;
+    background-color: #0a0a0a;
     color: var(--text-1);
     font-family: var(--font);
     font-size: 15px;
     line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* iOS overscroll rubber-band area */
+  app-root {
+    display: block;
+    background-color: #0a0a0a;
+    min-height: 100vh;
   }
 
   /* Scrollbar */

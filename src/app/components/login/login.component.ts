@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
   imports: [CommonModule, FormsModule],
   template: `
     <div class="min-h-screen flex items-center justify-center"
-         style="background:var(--bg); font-family:var(--font);">
+         style="background:#0a0a0a; font-family:var(--font);">
 
       <div class="flex flex-col items-center gap-6 p-10 rounded-2xl w-full"
            style="max-width:400px; background:var(--surface); border:1px solid var(--border);">
