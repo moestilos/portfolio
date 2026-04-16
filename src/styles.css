@@ -435,6 +435,11 @@ nav, footer { position: relative; z-index: 2; }
   background: rgba(255, 255, 255, 0.012);
 }
 
+/* Active: merge visually with expanded panel */
+.proj-row.active {
+  background: rgba(255, 255, 255, 0.015);
+}
+
 /* Project number */
 .proj-num {
   color: var(--text-3);
@@ -516,11 +521,6 @@ nav, footer { position: relative; z-index: 2; }
   border-bottom: none;
   background: #0a0a0a;
   overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.proj-browser:hover {
-  transform: translateY(-4px);
 }
 
 .proj-browser-bar {
@@ -561,12 +561,6 @@ nav, footer { position: relative; z-index: 2; }
   display: block;
   object-fit: cover;
   object-position: top;
-  transition: transform 6s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-/* Slow scroll on hover to reveal full page */
-.proj-browser:hover .proj-browser-screen img {
-  transform: translateY(calc(-100% + 320px));
 }
 
 

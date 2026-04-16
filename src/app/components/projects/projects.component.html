@@ -18,7 +18,7 @@
 
           <!-- ── Collapsed row ── -->
           <div class="proj-row" [class.active]="expanded === i"
-               style="border-bottom:1px solid var(--border);">
+               [style.border-bottom]="expanded === i ? 'none' : '1px solid var(--border)'">
             <button
               class="w-full text-left py-5 sm:py-6 flex items-center gap-4 sm:gap-6"
               style="background:none; border:none; cursor:pointer; outline:none; padding-left:14px;"
@@ -52,8 +52,8 @@
 
           <!-- ── Expanded panel ── -->
           @if (expanded === i) {
-            <div class="proj-expand" style="border-bottom:1px solid var(--border);">
-              <div class="py-1 pb-8">
+            <div class="proj-expand" style="border-bottom:1px solid var(--border); padding:0 14px;">
+              <div class="pb-8 pt-2">
                 <div class="rounded-xl overflow-hidden" style="border:1px solid var(--border); background:var(--surface);">
 
                   <!-- TOP: Browser mockup + project info side by side -->
