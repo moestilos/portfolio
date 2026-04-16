@@ -370,8 +370,8 @@ export class AdminComponent implements OnInit {
       .finally(() => { this.loading = false; });
   }
 
-  async logout(): Promise<void> {
-    await this.supa.signOut();
+  logout(): void {
+    sessionStorage.removeItem('moe_admin');
     this.router.navigate(['/admin/login']);
   }
 
