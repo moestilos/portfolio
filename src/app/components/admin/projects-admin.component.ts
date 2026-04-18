@@ -94,7 +94,7 @@ const EMPTY: AdminProject = {
     .modal {
       background: #111; border: 1px solid var(--border);
       border-radius: 18px; width: 100%; max-width: 680px;
-      margin: auto; animation: slideUp .25s ease;
+      margin: 2rem auto; animation: slideUp .25s ease;
       box-shadow: 0 24px 80px rgba(0,0,0,.6);
     }
     @keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -102,6 +102,8 @@ const EMPTY: AdminProject = {
     .modal-header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: #111; z-index: 2;
+      border-top-left-radius: 18px; border-top-right-radius: 18px;
     }
     .modal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
     .modal-footer {
