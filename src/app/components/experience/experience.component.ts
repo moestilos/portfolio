@@ -32,11 +32,11 @@ export class ExperienceComponent {
     {
       type: 'work',
       badge: 'Freelance',
-      date: '2025 — Presente',
+      date: '2026 — Presente',
       title: 'Desarrollador Web Freelance',
-      company: 'Proyectos independientes · Remoto',
-      desc: 'Desarrollo de proyectos web a medida para clientes de distintos sectores. Diseño de interfaces, implementación de backends y despliegue en producción.',
-      tags: ['Angular', 'Laravel', 'Tailwind', 'Docker'],
+      company: 'DigitalWolf · Remoto',
+      desc: 'Desarrollo y automatización de procesos para clientes. Integración de flujos con n8n, RPAs, implantación de Odoo CRM y WordPress ERP para la gestión empresarial.',
+      tags: ['n8n', 'RPAs', 'Odoo CRM', 'WordPress ERP'],
     },
     {
       type: 'work',
