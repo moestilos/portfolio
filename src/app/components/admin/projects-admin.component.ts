@@ -37,7 +37,7 @@ const EMPTY: AdminProject = {
       color: var(--text-1); outline: none; transition: all .2s;
       box-sizing: border-box;
     }
-    .fi:focus { border-color: rgba(245,158,11,.5); box-shadow: 0 0 0 3px rgba(245,158,11,.08); }
+    .fi:focus { border-color: rgba(var(--accent-rgb),.5); box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.08); }
     .fi::placeholder { color: rgba(255,255,255,.2); }
 
     /* ── Buttons ── */
@@ -54,7 +54,7 @@ const EMPTY: AdminProject = {
       background: transparent; color: var(--text-2);
       border: 1px solid var(--border); cursor: pointer; transition: all .2s; white-space: nowrap;
     }
-    .btn-g:hover { border-color: rgba(245,158,11,.4); color: var(--text-1); }
+    .btn-g:hover { border-color: rgba(var(--accent-rgb),.4); color: var(--text-1); }
 
     .btn-icon {
       width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border);
@@ -63,7 +63,7 @@ const EMPTY: AdminProject = {
     }
     .btn-icon:hover { background: rgba(255,255,255,.05); }
     .btn-icon.danger:hover { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.3); }
-    .btn-icon.edit:hover { background: rgba(245,158,11,.1); border-color: rgba(245,158,11,.3); }
+    .btn-icon.edit:hover { background: rgba(var(--accent-rgb),.1); border-color: rgba(var(--accent-rgb),.3); }
 
     /* ── Project card ── */
     .proj-card {
@@ -71,7 +71,7 @@ const EMPTY: AdminProject = {
       border-radius: 14px; overflow: hidden;
       transition: all .25s ease;
     }
-    .proj-card:hover { border-color: rgba(245,158,11,.25); box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+    .proj-card:hover { border-color: rgba(var(--accent-rgb),.25); box-shadow: 0 4px 24px rgba(0,0,0,.3); }
 
     .proj-thumb {
       width: 56px; height: 56px; border-radius: 10px; flex-shrink: 0;
@@ -128,7 +128,7 @@ const EMPTY: AdminProject = {
       background: rgba(255,255,255,.05); border: 1px solid var(--border);
       color: var(--text-2); cursor: pointer; transition: all .2s;
     }
-    .gh-fetch-btn:hover { border-color: rgba(245,158,11,.4); color: var(--accent); }
+    .gh-fetch-btn:hover { border-color: rgba(var(--accent-rgb),.4); color: var(--accent); }
     .gh-fetch-btn:disabled { opacity: .5; cursor: not-allowed; }
     .gh-fetch-btn.fetched { border-color: rgba(34,197,94,.3); color: #4ade80; }
 
@@ -150,7 +150,7 @@ const EMPTY: AdminProject = {
       min-height: 140px; background: rgba(255,255,255,.015);
     }
     .upload-zone:hover, .upload-zone.drag-over {
-      border-color: rgba(245,158,11,.5); background: rgba(245,158,11,.04);
+      border-color: rgba(var(--accent-rgb),.5); background: rgba(var(--accent-rgb),.04);
     }
     .upload-zone.has-image { padding: 0; border-style: solid; }
 
@@ -207,7 +207,7 @@ const EMPTY: AdminProject = {
     }
     .empty-icon {
       width: 64px; height: 64px; border-radius: 16px;
-      background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.15);
+      background: rgba(var(--accent-rgb),.08); border: 1px solid rgba(var(--accent-rgb),.15);
       display: flex; align-items: center; justify-content: center;
     }
 

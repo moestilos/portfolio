@@ -42,7 +42,7 @@
           @for (v of values; track v.title) {
             <div class="p-4 rounded-lg transition-colors duration-200"
                  style="background:var(--surface); border:1px solid var(--border);"
-                 onmouseover="this.style.borderColor='rgba(245,158,11,0.25)'"
+                 onmouseover="this.style.borderColor='rgba(var(--accent-rgb),0.25)'"
                  onmouseout="this.style.borderColor='var(--border)'">
               <div class="text-xs font-bold mb-1" style="color:var(--text-1);">{{ v.title }}</div>
               <div class="text-xs leading-relaxed" style="color:var(--text-3);">{{ v.desc }}</div>

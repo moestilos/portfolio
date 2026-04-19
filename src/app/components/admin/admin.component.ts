@@ -71,7 +71,7 @@ import { ProjectsAdminComponent } from './projects-admin.component';
     .nav-btn:hover { color: var(--text-1); background: rgba(255,255,255,.04); }
     .nav-btn.on    {
       color: var(--accent);
-      background: rgba(245,158,11,.06);
+      background: rgba(var(--accent-rgb),.06);
       border-left: 2px solid var(--accent);
       padding-left: 14px;
     }
@@ -169,7 +169,7 @@ import { ProjectsAdminComponent } from './projects-admin.component';
       display: flex; flex-direction: column; gap: .5rem;
       transition: border-color .2s;
     }
-    .kpi-card:hover { border-color: rgba(245,158,11,.2); }
+    .kpi-card:hover { border-color: rgba(var(--accent-rgb),.2); }
 
     .kpi-icon {
       width: 28px; height: 28px; border-radius: 8px;
@@ -215,7 +215,7 @@ import { ProjectsAdminComponent } from './projects-admin.component';
     @keyframes spin { to { transform: rotate(360deg); } }
     .spinner {
       width: 24px; height: 24px;
-      border: 2px solid rgba(245,158,11,.2);
+      border: 2px solid rgba(var(--accent-rgb),.2);
       border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin .8s linear infinite;

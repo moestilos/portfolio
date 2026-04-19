@@ -8,6 +8,7 @@ import { ServicesComponent } from '../components/services/services.component';
 import { ExperienceComponent } from '../components/experience/experience.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { FooterComponent } from '../components/footer/footer.component';
+import { ThemePickerComponent } from '../components/theme-picker/theme-picker.component';
 import { SupabaseService } from '../services/supabase.service';
 
 @Component({
@@ -23,6 +24,7 @@ import { SupabaseService } from '../services/supabase.service';
     ExperienceComponent,
     ContactComponent,
     FooterComponent,
+    ThemePickerComponent,
   ],
   template: `
     <!-- Animated background blobs -->
@@ -41,6 +43,9 @@ import { SupabaseService } from '../services/supabase.service';
       <app-contact />
     </main>
     <app-footer />
+
+    <!-- Theme picker -->
+    <app-theme-picker />
 
     <!-- Back to top -->
     <button

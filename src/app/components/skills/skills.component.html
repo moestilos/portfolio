@@ -31,7 +31,7 @@
               @for (sk of getSkillsByCategory(filter.key); track sk.name) {
                 <div class="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 cursor-default"
                      style="background:var(--surface); border:1px solid var(--border);"
-                     onmouseover="this.style.borderColor='rgba(245,158,11,0.3)'; this.style.background='var(--surface-2)'"
+                     onmouseover="this.style.borderColor='rgba(var(--accent-rgb),0.3)'; this.style.background='var(--surface-2)'"
                      onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--surface)'">
                   @if (sk.icon) {
                     <i [class]="sk.icon" style="font-size:1.1rem; line-height:1;"></i>

@@ -16,9 +16,9 @@
         <button
           class="text-xs font-medium rounded-lg transition-all duration-200"
           style="padding:6px 16px; border:1px solid; cursor:pointer; outline:none; background:transparent;"
-          [style.borderColor]="activeTab === tab.key ? 'rgba(245,158,11,0.4)' : 'rgba(255,255,255,0.07)'"
+          [style.borderColor]="activeTab === tab.key ? 'rgba(var(--accent-rgb),0.4)' : 'rgba(255,255,255,0.07)'"
           [style.color]="activeTab === tab.key ? 'var(--accent-l)' : 'var(--text-3)'"
-          [style.background]="activeTab === tab.key ? 'rgba(245,158,11,0.07)' : 'transparent'"
+          [style.background]="activeTab === tab.key ? 'rgba(var(--accent-rgb),0.07)' : 'transparent'"
           (click)="setTab(tab.key)">
           {{ tab.label }}
         </button>
@@ -41,8 +41,8 @@
                 {{ item.date }}
               </span>
               <span class="shrink-0 inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold"
-                    [style.background]="item.type === 'work' ? 'rgba(245,158,11,0.08)' : 'rgba(56,189,248,0.08)'"
-                    [style.border]="item.type === 'work' ? '1px solid rgba(245,158,11,0.22)' : '1px solid rgba(56,189,248,0.22)'"
+                    [style.background]="item.type === 'work' ? 'rgba(var(--accent-rgb),0.08)' : 'rgba(56,189,248,0.08)'"
+                    [style.border]="item.type === 'work' ? '1px solid rgba(var(--accent-rgb),0.22)' : '1px solid rgba(56,189,248,0.22)'"
                     [style.color]="item.type === 'work' ? 'var(--accent-l)' : '#67e8f9'">
                 {{ item.badge }}
               </span>
