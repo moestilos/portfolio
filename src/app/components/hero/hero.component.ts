@@ -16,7 +16,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   private roles = [
     'Fullstack Developer',
     'Angular Specialist',
-    'Laravel Expert',
+    'Vibe Coding',
     'Freelance Developer',
   ];
   private ri    = 0;
@@ -26,8 +26,8 @@ export class HeroComponent implements OnInit, OnDestroy {
   private blink: ReturnType<typeof setInterval> | null = null;
 
   stats = [
-    { num: '2+',   label: 'Años de experiencia' },
-    { num: '10+',  label: 'Proyectos entregados' },
+    { num: '1+',   label: 'Años de experiencia' },
+    { num: '4',    label: 'Proyectos entregados' },
     { num: '100%', label: 'Compromiso' },
   ];
 

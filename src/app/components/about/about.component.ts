@@ -24,8 +24,8 @@ export class AboutComponent {
   ];
 
   stats = [
-    { num: '2+',   label: 'Años exp.' },
-    { num: '10+',  label: 'Proyectos' },
+    { num: '1+',   label: 'Años exp.' },
+    { num: '4',    label: 'Proyectos' },
     { num: '100%', label: 'Compromiso' },
   ];
 }
