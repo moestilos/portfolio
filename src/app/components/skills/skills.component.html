@@ -33,7 +33,11 @@
                      style="background:var(--surface); border:1px solid var(--border);"
                      onmouseover="this.style.borderColor='rgba(245,158,11,0.3)'; this.style.background='var(--surface-2)'"
                      onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--surface)'">
-                  <i [class]="sk.icon" style="font-size:1.1rem; line-height:1;"></i>
+                  @if (sk.icon) {
+                    <i [class]="sk.icon" style="font-size:1.1rem; line-height:1;"></i>
+                  } @else if (sk.emoji) {
+                    <span style="font-size:1rem; line-height:1;">{{ sk.emoji }}</span>
+                  }
                   <span class="text-xs font-medium" style="color:var(--text-2);">{{ sk.name }}</span>
                   <!-- Level indicator -->
                   <div class="flex gap-0.5 ml-1">

@@ -13,13 +13,15 @@ export class SkillsComponent {
   hoveredLabel: string | null = null;
 
   filters = [
-    { key: 'frontend', label: 'Frontend' },
-    { key: 'backend',  label: 'Backend' },
-    { key: 'devops',   label: 'DB & DevOps' },
-    { key: 'tools',    label: 'Herramientas' },
+    { key: 'frontend',   label: 'Frontend' },
+    { key: 'backend',    label: 'Backend' },
+    { key: 'ai',         label: 'IA & Automatización' },
+    { key: 'business',   label: 'CRM & ERP' },
+    { key: 'devops',     label: 'DB & DevOps' },
+    { key: 'tools',      label: 'Herramientas' },
   ];
 
-  skills = [
+  skills: { name: string; icon?: string; emoji?: string; category: string; level: number }[] = [
     // Frontend
     { name: 'Angular',     icon: 'devicon-angular-plain colored',        category: 'frontend', level: 90 },
     { name: 'React',       icon: 'devicon-react-original colored',       category: 'frontend', level: 75 },
@@ -34,6 +36,17 @@ export class SkillsComponent {
     { name: 'Symfony',     icon: 'devicon-symfony-original colored',     category: 'backend',  level: 75 },
     { name: 'NestJS',      icon: 'devicon-nestjs-plain colored',         category: 'backend',  level: 65 },
     { name: 'Java',        icon: 'devicon-java-plain colored',           category: 'backend',  level: 60 },
+    // IA & Automatización
+    { name: 'n8n',         emoji: '🔗',                                   category: 'ai',       level: 85 },
+    { name: 'OpenAI API',  emoji: '🤖',                                   category: 'ai',       level: 80 },
+    { name: 'Claude API',  emoji: '🧠',                                   category: 'ai',       level: 80 },
+    { name: 'Make',        emoji: '⚙️',                                   category: 'ai',       level: 70 },
+    { name: 'Zapier',      emoji: '⚡',                                   category: 'ai',       level: 65 },
+    // CRM & ERP
+    { name: 'Odoo',        emoji: '🟣',                                   category: 'business', level: 75 },
+    { name: 'HubSpot',     emoji: '🟠',                                   category: 'business', level: 70 },
+    { name: 'Salesforce',  emoji: '☁️',                                   category: 'business', level: 60 },
+    { name: 'Dolibarr',    emoji: '📊',                                   category: 'business', level: 70 },
     // DB & DevOps
     { name: 'PostgreSQL',  icon: 'devicon-postgresql-plain colored',     category: 'devops',   level: 80 },
     { name: 'MySQL',       icon: 'devicon-mysql-plain colored',          category: 'devops',   level: 82 },
@@ -49,10 +62,12 @@ export class SkillsComponent {
   ];
 
   chartData = [
-    { label: 'Frontend',    value: 35, color: '#f59e0b' },
-    { label: 'Backend',     value: 30, color: '#c084fc' },
-    { label: 'DB & DevOps', value: 22, color: '#38bdf8' },
-    { label: 'Herramientas',value: 13, color: '#4ade80' },
+    { label: 'Frontend',           value: 28, color: '#f59e0b' },
+    { label: 'Backend',            value: 22, color: '#c084fc' },
+    { label: 'IA & Automatización',value: 18, color: '#f472b6' },
+    { label: 'CRM & ERP',          value: 12, color: '#fbbf24' },
+    { label: 'DB & DevOps',        value: 12, color: '#38bdf8' },
+    { label: 'Herramientas',       value: 8,  color: '#4ade80' },
   ];
 
   get circumference(): number { return CIRC; }
