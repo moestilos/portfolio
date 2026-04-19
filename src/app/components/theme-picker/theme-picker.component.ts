@@ -7,18 +7,27 @@ import { ThemeService, THEMES } from '../../services/theme.service';
   standalone: true,
   imports: [CommonModule],
   styles: [`
+    /* Anchored relative to the back-to-top button (fixed bottom-8 right-8) */
     .tp-wrap {
-      position: fixed; right: 1.25rem; bottom: 5rem; z-index: 60;
+      position: fixed; right: 2rem; bottom: calc(2rem + 40px + .6rem); z-index: 60;
       display: flex; flex-direction: column; align-items: flex-end; gap: .6rem;
     }
+
+    /* Match back-to-top dimensions (w-10 h-10 rounded-lg) for visual rhythm */
     .tp-toggle {
-      width: 42px; height: 42px; border-radius: 50%;
+      width: 40px; height: 40px; border-radius: 8px;
       border: 1px solid var(--border); background: var(--surface);
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: transform .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+      transition: transform .25s ease, border-color .2s ease, background .2s ease, box-shadow .25s ease;
       box-shadow: 0 4px 18px rgba(0,0,0,.35);
     }
-    .tp-toggle:hover { transform: translateY(-2px) rotate(25deg); box-shadow: 0 8px 28px rgba(0,0,0,.5); }
+    .tp-toggle:hover {
+      transform: translateY(-2px) rotate(20deg);
+      border-color: rgba(var(--accent-rgb),.45);
+      background: var(--surface-2);
+      box-shadow: 0 8px 28px rgba(0,0,0,.5);
+    }
     .tp-toggle svg { color: var(--accent); }
 
     .tp-panel {
@@ -37,19 +46,27 @@ import { ThemeService, THEMES } from '../../services/theme.service';
     .tp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; }
 
     .tp-swatch {
-      width: 34px; height: 34px; border-radius: 10px; cursor: pointer;
+      width: 34px; height: 34px; border-radius: 8px; cursor: pointer;
       border: 2px solid transparent; transition: transform .15s ease, border-color .15s ease;
       position: relative;
     }
     .tp-swatch:hover { transform: scale(1.08); }
     .tp-swatch.active { border-color: #fff; }
     .tp-swatch.active::after {
-      content: ''; position: absolute; inset: 0; border-radius: 8px;
+      content: ''; position: absolute; inset: 0; border-radius: 6px;
       box-shadow: 0 0 0 2px rgba(0,0,0,.4) inset;
     }
 
+    /* Mobile: back-to-top keeps right-8 (2rem). Align theme picker to same column,
+       shrink button + swatch panel to avoid crowding near edge. */
+    /* Mobile: shrink to match back-to-top (1.25rem/36px) */
     @media (max-width: 640px) {
-      .tp-wrap { right: .75rem; bottom: 4.25rem; }
+      .tp-wrap { right: 1.25rem; bottom: calc(1.25rem + 36px + .5rem); gap: .5rem; }
+      .tp-toggle { width: 36px; height: 36px; border-radius: 8px; }
+      .tp-toggle svg { width: 16px; height: 16px; }
+      .tp-panel { min-width: 0; padding: .7rem .8rem; border-radius: 12px; }
+      .tp-grid { grid-template-columns: repeat(4, 28px); gap: .4rem; }
+      .tp-swatch { width: 28px; height: 28px; border-radius: 7px; }
     }
   `],
   template: `

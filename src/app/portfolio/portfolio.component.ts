@@ -49,7 +49,7 @@ import { SupabaseService } from '../services/supabase.service';
 
     <!-- Back to top -->
     <button
-      class="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
+      class="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all duration-300"
       [style.opacity]="showBackTop ? '1' : '0'"
       [style.pointerEvents]="showBackTop ? 'auto' : 'none'"
       style="background:var(--accent); color:#000;"
