@@ -555,26 +555,26 @@ nav, footer { position: relative; z-index: 2; }
 
 /* ── Browser mockup ── */
 .proj-browser-wrap {
-  padding: 1.25rem 1.25rem 0;
+  padding: 1.5rem 1.25rem;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .proj-browser-wrap {
-    padding: 1.5rem 1.5rem 0;
+    padding: 2rem 1.5rem;
   }
 }
 
 .proj-browser {
   width: 100%;
-  border-radius: 10px 10px 0 0;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-bottom: none;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
   background: #0a0a0a;
   overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
 }
 
 .proj-browser-bar {
@@ -607,7 +607,7 @@ nav, footer { position: relative; z-index: 2; }
 
 .proj-browser-screen {
   overflow: hidden;
-  max-height: 320px;
+  max-height: 260px;
 }
 
 .proj-browser-screen img {
@@ -689,9 +689,9 @@ nav, footer { position: relative; z-index: 2; }
 
   .proj-detail-grid { gap: 0; }
 
-  .proj-browser-wrap { padding: 0.75rem 0.75rem 0; }
+  .proj-browser-wrap { padding: 0.75rem; }
 
-  .proj-browser-screen { max-height: 200px; }
+  .proj-browser-screen { max-height: 180px; }
 
   .proj-browser-bar { padding: 7px 10px; gap: 8px; }
   .proj-dot { width: 6px; height: 6px; }

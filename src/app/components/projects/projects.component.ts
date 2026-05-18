@@ -37,7 +37,7 @@ const FALLBACK_PROJECTS: Project[] = [
     type: 'SaaS · Full Stack',
     year: '2025',
     slices: [
-      { name: 'Next.js / TS', pct: 35, color: '#000000' },
+      { name: 'Next.js / TS', pct: 35, color: '#e2e8f0' },
       { name: 'Gemini API',   pct: 20, color: '#4285f4' },
       { name: 'PostgreSQL',   pct: 20, color: '#38bdf8' },
       { name: 'Stripe',       pct: 15, color: '#635bff' },
