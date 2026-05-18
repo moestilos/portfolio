@@ -95,12 +95,16 @@
     text-transform: uppercase;
     color: var(--accent);
     font-family: var(--mono);
+    line-height: 1;
+    flex-shrink: 0;
   }
 
   .section-rule {
     flex: 1;
     height: 1px;
+    min-width: 20px;
     background: var(--border);
+    align-self: center;
   }
 
   /* Card base — solo borde, sin blur */
@@ -258,6 +262,13 @@
 @keyframes dash-reveal {
   from { stroke-dashoffset: 1000; }
   to   { stroke-dashoffset: 0; }
+}
+
+@keyframes shimmer-line {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(250%); opacity: 0; }
 }
 
 /* ============================================================
@@ -536,6 +547,9 @@ nav, footer { position: relative; z-index: 2; }
 @media (min-width: 768px) {
   .proj-detail-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  .proj-detail-grid > *:first-child {
+    border-right: 1px solid var(--border);
   }
 }
 
