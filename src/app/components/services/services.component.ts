@@ -38,6 +38,13 @@ export class ServicesComponent {
       tags: ['Laravel', 'PHP', 'Stripe', 'MySQL', 'Tailwind'],
     },
     {
+      title: 'Automatización & Migraciones CRM/ERP',
+      problem: '¿Pierdes horas en tareas repetitivas o atado a un CRM que no encaja?',
+      desc: 'Automatizo procesos con n8n y Python (scraping, sincronización de datos, informes) y migro CRMs/ERPs entre plataformas como HubSpot y Odoo conservando todo el histórico y las relaciones entre datos.',
+      tags: ['n8n', 'Python', 'Odoo', 'HubSpot', 'Playwright'],
+      highlight: true,
+    },
+    {
       title: 'APIs & Integraciones',
       problem: '¿Tus herramientas no se hablan entre sí?',
       desc: 'Diseño e implemento APIs REST escalables y conecto tus sistemas con servicios de terceros (CRMs, ERPs, pagos, notificaciones, etc.).',

@@ -15,6 +15,7 @@ export class SkillsComponent {
   filters = [
     { key: 'frontend', label: 'Frontend' },
     { key: 'backend',  label: 'Backend' },
+    { key: 'auto',     label: 'Automatización & Datos' },
     { key: 'devops',   label: 'DB & DevOps' },
     { key: 'tools',    label: 'Herramientas' },
   ];
@@ -29,11 +30,19 @@ export class SkillsComponent {
     { name: 'CSS3',        icon: 'devicon-css3-plain colored',           category: 'frontend', level: 90 },
     { name: 'Tailwind',    icon: 'devicon-tailwindcss-plain colored',    category: 'frontend', level: 92 },
     // Backend
+    { name: 'Python',      icon: 'devicon-python-plain colored',         category: 'backend',  level: 80 },
     { name: 'Laravel',     icon: 'devicon-laravel-plain colored',        category: 'backend',  level: 85 },
     { name: 'PHP',         icon: 'devicon-php-plain colored',            category: 'backend',  level: 82 },
     { name: 'Symfony',     icon: 'devicon-symfony-original colored',     category: 'backend',  level: 75 },
     { name: 'NestJS',      icon: 'devicon-nestjs-plain colored',         category: 'backend',  level: 65 },
     { name: 'Java',        icon: 'devicon-java-plain colored',           category: 'backend',  level: 60 },
+    // Automatización & Datos
+    { name: 'n8n',            icon: '',                                        category: 'auto', level: 78 },
+    { name: 'Playwright',     icon: 'devicon-playwright-plain colored',        category: 'auto', level: 72 },
+    { name: 'Web Scraping',   icon: '',                                        category: 'auto', level: 75 },
+    { name: 'HubSpot API',    icon: '',                                        category: 'auto', level: 72 },
+    { name: 'Odoo (XML-RPC)', icon: '',                                        category: 'auto', level: 65 },
+    { name: 'APIs REST',      icon: 'devicon-fastapi-plain colored',           category: 'auto', level: 80 },
     // DB & DevOps
     { name: 'PostgreSQL',  icon: 'devicon-postgresql-plain colored',     category: 'devops',   level: 80 },
     { name: 'MySQL',       icon: 'devicon-mysql-plain colored',          category: 'devops',   level: 82 },
@@ -49,10 +58,11 @@ export class SkillsComponent {
   ];
 
   chartData = [
-    { label: 'Frontend',    value: 35, color: '#f59e0b' },
-    { label: 'Backend',     value: 30, color: '#c084fc' },
-    { label: 'DB & DevOps', value: 22, color: '#38bdf8' },
-    { label: 'Herramientas',value: 13, color: '#4ade80' },
+    { label: 'Frontend',              value: 30, color: '#f59e0b' },
+    { label: 'Backend',               value: 25, color: '#c084fc' },
+    { label: 'Automatización & Datos',value: 18, color: '#ea4b71' },
+    { label: 'DB & DevOps',           value: 17, color: '#38bdf8' },
+    { label: 'Herramientas',          value: 10, color: '#4ade80' },
   ];
 
   get circumference(): number { return CIRC; }

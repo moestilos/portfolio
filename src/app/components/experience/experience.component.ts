@@ -35,8 +35,8 @@ export class ExperienceComponent {
       date: '2025 — Presente',
       title: 'Desarrollador Web Freelance',
       company: 'Proyectos independientes · Remoto',
-      desc: 'Desarrollo de proyectos web a medida para clientes de distintos sectores. Diseño de interfaces, implementación de backends y despliegue en producción.',
-      tags: ['Angular', 'Laravel', 'Tailwind', 'Docker'],
+      desc: 'Proyectos web y de automatización para clientes reales: migración de CRM HubSpot → Odoo para una empresa agroalimentaria (histórico completo vía API), automatizaciones con n8n y Python, scraping con Playwright y desarrollo web a medida.',
+      tags: ['Python', 'n8n', 'Odoo', 'HubSpot API', 'Angular', 'Laravel'],
     },
     {
       type: 'work',

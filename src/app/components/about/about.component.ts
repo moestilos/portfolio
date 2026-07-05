@@ -18,7 +18,7 @@ export class AboutComponent {
   facts = [
     { label: 'Ubicación',    value: 'Sevilla, España' },
     { label: 'Modalidad',    value: 'Remoto / Presencial' },
-    { label: 'Especialidad', value: 'Full Stack' },
+    { label: 'Especialidad', value: 'Full Stack · Automatización' },
     { label: 'Disponibilidad', value: 'Inmediata' },
     { label: 'Carné',        value: 'Tipo B' },
   ];

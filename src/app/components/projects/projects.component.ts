@@ -24,6 +24,27 @@ export const C = 2 * Math.PI * R;
 const FALLBACK_PROJECTS: Project[] = [
   {
     num: '01',
+    name: 'HubClient',
+    tagline: 'Migración de CRM HubSpot → Odoo con histórico completo',
+    description: 'Migración del CRM de una empresa agroalimentaria (Navarra) de HubSpot a Odoo, conservando todo el histórico: correos, notas, tareas, adjuntos y relaciones entre registros. Incluye auditoría automática de los exports del cliente (detectó IDs corrompidos por Excel y datos irrecuperables antes de migrar) y carga validada en Odoo vía XML-RPC.',
+    highlights: [
+      'Extracción por HubSpot API v3 preservando relaciones contacto-empresa-negocio',
+      'Carga en Odoo Online por XML-RPC con histórico de actividad completo',
+      'Herramienta de auditoría que valida exports CSV antes de tocar producción',
+      'Automatizaciones n8n en producción para sincronización continua',
+    ],
+    image: '',
+    type: 'Integración · Backend',
+    year: '2026',
+    slices: [
+      { name: 'Python',      pct: 45, color: '#3776ab' },
+      { name: 'HubSpot API', pct: 20, color: '#ff7a59' },
+      { name: 'Odoo XML-RPC',pct: 20, color: '#714b67' },
+      { name: 'n8n',         pct: 15, color: '#ea4b71' },
+    ],
+  },
+  {
+    num: '02',
     name: 'Motickly',
     tagline: 'SaaS de gestión de gastos e IA para autónomos y pymes',
     description: 'SaaS multi-tenant en producción que automatiza la contabilidad de autónomos y pymes españolas. El motor IA (Gemini 2.5) extrae datos de tickets y facturas en ~10 segundos. Dos canales de entrada: web con drag-drop y bot de Telegram. Calcula automáticamente el Modelo 130 e incluye exportación lista para gestor.',
@@ -46,7 +67,7 @@ const FALLBACK_PROJECTS: Project[] = [
     demoUrl: 'https://motickly.com/',
   },
   {
-    num: '02',
+    num: '03',
     name: 'Kaladim',
     tagline: 'Agencia digital — webs de alto rendimiento y automatizaciones n8n',
     description: 'Studio digital especializado en dos líneas de servicio: webs corporativas y landing pages de alto rendimiento (Astro, Next.js, Angular con SEO técnico) y automatizaciones n8n self-hosted que conectan 400+ integraciones para eliminar trabajo manual. Panel de administración con métricas de proyectos y clientes activos.',
@@ -69,7 +90,7 @@ const FALLBACK_PROJECTS: Project[] = [
     codeUrl: 'https://github.com/moestilos/kaladim',
   },
   {
-    num: '03',
+    num: '04',
     name: 'Estiumsew',
     tagline: 'Landing page para tienda artesanal de accesorios hechos a mano',
     description: 'Diseño y desarrollo completo de la presencia digital de Estiumsew, taller artesanal de Sevilla. Catálogo de productos con precios, opciones de personalización (telas, colores, iniciales), flujo de pedido directo por WhatsApp y galería de trabajos realizados. Identidad visual cálida y artesanal coherente con la marca.',
@@ -92,7 +113,7 @@ const FALLBACK_PROJECTS: Project[] = [
     codeUrl: 'https://github.com/moestilos/estiumsew',
   },
   {
-    num: '04',
+    num: '05',
     name: 'Cosas que hacer',
     tagline: 'Todo app mobile-first PWA con auth y modo demo',
     description: 'Aplicación de gestión de tareas mobile-first con soporte PWA. Incluye sistema de autenticación completo (login, registro y acceso demo sin cuenta), vista "hoy" como pantalla principal y arquitectura preparada para sincronización en la nube. Diseño minimalista enfocado en velocidad de uso.',

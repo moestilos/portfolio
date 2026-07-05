@@ -15,8 +15,8 @@ export class HeroComponent implements OnInit, OnDestroy {
   cursorOn     = true;
   private roles = [
     'Fullstack Developer',
-    'Angular Specialist',
-    'Laravel Expert',
+    'Automatización & Integraciones',
+    'Migraciones CRM / ERP',
     'Freelance Developer',
   ];
   private ri    = 0;
