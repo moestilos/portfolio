@@ -54,7 +54,7 @@ const FALLBACK_PROJECTS: Project[] = [
       'Four auth methods: email+password, Google, GitHub, Telegram magic link',
       'HSTS preload, strict CSP, rate limiting, brute-force lockout, magic-byte upload checks',
     ],
-    image: 'images/motickly.png',
+    image: 'images/motickly.jpg',
     type: 'SaaS · Full Stack',
     year: '2025',
     slices: [
@@ -98,7 +98,7 @@ const FALLBACK_PROJECTS: Project[] = [
       'REST/GraphQL integrations with OAuth, webhooks and legacy APIs',
       '50+ projects delivered · 30+ active clients',
     ],
-    image: 'images/kaladim.png',
+    image: 'images/kaladim.jpg',
     type: 'Agency · Full Stack',
     year: '2025',
     slices: [
@@ -121,7 +121,7 @@ const FALLBACK_PROJECTS: Project[] = [
       'Fully custom visual identity aligned with the craft brand',
       'Deployed on Vercel with an automatic pipeline from GitHub',
     ],
-    image: 'images/estiumsew.png',
+    image: 'images/estiumsew.jpg',
     type: 'Landing Page · Frontend',
     year: '2025',
     slices: [
@@ -144,7 +144,7 @@ const FALLBACK_PROJECTS: Project[] = [
       '"Today" view as the main dashboard for the day\'s tasks',
       'Full auth: login, sign-up and guest access',
     ],
-    image: 'images/cosas-que-hacer.png',
+    image: 'images/cosas-que-hacer.jpg',
     type: 'App · Frontend',
     year: '2025',
     slices: [
