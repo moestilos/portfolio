@@ -4,6 +4,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { HeroComponent } from '../components/hero/hero.component';
 import { ProjectsComponent } from '../components/projects/projects.component';
 import { AboutComponent } from '../components/about/about.component';
+import { SkillsComponent } from '../components/skills/skills.component';
 import { ServicesComponent } from '../components/services/services.component';
 import { ExperienceComponent } from '../components/experience/experience.component';
 import { ContactComponent } from '../components/contact/contact.component';
@@ -19,6 +20,7 @@ import { SupabaseService } from '../services/supabase.service';
     HeroComponent,
     ProjectsComponent,
     AboutComponent,
+    SkillsComponent,
     ServicesComponent,
     ExperienceComponent,
     ContactComponent,
@@ -36,6 +38,7 @@ import { SupabaseService } from '../services/supabase.service';
       <app-hero />
       <app-projects />
       <app-about />
+      <app-skills />
       <app-services />
       <app-experience />
       <app-contact />
@@ -49,7 +52,7 @@ import { SupabaseService } from '../services/supabase.service';
       [style.pointerEvents]="showBackTop ? 'auto' : 'none'"
       style="background:var(--accent); color:#000;"
       (click)="scrollTop()"
-      aria-label="Volver arriba">
+      aria-label="Back to top">
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
         <polyline points="18 15 12 9 6 15"/>
       </svg>
@@ -62,7 +65,7 @@ export class PortfolioComponent implements OnInit {
   constructor(private supa: SupabaseService) {}
 
   ngOnInit(): void {
-    // Registrar visita (una vez por sesión de navegador)
+    // Track visit (once per browser session)
     this.supa.trackPageView();
     // Scroll reveal
     setTimeout(() => this.initScrollReveal(), 50);

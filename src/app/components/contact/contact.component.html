@@ -4,21 +4,22 @@
 
     <!-- Header -->
     <div class="flex items-center gap-5 mb-14 reveal">
-      <span class="section-num">06</span>
+      <span class="section-num">07</span>
       <div class="section-rule"></div>
-      <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--text-3); white-space:nowrap;">Contacto</span>
+      <span class="text-xs font-semibold tracking-widest uppercase" style="color:var(--text-3); white-space:nowrap;">Contact</span>
     </div>
 
     <!-- Big headline -->
     <div class="mb-10 sm:mb-16 reveal">
       <h2 class="font-black leading-none tracking-tighter mb-3 sm:mb-4"
           style="font-size: clamp(1.75rem,6vw,4.5rem); color:var(--text-1);">
-        Hablemos de tu<br>
-        <span style="color:var(--accent)">proyecto</span>
+        Let's talk about<br>
+        <span style="color:var(--accent)">your project</span>
       </h2>
       <p class="text-sm max-w-lg" style="color:var(--text-2);">
-        Disponible para proyectos freelance, colaboraciones y oportunidades.
-        Cuéntame tu idea — respuesta garantizada en menos de 24h.
+        Available for freelance projects, collaborations and job opportunities —
+        including roles in Gdańsk and the Tri-City area from October 2026.
+        Tell me your idea — guaranteed reply within 24h.
       </p>
     </div>
 
@@ -30,21 +31,21 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-medium" style="color:var(--text-3);">Nombre *</label>
+              <label class="text-xs font-medium" style="color:var(--text-3);">Name *</label>
               <input type="text" [(ngModel)]="form.name" name="name" required
-                     placeholder="Tu nombre" class="input"/>
+                     placeholder="Your name" class="input"/>
             </div>
             <div class="flex flex-col gap-1.5">
               <label class="text-xs font-medium" style="color:var(--text-3);">Email *</label>
               <input type="email" [(ngModel)]="form.email" name="email" required
-                     placeholder="tu@email.com" class="input"/>
+                     placeholder="you@email.com" class="input"/>
             </div>
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label class="text-xs font-medium" style="color:var(--text-3);">Tipo de proyecto</label>
+            <label class="text-xs font-medium" style="color:var(--text-3);">Project type</label>
             <select [(ngModel)]="form.project" name="project" class="input" style="cursor:pointer; appearance:none;">
-              <option value="" disabled selected style="background:var(--surface);">¿Qué necesitas?</option>
+              <option value="" disabled selected style="background:var(--surface);">What do you need?</option>
               @for (t of projectTypes; track t) {
                 <option [value]="t" style="background:var(--surface);">{{ t }}</option>
               }
@@ -52,9 +53,9 @@
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label class="text-xs font-medium" style="color:var(--text-3);">Mensaje *</label>
+            <label class="text-xs font-medium" style="color:var(--text-3);">Message *</label>
             <textarea [(ngModel)]="form.message" name="message" required rows="5"
-                      placeholder="Cuéntame tu proyecto, plazos, presupuesto aproximado..."
+                      placeholder="Tell me about your project, deadlines, rough budget..."
                       class="input resize-none"></textarea>
           </div>
 
@@ -63,10 +64,10 @@
               <line x1="22" y1="2" x2="11" y2="13"/>
               <polygon points="22 2 15 22 11 13 2 9 22 2"/>
             </svg>
-            {{ sending ? 'Enviando...' : 'Enviar mensaje' }}
+            {{ sending ? 'Sending...' : 'Send message' }}
           </button>
 
-          <p class="text-xs text-center" style="color:var(--text-3);">Sin spam. Respuesta en &lt; 24h.</p>
+          <p class="text-xs text-center" style="color:var(--text-3);">No spam. Reply in &lt; 24h.</p>
         </form>
       </div>
 
@@ -135,7 +136,7 @@
         </a>
 
         <!-- CV -->
-        <a href="images/Guillermo Mateos Santos CV.pdf" download
+        <a href="images/Guillermo Mateos CV EN.pdf" download
            class="btn btn-ghost w-full justify-center text-sm">
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -143,7 +144,7 @@
             <line x1="12" y1="18" x2="12" y2="12"/>
             <polyline points="9 15 12 18 15 15"/>
           </svg>
-          Descargar CV
+          Download CV
         </a>
 
       </div>

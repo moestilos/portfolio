@@ -15,9 +15,10 @@ export class SkillsComponent {
   filters = [
     { key: 'frontend', label: 'Frontend' },
     { key: 'backend',  label: 'Backend' },
-    { key: 'auto',     label: 'Automatización & Datos' },
+    { key: 'ai',       label: 'AI & LLMs' },
+    { key: 'auto',     label: 'Automation & Data' },
     { key: 'devops',   label: 'DB & DevOps' },
-    { key: 'tools',    label: 'Herramientas' },
+    { key: 'tools',    label: 'Tools' },
   ];
 
   skills = [
@@ -29,24 +30,41 @@ export class SkillsComponent {
     { name: 'HTML5',       icon: 'devicon-html5-plain colored',          category: 'frontend', level: 95 },
     { name: 'CSS3',        icon: 'devicon-css3-plain colored',           category: 'frontend', level: 90 },
     { name: 'Tailwind',    icon: 'devicon-tailwindcss-plain colored',    category: 'frontend', level: 92 },
+    { name: 'Next.js',     icon: 'devicon-nextjs-plain',                 category: 'frontend', level: 85 },
     // Backend
-    { name: 'Python',      icon: 'devicon-python-plain colored',         category: 'backend',  level: 80 },
+    { name: 'Python',      icon: 'devicon-python-plain colored',         category: 'backend',  level: 85 },
+    { name: 'FastAPI',     icon: 'devicon-fastapi-plain colored',        category: 'backend',  level: 78 },
+    { name: 'Node.js',     icon: 'devicon-nodejs-plain colored',         category: 'backend',  level: 80 },
     { name: 'Laravel',     icon: 'devicon-laravel-plain colored',        category: 'backend',  level: 85 },
     { name: 'PHP',         icon: 'devicon-php-plain colored',            category: 'backend',  level: 82 },
     { name: 'Symfony',     icon: 'devicon-symfony-original colored',     category: 'backend',  level: 75 },
     { name: 'NestJS',      icon: 'devicon-nestjs-plain colored',         category: 'backend',  level: 65 },
-    { name: 'Java',        icon: 'devicon-java-plain colored',           category: 'backend',  level: 60 },
-    // Automatización & Datos
-    { name: 'n8n',            icon: '',                                        category: 'auto', level: 78 },
-    { name: 'Playwright',     icon: 'devicon-playwright-plain colored',        category: 'auto', level: 72 },
-    { name: 'Web Scraping',   icon: '',                                        category: 'auto', level: 75 },
+    { name: 'Java · Spring', icon: 'devicon-spring-plain colored',       category: 'backend',  level: 60 },
+    // AI & LLMs
+    { name: 'Claude API',       icon: '',                                category: 'ai', level: 85 },
+    { name: 'Claude Code',      icon: '',                                category: 'ai', level: 90 },
+    { name: 'Gemini API',       icon: '',                                category: 'ai', level: 80 },
+    { name: 'OpenAI API',       icon: '',                                category: 'ai', level: 72 },
+    { name: 'Ollama (local)',   icon: '',                                category: 'ai', level: 70 },
+    { name: 'MCP servers',      icon: '',                                category: 'ai', level: 72 },
+    { name: 'Prompt Engineering',icon: '',                               category: 'ai', level: 85 },
+    { name: 'OCR · PaddleOCR',  icon: '',                                category: 'ai', level: 68 },
+    // Automation & Data
+    { name: 'n8n',            icon: '',                                        category: 'auto', level: 82 },
+    { name: 'Make',           icon: '',                                        category: 'auto', level: 72 },
+    { name: 'Playwright',     icon: 'devicon-playwright-plain colored',        category: 'auto', level: 78 },
+    { name: 'Web Scraping',   icon: '',                                        category: 'auto', level: 85 },
+    { name: 'Pandas',         icon: 'devicon-pandas-original',                 category: 'auto', level: 78 },
     { name: 'HubSpot API',    icon: '',                                        category: 'auto', level: 72 },
     { name: 'Odoo (XML-RPC)', icon: '',                                        category: 'auto', level: 65 },
-    { name: 'APIs REST',      icon: 'devicon-fastapi-plain colored',           category: 'auto', level: 80 },
+    { name: 'REST APIs',      icon: '',                                        category: 'auto', level: 85 },
     // DB & DevOps
-    { name: 'PostgreSQL',  icon: 'devicon-postgresql-plain colored',     category: 'devops',   level: 80 },
+    { name: 'PostgreSQL',  icon: 'devicon-postgresql-plain colored',     category: 'devops',   level: 82 },
     { name: 'MySQL',       icon: 'devicon-mysql-plain colored',          category: 'devops',   level: 82 },
-    { name: 'Docker',      icon: 'devicon-docker-plain colored',         category: 'devops',   level: 70 },
+    { name: 'Supabase',    icon: 'devicon-supabase-plain colored',       category: 'devops',   level: 75 },
+    { name: 'Docker',      icon: 'devicon-docker-plain colored',         category: 'devops',   level: 75 },
+    { name: 'GitHub Actions', icon: 'devicon-githubactions-plain colored', category: 'devops', level: 70 },
+    { name: 'Vercel',      icon: 'devicon-vercel-original',              category: 'devops',   level: 85 },
     { name: 'Git',         icon: 'devicon-git-plain colored',            category: 'devops',   level: 90 },
     { name: 'Linux',       icon: 'devicon-linux-plain',                  category: 'devops',   level: 72 },
     // Tools
@@ -58,11 +76,12 @@ export class SkillsComponent {
   ];
 
   chartData = [
-    { label: 'Frontend',              value: 30, color: '#f59e0b' },
-    { label: 'Backend',               value: 25, color: '#c084fc' },
-    { label: 'Automatización & Datos',value: 18, color: '#ea4b71' },
-    { label: 'DB & DevOps',           value: 17, color: '#38bdf8' },
-    { label: 'Herramientas',          value: 10, color: '#4ade80' },
+    { label: 'Frontend',           value: 25, color: '#f59e0b' },
+    { label: 'Backend',            value: 22, color: '#c084fc' },
+    { label: 'AI & LLMs',          value: 18, color: '#d97757' },
+    { label: 'Automation & Data',  value: 18, color: '#ea4b71' },
+    { label: 'DB & DevOps',        value: 12, color: '#38bdf8' },
+    { label: 'Tools',              value: 5,  color: '#4ade80' },
   ];
 
   get circumference(): number { return CIRC; }

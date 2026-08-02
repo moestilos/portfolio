@@ -21,17 +21,20 @@
       <!-- ── LEFT ── -->
       <div class="flex flex-col gap-5 sm:gap-8 max-w-2xl">
 
-        <!-- Badge disponible -->
-        <div class="reveal">
+        <!-- Availability badges -->
+        <div class="reveal flex flex-wrap gap-2">
           <span class="avail-badge">
             <span class="avail-dot"></span>
-            Disponible para proyectos
+            Available for new projects
+          </span>
+          <span class="avail-badge">
+            🇵🇱 Relocating to Gdańsk — Oct 2026
           </span>
         </div>
 
-        <!-- Nombre grande -->
+        <!-- Name -->
         <div class="reveal flex flex-col gap-1" style="transition-delay: 0.05s;">
-          <p class="section-num mb-2 sm:mb-3">Desarrollador freelance · Sevilla, ES</p>
+          <p class="section-num mb-2 sm:mb-3">Full-Stack Developer · Seville, ES → Gdańsk, PL</p>
           <h1 class="font-bold leading-tight tracking-tight"
               style="font-size: clamp(1.75rem, 5.5vw, 3.75rem); color:var(--text-1);">
             Guillermo<br>
@@ -52,11 +55,11 @@
 
         <!-- Descripción -->
         <p class="reveal text-sm leading-relaxed max-w-lg" style="color:var(--text-2); transition-delay:0.15s;">
-          Construyo aplicaciones web <strong style="color:var(--text-1)">modernas y escalables</strong>
-          y automatizo procesos que ahorran horas de trabajo manual — desde el diseño hasta producción.
-          Especializado en <span style="color:var(--accent)">desarrollo Full Stack</span>,
-          <span style="color:var(--accent)">automatización</span> e
-          <span style="color:var(--accent)">integraciones CRM/ERP</span>.
+          I build <strong style="color:var(--text-1)">modern, scalable web apps</strong>
+          and automate the processes behind them — from design to production.
+          Specialised in <span style="color:var(--accent)">full-stack development</span>,
+          <span style="color:var(--accent)">automation &amp; web scraping</span> and
+          <span style="color:var(--accent)">AI-assisted development</span>.
         </p>
 
         <!-- CTAs -->
@@ -66,12 +69,12 @@
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
-            Hablemos
+            Let's talk
           </a>
           <a href="#projects" (click)="go($event,'projects')" class="btn btn-ghost">
-            Ver proyectos
+            View projects
           </a>
-          <a href="images/Guillermo Mateos Santos CV.pdf" download class="btn btn-ghost" title="CV" (click)="trackCv()">
+          <a href="images/Guillermo Mateos CV EN.pdf" download class="btn btn-ghost" title="CV" (click)="trackCv()">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
               <polyline points="14 2 14 8 20 8"/>
@@ -109,7 +112,7 @@
             LinkedIn
           </a>
           <span class="hidden sm:inline" style="color:var(--border)">·</span>
-          <span class="hidden sm:inline text-xs" style="color:var(--text-3); font-family:var(--mono);">Sevilla, ES</span>
+          <span class="hidden sm:inline text-xs" style="color:var(--text-3); font-family:var(--mono);">Seville, ES · Gdańsk, PL</span>
         </div>
       </div>
 

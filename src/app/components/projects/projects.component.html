@@ -7,7 +7,7 @@
       <span class="section-num">02</span>
       <div class="section-rule"></div>
       <span class="text-xs font-semibold tracking-widest uppercase"
-            style="color:var(--text-3); white-space:nowrap;">Proyectos</span>
+            style="color:var(--text-3); white-space:nowrap;">Projects</span>
     </div>
 
     <!-- Project list -->
@@ -96,7 +96,7 @@
                         @if (p.demoUrl) {
                           <a [href]="p.demoUrl" target="_blank" rel="noopener"
                              class="btn btn-accent text-xs" style="padding:8px 18px;">
-                            Ver demo ↗
+                            View demo ↗
                           </a>
                         }
                         @if (p.codeUrl) {
@@ -110,7 +110,7 @@
                         }
                         <a href="#contact" (click)="go($event,'contact')"
                            class="btn btn-ghost text-xs" style="padding:8px 18px;">
-                          Proyecto similar →
+                          Similar project →
                         </a>
                       </div>
                     </div>
@@ -212,7 +212,7 @@
                             }
                           </div>
                           <span class="text-xs" style="color:var(--text-3); font-family:var(--mono);">
-                            {{ p.slices.length }} tecnologías
+                            {{ p.slices.length }} technologies
                           </span>
                         </div>
                       </div>
@@ -232,7 +232,7 @@
     <!-- CTA -->
     <div class="mt-14 reveal">
       <a href="#contact" (click)="go($event,'contact')" class="btn btn-ghost text-xs">
-        ¿Tienes un proyecto? Hablemos →
+        Got a project? Let's talk →
       </a>
     </div>
 

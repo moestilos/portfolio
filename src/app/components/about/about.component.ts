@@ -9,23 +9,25 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutComponent {
   values = [
-    { title: 'Orientado a resultados', desc: 'Me enfoco en resolver el problema real, no solo escribir código.' },
-    { title: 'Atención al detalle', desc: 'Desde pixel-perfect hasta arquitectura de backend.' },
-    { title: 'Comunicación clara', desc: 'Trabajo transparente — siempre sabrás el estado del proyecto.' },
-    { title: 'Entrega en plazo', desc: 'Me adapto a tus tiempos sin sacrificar calidad.' },
+    { title: 'Results-driven', desc: 'I focus on solving the real problem, not just writing code.' },
+    { title: 'Attention to detail', desc: 'From pixel-perfect UI to backend architecture.' },
+    { title: 'Clear communication', desc: 'Transparent work — you always know where the project stands.' },
+    { title: 'On-time delivery', desc: 'I adapt to your deadlines without sacrificing quality.' },
   ];
 
   facts = [
-    { label: 'Ubicación',    value: 'Sevilla, España' },
-    { label: 'Modalidad',    value: 'Remoto / Presencial' },
-    { label: 'Especialidad', value: 'Full Stack · Automatización' },
-    { label: 'Disponibilidad', value: 'Inmediata' },
-    { label: 'Carné',        value: 'Tipo B' },
+    { label: 'Location',     value: 'Seville, Spain' },
+    { label: 'Relocation',   value: 'Gdańsk, PL · Oct 2026' },
+    { label: 'Work mode',    value: 'On-site / Hybrid / Remote' },
+    { label: 'Focus',        value: 'Full Stack · Automation · AI' },
+    { label: 'Languages',    value: 'Spanish native · English B2' },
+    { label: 'Availability', value: 'Immediate' },
+    { label: 'Driving licence', value: 'Category B' },
   ];
 
   stats = [
-    { num: '2+',   label: 'Años exp.' },
-    { num: '10+',  label: 'Proyectos' },
-    { num: '100%', label: 'Compromiso' },
+    { num: '2+',   label: 'Years exp.' },
+    { num: '10+',  label: 'Projects' },
+    { num: '100%', label: 'Commitment' },
   ];
 }

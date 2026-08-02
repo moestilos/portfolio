@@ -20,21 +20,21 @@ export interface Project {
 const R = 44;
 export const C = 2 * Math.PI * R;
 
-// ── Datos hardcodeados como fallback ─────────────────────────────────────────
+// ── Hardcoded fallback data ──────────────────────────────────────────────────
 const FALLBACK_PROJECTS: Project[] = [
   {
     num: '01',
     name: 'HubClient',
-    tagline: 'Migración de CRM HubSpot → Odoo con histórico completo',
-    description: 'Migración del CRM de una empresa agroalimentaria (Navarra) de HubSpot a Odoo, conservando todo el histórico: correos, notas, tareas, adjuntos y relaciones entre registros. Incluye auditoría automática de los exports del cliente (detectó IDs corrompidos por Excel y datos irrecuperables antes de migrar) y carga validada en Odoo vía XML-RPC.',
+    tagline: 'HubSpot → Odoo CRM migration with full history',
+    description: 'CRM migration for an agri-food company (Navarra) from HubSpot to Odoo, preserving the entire history: emails, notes, tasks, attachments and the relationships between records. Includes an automatic audit of the client exports (it caught IDs corrupted by Excel and unrecoverable data before migrating) and a validated load into Odoo over XML-RPC.',
     highlights: [
-      'Extracción por HubSpot API v3 preservando relaciones contacto-empresa-negocio',
-      'Carga en Odoo Online por XML-RPC con histórico de actividad completo',
-      'Herramienta de auditoría que valida exports CSV antes de tocar producción',
-      'Automatizaciones n8n en producción para sincronización continua',
+      'Extraction via HubSpot API v3, preserving contact-company-deal relationships',
+      'Load into Odoo Online over XML-RPC with the full activity history',
+      'Audit tool that validates CSV exports before touching production',
+      'n8n automations running in production for continuous syncing',
     ],
     image: '',
-    type: 'Integración · Backend',
+    type: 'Integration · Backend',
     year: '2026',
     slices: [
       { name: 'Python',      pct: 45, color: '#3776ab' },
@@ -46,13 +46,13 @@ const FALLBACK_PROJECTS: Project[] = [
   {
     num: '02',
     name: 'Motickly',
-    tagline: 'SaaS de gestión de gastos e IA para autónomos y pymes',
-    description: 'SaaS multi-tenant en producción que automatiza la contabilidad de autónomos y pymes españolas. El motor IA (Gemini 2.5) extrae datos de tickets y facturas en ~10 segundos. Dos canales de entrada: web con drag-drop y bot de Telegram. Calcula automáticamente el Modelo 130 e incluye exportación lista para gestor.',
+    tagline: 'AI-powered expense management SaaS for freelancers and SMEs',
+    description: 'Multi-tenant SaaS live in production that automates bookkeeping for Spanish freelancers and small businesses. The AI engine (Gemini 2.5) extracts data from receipts and invoices in ~10 seconds. Two input channels: a web app with drag-and-drop and a Telegram bot. It calculates the Spanish Modelo 130 tax form automatically and exports data ready for the accountant.',
     highlights: [
-      'Multi-tenant con workspaces, roles, soft-delete y auditoría inmutable',
-      'Plan gating real server-side: Free · Autónomo 7 € · Pro 19 € · Empresa 49 €',
-      'Cuatro métodos de auth: email+password, Google, GitHub, magic link Telegram',
-      'HSTS preload, CSP estricto, rate limiting, brute-force lockout, magic bytes en uploads',
+      'Multi-tenant with workspaces, roles, soft-delete and an immutable audit log',
+      'Real server-side plan gating: Free · Freelancer €7 · Pro €19 · Business €49',
+      'Four auth methods: email+password, Google, GitHub, Telegram magic link',
+      'HSTS preload, strict CSP, rate limiting, brute-force lockout, magic-byte upload checks',
     ],
     image: 'images/motickly.png',
     type: 'SaaS · Full Stack',
@@ -68,17 +68,38 @@ const FALLBACK_PROJECTS: Project[] = [
   },
   {
     num: '03',
-    name: 'Kaladim',
-    tagline: 'Agencia digital — webs de alto rendimiento y automatizaciones n8n',
-    description: 'Studio digital especializado en dos líneas de servicio: webs corporativas y landing pages de alto rendimiento (Astro, Next.js, Angular con SEO técnico) y automatizaciones n8n self-hosted que conectan 400+ integraciones para eliminar trabajo manual. Panel de administración con métricas de proyectos y clientes activos.',
+    name: 'Catalogue Migration Pipeline',
+    tagline: '17,517 products extracted from a legacy platform, ready for Odoo',
+    description: 'Autonomous scraping pipeline that extracted and normalised a full e-commerce catalogue from a legacy platform and delivered it as a clean multi-sheet Excel, ready to import into an Odoo store. Built for Digital Wolf IT Solutions with async requests, rate limiting, retry/batch patterns and structured logging so the run could recover from any failure without starting over.',
     highlights: [
-      'Webs con Astro 5 y Next.js optimizadas para Core Web Vitals y SEO orgánico',
-      'Workflows n8n que reducen tareas manuales un 70% de media en clientes',
-      'Integraciones REST/GraphQL con OAuth, webhooks y APIs legacy',
-      '50+ proyectos entregados · 30+ clientes activos',
+      '17,517 products · ~359 fields each · over 750,000 rows exported',
+      '99.98% coverage with zero unrecoverable errors across the full run',
+      '17,513-URL map generated for the SEO 301 redirects after migration',
+      'Async httpx + Playwright with rate limiting, retries and structured logging',
+    ],
+    image: '',
+    type: 'Scraping · Data',
+    year: '2026',
+    slices: [
+      { name: 'Python',     pct: 45, color: '#3776ab' },
+      { name: 'Playwright', pct: 22, color: '#2ead33' },
+      { name: 'httpx async',pct: 18, color: '#f59e0b' },
+      { name: 'Pandas',     pct: 15, color: '#150458' },
+    ],
+  },
+  {
+    num: '04',
+    name: 'Kaladim',
+    tagline: 'Digital agency — high-performance websites and n8n automations',
+    description: 'Digital studio focused on two service lines: high-performance corporate sites and landing pages (Astro, Next.js, Angular with technical SEO) and self-hosted n8n automations connecting 400+ integrations to remove manual work. Includes an admin panel with project and active-client metrics.',
+    highlights: [
+      'Astro 5 and Next.js sites optimised for Core Web Vitals and organic SEO',
+      'n8n workflows that cut manual tasks by 70% on average for clients',
+      'REST/GraphQL integrations with OAuth, webhooks and legacy APIs',
+      '50+ projects delivered · 30+ active clients',
     ],
     image: 'images/kaladim.png',
-    type: 'Agencia · Full Stack',
+    type: 'Agency · Full Stack',
     year: '2025',
     slices: [
       { name: 'Astro',       pct: 45, color: '#ff5d01' },
@@ -90,15 +111,15 @@ const FALLBACK_PROJECTS: Project[] = [
     codeUrl: 'https://github.com/moestilos/kaladim',
   },
   {
-    num: '04',
+    num: '05',
     name: 'Estiumsew',
-    tagline: 'Landing page para tienda artesanal de accesorios hechos a mano',
-    description: 'Diseño y desarrollo completo de la presencia digital de Estiumsew, taller artesanal de Sevilla. Catálogo de productos con precios, opciones de personalización (telas, colores, iniciales), flujo de pedido directo por WhatsApp y galería de trabajos realizados. Identidad visual cálida y artesanal coherente con la marca.',
+    tagline: 'Landing page for a handmade accessories workshop',
+    description: 'Full design and development of the digital presence for Estiumsew, a craft workshop in Seville. Product catalogue with prices, customisation options (fabrics, colours, initials), a direct WhatsApp ordering flow and a gallery of past work. Warm, handcrafted visual identity consistent with the brand.',
     highlights: [
-      'Catálogo completo con categorías, precios y opciones de personalización',
-      'Flujo de pedido directo por WhatsApp sin fricción para el cliente',
-      'Identidad visual 100% personalizada alineada con la marca artesanal',
-      'Deploy en Vercel con pipeline automático desde GitHub',
+      'Complete catalogue with categories, prices and customisation options',
+      'Frictionless direct ordering flow over WhatsApp',
+      'Fully custom visual identity aligned with the craft brand',
+      'Deployed on Vercel with an automatic pipeline from GitHub',
     ],
     image: 'images/estiumsew.png',
     type: 'Landing Page · Frontend',
@@ -113,15 +134,15 @@ const FALLBACK_PROJECTS: Project[] = [
     codeUrl: 'https://github.com/moestilos/estiumsew',
   },
   {
-    num: '05',
+    num: '06',
     name: 'Cosas que hacer',
-    tagline: 'Todo app mobile-first PWA con auth y modo demo',
-    description: 'Aplicación de gestión de tareas mobile-first con soporte PWA. Incluye sistema de autenticación completo (login, registro y acceso demo sin cuenta), vista "hoy" como pantalla principal y arquitectura preparada para sincronización en la nube. Diseño minimalista enfocado en velocidad de uso.',
+    tagline: 'Mobile-first PWA todo app with auth and demo mode',
+    description: 'Mobile-first task management app with PWA support. Includes a complete authentication system (login, sign-up and demo access without an account), a "today" view as the main screen and an architecture ready for cloud sync. Minimal design focused on speed of use.',
     highlights: [
-      'PWA instalable con carga offline y experiencia nativa en móvil',
-      'Modo demo sin registro para explorar la app sin fricción',
-      'Vista "Today" como dashboard principal de tareas del día',
-      'Auth completa: login, registro y acceso invitado',
+      'Installable PWA with offline loading and a native feel on mobile',
+      'Demo mode with no sign-up so anyone can explore the app instantly',
+      '"Today" view as the main dashboard for the day\'s tasks',
+      'Full auth: login, sign-up and guest access',
     ],
     image: 'images/cosas-que-hacer.png',
     type: 'App · Frontend',
@@ -169,7 +190,7 @@ export class ProjectsComponent implements OnInit {
           codeUrl:     p['code_url'] ?? undefined,
         }));
       }
-      // Si hay error o la tabla está vacía, se mantienen los datos hardcodeados
+      // On error or empty table, the hardcoded fallback data stays in place
     });
   }
 
@@ -179,7 +200,7 @@ export class ProjectsComponent implements OnInit {
       if (arr.length && typeof arr[0] === 'object' && 'pct' in arr[0]) {
         return arr as TechSlice[];
       }
-      // Si es array de strings, asigna colores por defecto
+      // If it is an array of strings, assign default colours
       const defaultColors = ['#c084fc', '#38bdf8', '#f59e0b', '#4ade80', '#f97316', '#6366f1'];
       return (arr as string[]).map((name: string, i: number) => ({
         name, pct: Math.round(100 / arr.length), color: defaultColors[i % defaultColors.length],
