@@ -18,12 +18,12 @@ export class NavbarComponent implements OnInit {
   activeSection = 'hero';
 
   links: NavLink[] = [
-    { label: 'Projects',   href: '#projects' },
-    { label: 'About',      href: '#about' },
-    { label: 'Skills',     href: '#skills' },
-    { label: 'Services',   href: '#services' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Contact',    href: '#contact' },
+    { label: 'Proyectos',   href: '#projects' },
+    { label: 'Sobre mí',    href: '#about' },
+    { label: 'Stack',       href: '#skills' },
+    { label: 'Servicios',   href: '#services' },
+    { label: 'Experiencia', href: '#experience' },
+    { label: 'Contacto',    href: '#contact' },
   ];
 
   ngOnInit(): void {

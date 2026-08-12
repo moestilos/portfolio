@@ -42,15 +42,15 @@ export class ContactComponent {
   ];
 
   projectTypes = [
-    'Website / Landing Page',
-    'Custom web application',
-    'Automation / Scraping',
-    'AI / LLM integration',
+    'Web / Landing Page',
+    'Aplicación web a medida',
+    'Automatización / Scraping',
+    'Integración de IA / LLM',
     'E-commerce',
     'API / Backend',
-    'Performance / Optimisation',
-    'Job opportunity',
-    'Other',
+    'Rendimiento / Optimización',
+    'Oferta de empleo',
+    'Otro',
   ];
 
   /** Simple mailto fallback — replace with EmailJS or API in production */
@@ -59,7 +59,7 @@ export class ContactComponent {
     const { name, email, project, message } = this.form;
     const subject = encodeURIComponent(`[Portfolio] ${project} — ${name}`);
     const body = encodeURIComponent(
-      `Hi Guillermo,\n\nMy name is ${name} (${email}).\n\nProject: ${project}\n\n${message}`
+      `Hola Guillermo,\n\nMe llamo ${name} (${email}).\n\nProyecto: ${project}\n\n${message}`
     );
     window.location.href = `mailto:guillermo.moestilos@gmail.com?subject=${subject}&body=${body}`;
   }

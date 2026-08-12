@@ -14,10 +14,10 @@ export class HeroComponent implements OnInit, OnDestroy {
   currentText  = '';
   cursorOn     = true;
   private roles = [
-    'Full-Stack Developer',
-    'Automation & Web Scraping',
-    'AI-assisted Development',
-    'CRM / ERP Migrations',
+    'Desarrollador Full-Stack',
+    'Automatización & Web Scraping',
+    'Desarrollo asistido por IA',
+    'Migraciones CRM / ERP',
   ];
   private ri    = 0;
   private ci    = 0;
@@ -26,9 +26,9 @@ export class HeroComponent implements OnInit, OnDestroy {
   private blink: ReturnType<typeof setInterval> | null = null;
 
   stats = [
-    { num: '2+',   label: 'Years of experience' },
-    { num: '10+',  label: 'Projects delivered' },
-    { num: '100%', label: 'Commitment' },
+    { num: '2+',   label: 'Años de experiencia' },
+    { num: '10+',  label: 'Proyectos entregados' },
+    { num: '100%', label: 'Compromiso' },
   ];
 
   constructor(private supa: SupabaseService) {}

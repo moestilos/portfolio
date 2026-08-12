@@ -9,25 +9,24 @@ import { CommonModule } from '@angular/common';
 })
 export class AboutComponent {
   values = [
-    { title: 'Results-driven', desc: 'I focus on solving the real problem, not just writing code.' },
-    { title: 'Attention to detail', desc: 'From pixel-perfect UI to backend architecture.' },
-    { title: 'Clear communication', desc: 'Transparent work — you always know where the project stands.' },
-    { title: 'On-time delivery', desc: 'I adapt to your deadlines without sacrificing quality.' },
+    { title: 'Orientado a resultados', desc: 'Me centro en resolver el problema real, no solo en escribir código.' },
+    { title: 'Atención al detalle', desc: 'Desde una UI al píxel hasta la arquitectura del backend.' },
+    { title: 'Comunicación clara', desc: 'Trabajo transparente — siempre sabes en qué punto está el proyecto.' },
+    { title: 'Entrega a tiempo', desc: 'Me adapto a tus plazos sin sacrificar la calidad.' },
   ];
 
   facts = [
-    { label: 'Location',     value: 'Seville, Spain' },
-    { label: 'Relocation',   value: 'Gdańsk, PL · Oct 2026' },
-    { label: 'Work mode',    value: 'On-site / Hybrid / Remote' },
-    { label: 'Focus',        value: 'Full Stack · Automation · AI' },
-    { label: 'Languages',    value: 'Spanish native · English B2' },
-    { label: 'Availability', value: 'Immediate' },
-    { label: 'Driving licence', value: 'Category B' },
+    { label: 'Ubicación',       value: 'Sevilla, España' },
+    { label: 'Modalidad',       value: 'Remoto / Híbrido / Presencial' },
+    { label: 'Enfoque',         value: 'Full Stack · Automatización · IA' },
+    { label: 'Idiomas',         value: 'Español nativo · Inglés B2' },
+    { label: 'Disponibilidad',  value: 'Inmediata' },
+    { label: 'Carnet',          value: 'Tipo B' },
   ];
 
   stats = [
-    { num: '2+',   label: 'Years exp.' },
-    { num: '10+',  label: 'Projects' },
-    { num: '100%', label: 'Commitment' },
+    { num: '2+',   label: 'Años exp.' },
+    { num: '10+',  label: 'Proyectos' },
+    { num: '100%', label: 'Compromiso' },
   ];
 }

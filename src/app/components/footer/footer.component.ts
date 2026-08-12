@@ -12,14 +12,14 @@ import { CommonModule } from '@angular/common';
       <div class="flex items-center gap-2 text-sm font-bold" style="color:var(--text-1);">
         Guillermo<span style="color:var(--accent)">.</span>
         <span class="text-xs font-normal ml-1" style="color:var(--text-3);">
-          moestilos · Seville, Spain → Gdańsk, Poland
+          moestilos · Sevilla, España
         </span>
       </div>
 
       <div class="flex gap-5 text-xs" style="color:var(--text-3); font-family:var(--mono);">
-        <a href="#projects" class="hover:text-white transition-colors" style="color:var(--text-3)">Projects</a>
-        <a href="#skills"   class="hover:text-white transition-colors" style="color:var(--text-3)">Skills</a>
-        <a href="#contact"  class="hover:text-white transition-colors" style="color:var(--text-3)">Contact</a>
+        <a href="#projects" class="hover:text-white transition-colors" style="color:var(--text-3)">Proyectos</a>
+        <a href="#skills"   class="hover:text-white transition-colors" style="color:var(--text-3)">Stack</a>
+        <a href="#contact"  class="hover:text-white transition-colors" style="color:var(--text-3)">Contacto</a>
       </div>
 
       <p class="text-xs" style="color:var(--text-3); font-family:var(--mono);">

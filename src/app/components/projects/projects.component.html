@@ -7,7 +7,7 @@
       <span class="section-num">02</span>
       <div class="section-rule"></div>
       <span class="text-xs font-semibold tracking-widest uppercase"
-            style="color:var(--text-3); white-space:nowrap;">Projects</span>
+            style="color:var(--text-3); white-space:nowrap;">Proyectos</span>
     </div>
 
     <!-- Project list -->
@@ -80,7 +80,7 @@
                         <div class="flex flex-col gap-2">
                           <span class="text-xs font-semibold tracking-widest uppercase"
                                 style="color:var(--text-3); font-family:var(--mono);">
-                            Highlights
+                            Destacados
                           </span>
                           @for (h of p.highlights; track h) {
                             <div class="flex items-start gap-2.5 text-xs leading-relaxed"
@@ -96,7 +96,7 @@
                         @if (p.demoUrl) {
                           <a [href]="p.demoUrl" target="_blank" rel="noopener"
                              class="btn btn-accent text-xs" style="padding:8px 18px;">
-                            View demo ↗
+                            Ver demo ↗
                           </a>
                         }
                         @if (p.codeUrl) {
@@ -110,7 +110,7 @@
                         }
                         <a href="#contact" (click)="go($event,'contact')"
                            class="btn btn-ghost text-xs" style="padding:8px 18px;">
-                          Similar project →
+                          Quiero algo parecido →
                         </a>
                       </div>
                     </div>
@@ -140,7 +140,7 @@
                           </div>
                           <!-- Screenshot -->
                           <div class="proj-browser-screen">
-                            <img [src]="p.image" [alt]="p.name + ' screenshot'"
+                            <img [src]="p.image" [alt]="'Captura de ' + p.name"
                                  onerror="this.parentElement.parentElement.parentElement.style.display='none'"/>
                           </div>
                         </div>
@@ -212,7 +212,7 @@
                             }
                           </div>
                           <span class="text-xs" style="color:var(--text-3); font-family:var(--mono);">
-                            {{ p.slices.length }} technologies
+                            {{ p.slices.length }} tecnologías
                           </span>
                         </div>
                       </div>
@@ -232,7 +232,7 @@
     <!-- CTA -->
     <div class="mt-14 reveal">
       <a href="#contact" (click)="go($event,'contact')" class="btn btn-ghost text-xs">
-        Got a project? Let's talk →
+        ¿Tienes un proyecto? Hablemos →
       </a>
     </div>
 

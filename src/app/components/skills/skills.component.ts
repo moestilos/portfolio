@@ -15,10 +15,10 @@ export class SkillsComponent {
   filters = [
     { key: 'frontend', label: 'Frontend' },
     { key: 'backend',  label: 'Backend' },
-    { key: 'ai',       label: 'AI & LLMs' },
-    { key: 'auto',     label: 'Automation & Data' },
-    { key: 'devops',   label: 'DB & DevOps' },
-    { key: 'tools',    label: 'Tools' },
+    { key: 'ai',       label: 'IA & LLMs' },
+    { key: 'auto',     label: 'Automatización y Datos' },
+    { key: 'devops',   label: 'BBDD & DevOps' },
+    { key: 'tools',    label: 'Herramientas' },
   ];
 
   skills = [
@@ -78,10 +78,10 @@ export class SkillsComponent {
   chartData = [
     { label: 'Frontend',           value: 25, color: '#f59e0b' },
     { label: 'Backend',            value: 22, color: '#c084fc' },
-    { label: 'AI & LLMs',          value: 18, color: '#d97757' },
-    { label: 'Automation & Data',  value: 18, color: '#ea4b71' },
-    { label: 'DB & DevOps',        value: 12, color: '#38bdf8' },
-    { label: 'Tools',              value: 5,  color: '#4ade80' },
+    { label: 'IA & LLMs',              value: 18, color: '#d97757' },
+    { label: 'Automatización y Datos', value: 18, color: '#ea4b71' },
+    { label: 'BBDD & DevOps',          value: 12, color: '#38bdf8' },
+    { label: 'Herramientas',           value: 5,  color: '#4ade80' },
   ];
 
   get circumference(): number { return CIRC; }
