@@ -167,6 +167,9 @@
 @keyframes fx-up { from { opacity: 0; transform: translateY(14px); } }
 @keyframes fx-pop { from { opacity: 0; transform: scale(.95) translateY(10px); } }
 
+.inline-link { color: var(--fg); font-weight: 600; text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; transition: text-decoration-color .2s var(--ease); }
+.inline-link:hover { text-decoration-color: var(--fg); }
+
 /* Fila de botones (servicios y contacto) */
 .case-acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
 

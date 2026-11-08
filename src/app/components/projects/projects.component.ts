@@ -23,7 +23,7 @@ export interface Project {
 const PROJECTS: Project[] = [
   {
     id: 'aguilera', name: 'Aguilera Studio', kind: 'Estudio propio · 2026', status: 'live', statusText: 'En producción',
-    text: 'Estudio digital para pymes de Sevilla, con el negocio entero montado: web, panel de gestión, zona de cliente y captación automática.',
+    text: 'El estudio digital que llevamos Ismael Piña y yo para pymes de Sevilla, con el negocio entero montado: web, panel de gestión, zona de cliente y captación automática.',
     points: ['Presupuesto al momento', 'Auditoría web gratis', 'Captación con IA'],
     stack: ['Angular', 'PostgreSQL', 'Claude'],
     host: 'aguilerastudio.dev', url: 'https://aguilerastudio.dev', shots: true,

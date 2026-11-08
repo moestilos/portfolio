@@ -34,7 +34,7 @@ export class ExperienceComponent {
     {
       type: 'work', badge: 'Estudio', date: '2026 → Actualidad', current: true,
       title: 'Desarrollador full-stack', place: 'Aguilera Studio · Sevilla',
-      desc: 'Webs, apps y automatizaciones para pymes y autónomos con precio cerrado. Llevo el producto de punta a punta: diseño, desarrollo, panel de gestión y captación automática de clientes.',
+      desc: 'Estudio que llevo junto a Ismael Piña: webs, apps y automatizaciones para pymes y autónomos con precio cerrado. Producto de punta a punta: diseño, desarrollo, panel de gestión y captación automática de clientes.',
       tags: ['Angular', 'PostgreSQL', 'Vercel', 'n8n', 'Claude'],
     },
     {
