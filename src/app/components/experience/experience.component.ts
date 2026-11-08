@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 export interface TimelineItem {
   type: 'work' | 'edu';
@@ -16,11 +17,13 @@ type TabKey = 'all' | 'work' | 'edu';
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   templateUrl: './experience.component.html',
 })
 export class ExperienceComponent {
   activeTab: TabKey = 'all';
+
+  get tabIndex(): number { return this.tabs.findIndex(t => t.key === this.activeTab); }
 
   tabs: { key: TabKey; label: string }[] = [
     { key: 'all',  label: 'Todo' },

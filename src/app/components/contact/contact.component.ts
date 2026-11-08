@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RevealDirective } from '../../shared/reveal.directive';
+
+const LINK_LABELS: Record<string, string> = { email: 'Correo', linkedin: 'LinkedIn', github: 'GitHub' };
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RevealDirective],
   templateUrl: './contact.component.html',
 })
 export class ContactComponent {
+  linkLabel(icon: string): string { return LINK_LABELS[icon] ?? ''; }
+
   form = {
     name: '',
     email: '',

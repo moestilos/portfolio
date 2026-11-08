@@ -16,6 +16,15 @@ export class NavbarComponent implements OnInit {
   scrolled = false;
   mobileOpen = false;
   activeSection = 'hero';
+  dark = document.documentElement.dataset['theme'] === 'dark';
+
+  // El tema inicial lo pone el script de index.html (preferencia guardada o la del sistema).
+  toggleTheme(): void {
+    this.dark = !this.dark;
+    const theme = this.dark ? 'dark' : 'light';
+    document.documentElement.dataset['theme'] = theme;
+    try { localStorage.setItem('theme', theme); } catch { /* sin almacenamiento: solo dura esta visita */ }
+  }
 
   links: NavLink[] = [
     { label: 'Proyectos',   href: '#projects' },

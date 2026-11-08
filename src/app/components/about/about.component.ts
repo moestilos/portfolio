@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   templateUrl: './about.component.html',
 })
 export class AboutComponent {
+  go(e: Event): void {
+    e.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   values = [
     { title: 'Orientado a resultados', desc: 'Me centro en resolver el problema real, no solo en escribir código.' },
     { title: 'Atención al detalle', desc: 'Desde una UI al píxel hasta la arquitectura del backend.' },

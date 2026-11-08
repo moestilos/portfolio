@@ -1,131 +1,59 @@
-<!-- ── HERO ── -->
-<section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-16">
+<section class="hero" id="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="hero-badge fx-up" style="--i:0"><span class="live"></span>Disponible · Sevilla y remoto para toda España</span>
 
-  <!-- Subtle radial glow -->
-  <div class="absolute inset-0 pointer-events-none" style="
-    background:
-      radial-gradient(ellipse 50% 40% at 20% 50%, rgba(245,158,11,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 50% at 80% 20%, rgba(245,158,11,0.03) 0%, transparent 60%);
-  "></div>
+      <h1 class="fx-up" style="--i:1">
+        Desarrollo webs y automatizo
+        <span class="rotor">@for (r of [role]; track r) {<span>{{ r }}</span>}</span>
+      </h1>
 
-  <!-- Fine dot grid -->
-  <div class="absolute inset-0 pointer-events-none" style="
-    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 32px 32px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-  "></div>
+      <p class="hero-lead fx-up" style="--i:2">
+        Soy <b>Guillermo Mateos</b>, desarrollador full-stack. Creo <b>aplicaciones web modernas</b> y automatizo
+        los procesos que hay detrás: scraping, migraciones CRM/ERP e integraciones con IA. Del diseño a producción.
+      </p>
 
-  <div class="container-main relative w-full py-10 sm:py-20">
-    <div class="grid grid-cols-1 gap-10 items-center">
-
-      <!-- ── LEFT ── -->
-      <div class="flex flex-col gap-5 sm:gap-8 max-w-2xl">
-
-        <!-- Availability badges -->
-        <div class="reveal flex flex-wrap gap-2">
-          <span class="avail-badge">
-            <span class="avail-dot"></span>
-            Disponible para nuevos proyectos
-          </span>
-          <span class="avail-badge">
-            Sevilla · Remoto para toda España
-          </span>
-        </div>
-
-        <!-- Name -->
-        <div class="reveal flex flex-col gap-1" style="transition-delay: 0.05s;">
-          <p class="section-num mb-2 sm:mb-3">Desarrollador Full-Stack · Sevilla, España</p>
-          <h1 class="font-bold leading-tight tracking-tight"
-              style="font-size: clamp(1.75rem, 5.5vw, 3.75rem); color:var(--text-1);">
-            Guillermo<br>
-            <span style="color:var(--accent)">Mateos</span> Santos
-          </h1>
-        </div>
-
-        <!-- Rol typewriter -->
-        <div class="reveal flex items-center gap-2 sm:gap-3" style="transition-delay:0.1s;">
-          <span class="hidden sm:inline" style="color:var(--text-3); font-family:var(--mono); font-size:13px;">~/</span>
-          <span style="color:var(--accent); font-family:var(--mono); font-size:clamp(13px, 3.5vw, 15px); font-weight:500;">
-            {{ currentText }}
-          </span>
-          <span class="w-0.5 h-5 rounded-sm"
-                style="background:var(--accent);"
-                [style.opacity]="cursorOn ? 1 : 0"></span>
-        </div>
-
-        <!-- Descripción -->
-        <p class="reveal text-sm leading-relaxed max-w-lg" style="color:var(--text-2); transition-delay:0.15s;">
-          Creo <strong style="color:var(--text-1)">aplicaciones web modernas y escalables</strong>
-          y automatizo los procesos que hay detrás — del diseño a producción.
-          Especializado en <span style="color:var(--accent)">desarrollo full-stack</span>,
-          <span style="color:var(--accent)">automatización y web scraping</span> y
-          <span style="color:var(--accent)">desarrollo asistido por IA</span>.
-        </p>
-
-        <!-- CTAs -->
-        <div class="reveal flex flex-wrap gap-2.5 sm:gap-3" style="transition-delay:0.2s;">
-          <a href="#contact" (click)="go($event,'contact')" class="btn btn-accent">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            Hablemos
-          </a>
-          <a href="#projects" (click)="go($event,'projects')" class="btn btn-ghost">
-            Ver proyectos
-          </a>
-          <a href="images/Guillermo Mateos Santos CV.pdf" download class="btn btn-ghost" title="CV" (click)="trackCv()">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="12" y1="18" x2="12" y2="12"/>
-              <polyline points="9 15 12 18 15 15"/>
-            </svg>
-            CV
-          </a>
-        </div>
-
-        <!-- Stats -->
-        <div class="reveal flex flex-wrap gap-6 sm:gap-8 pt-4"
-             style="border-top:1px solid var(--border); transition-delay:0.25s;">
-          @for (s of stats; track s.label) {
-            <div class="flex flex-col gap-0.5">
-              <span class="text-xl sm:text-2xl font-black" style="color:var(--text-1)">{{ s.num }}</span>
-              <span class="text-xs" style="color:var(--text-3)">{{ s.label }}</span>
-            </div>
-          }
-        </div>
-
-        <!-- Social links -->
-        <div class="reveal flex flex-wrap items-center gap-2 sm:gap-3" style="transition-delay:0.3s;">
-          <a href="https://github.com/moestilos" target="_blank" rel="noopener"
-             class="text-xs transition-colors duration-200"
-             style="color:var(--text-3); font-family:var(--mono);"
-             onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-3)'">
-            github.com/moestilos
-          </a>
-          <span style="color:var(--border)">·</span>
-          <a href="https://linkedin.com/in/guillermo-mateos-de-los-santos-aguilera-02427b260" target="_blank" rel="noopener"
-             class="text-xs transition-colors duration-200"
-             style="color:var(--text-3); font-family:var(--mono);"
-             onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-3)'">
-            LinkedIn
-          </a>
-          <span class="hidden sm:inline" style="color:var(--border)">·</span>
-          <span class="hidden sm:inline text-xs" style="color:var(--text-3); font-family:var(--mono);">Sevilla, España</span>
-        </div>
+      <div class="hero-cta fx-up" style="--i:3">
+        <a class="btn btn-p" href="#contact" (click)="go($event, 'contact')">
+          Hablemos
+          <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-o" href="#projects" (click)="go($event, 'projects')">Ver proyectos</a>
+        <a class="btn btn-g" href="images/Guillermo Mateos Santos CV.pdf" download (click)="trackCv()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>
+          Descargar CV
+        </a>
       </div>
 
+      <div class="hero-chips fx-up" style="--i:4">
+        @for (c of chips; track c) {
+          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ c }}</span>
+        }
+      </div>
     </div>
-  </div>
 
-  <!-- Scroll hint — hidden on mobile via CSS -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-scroll-hint"
-       style="opacity:0.35;">
-    <span class="text-xs" style="font-family:var(--mono); color:var(--text-3); letter-spacing:0.12em;">scroll</span>
-    <div class="w-px h-10 overflow-hidden" style="background:var(--border);">
-      <div class="w-full h-4 rounded"
-           style="background:var(--accent); animation: shimmer-line 1.8s ease-in-out infinite;"></div>
+    <div class="stage fx-pop" style="--i:2" (pointermove)="tilt($event)" (pointerleave)="untilt()">
+      <div class="frame" [style.--rx]="rx" [style.--ry]="ry">
+        <img src="images/guillermo.webp" alt="Guillermo Mateos" width="720" height="900" fetchpriority="high">
+      </div>
+      <div class="float f1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></span>
+        <span><b>17.517 productos</b>migrados a Odoo</span>
+      </div>
+      <div class="float f2">
+        <span class="ic"><span class="live"></span></span>
+        <span><b>Motickly</b>SaaS en producción</span>
+      </div>
+      <div class="float f3">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/></svg></span>
+        <span><b>Claude Code</b>flujo con IA a diario</span>
+      </div>
     </div>
   </div>
 </section>
+
+<div class="marquee" aria-label="Stack técnico">
+  <div class="marquee-track">
+    @for (t of stackLoop; track $index) {<span [attr.aria-hidden]="$index >= stack.length">{{ t }}</span>}
+  </div>
+</div>

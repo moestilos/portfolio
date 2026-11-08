@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-const CIRC = 2 * Math.PI * 72; // r = 72
+import { RevealDirective } from '../../shared/reveal.directive';
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   templateUrl: './skills.component.html',
 })
 export class SkillsComponent {
-  hoveredLabel: string | null = null;
-
   filters = [
     { key: 'frontend', label: 'Frontend' },
     { key: 'backend',  label: 'Backend' },
@@ -75,38 +72,14 @@ export class SkillsComponent {
     { name: 'Illustrator', icon: 'devicon-illustrator-plain colored',    category: 'tools',    level: 60 },
   ];
 
-  chartData = [
-    { label: 'Frontend',           value: 25, color: '#f59e0b' },
-    { label: 'Backend',            value: 22, color: '#c084fc' },
-    { label: 'IA & LLMs',              value: 18, color: '#d97757' },
-    { label: 'Automatización y Datos', value: 18, color: '#ea4b71' },
-    { label: 'BBDD & DevOps',          value: 12, color: '#38bdf8' },
-    { label: 'Herramientas',           value: 5,  color: '#4ade80' },
-  ];
+  active = this.filters[0].key;
 
-  get circumference(): number { return CIRC; }
+  get activeIndex(): number { return this.filters.findIndex(f => f.key === this.active); }
 
-  get chartSegments() {
-    let offset = 0;
-    const total = this.chartData.reduce((s, d) => s + d.value, 0);
-    return this.chartData.map(d => {
-      const dash = (d.value / total) * CIRC;
-      const seg  = { label: d.label, value: d.value, color: d.color, dash, offset };
-      offset += dash;
-      return seg;
-    });
-  }
+  get current() { return this.skills.filter(s => s.category === this.active); }
 
-  getChartValue(label: string): number {
-    return this.chartData.find(d => d.label === label)?.value ?? 0;
-  }
-
-  getSkillsByCategory(cat: string) {
-    return this.skills.filter(s => s.category === cat);
-  }
-
-  /** 1-5 dots based on level */
-  getLevelDots(level: number): number {
+  /** 1-5 barras según el nivel */
+  dots(level: number): number {
     if (level >= 90) return 5;
     if (level >= 80) return 4;
     if (level >= 70) return 3;

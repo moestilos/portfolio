@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupabaseService } from '../../services/supabase.service';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 export interface TechSlice { name: string; pct: number; color: string; }
 export interface Project {
@@ -17,8 +18,6 @@ export interface Project {
   codeUrl?: string;
 }
 
-const R = 44;
-export const C = 2 * Math.PI * R;
 
 // ── Hardcoded fallback data ──────────────────────────────────────────────────
 const FALLBACK_PROJECTS: Project[] = [
@@ -161,14 +160,12 @@ const FALLBACK_PROJECTS: Project[] = [
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent implements OnInit {
-  readonly R = R;
-  readonly C = C;
-
-  expanded: number | null = null;
+  selected: Project | null = null;
+  private opener: HTMLElement | null = null;
   projects: Project[] = FALLBACK_PROJECTS;
 
   constructor(private supa: SupabaseService) {}
@@ -210,24 +207,27 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  toggle(id: number): void {
-    this.expanded = this.expanded === id ? null : id;
+  /** Bento de 6 columnas: dos anchas arriba y luego filas de tres; si la última fila no se llena, sus tarjetas van anchas. */
+  wide(i: number): boolean {
+    const n = this.projects.length;
+    const rest = (n - 2) % 3;
+    if (i < 2) return true;
+    if (rest === 2) return i >= n - 2;
+    if (rest === 1) return i >= n - 4;
+    return false;
   }
 
-  segments(slices: TechSlice[]) {
-    const GAP   = 5;
-    let offset  = 0;
-    const total = slices.reduce((s, sl) => s + sl.pct, 0);
-    return slices.map(sl => {
-      const dash = (sl.pct / total) * (C - GAP * slices.length);
-      const seg  = { dash, gap: C - dash, offset: -offset, color: sl.color, name: sl.name, pct: sl.pct };
-      offset += dash + GAP;
-      return seg;
-    });
+  open(p: Project): void {
+    this.opener = document.activeElement as HTMLElement | null;
+    this.selected = p;
+    document.documentElement.style.overflow = 'hidden';
   }
 
-  go(e: Event, id: string): void {
-    e.preventDefault();
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  @HostListener('document:keydown.escape')
+  close(): void {
+    if (!this.selected) return;
+    this.selected = null;
+    document.documentElement.style.overflow = '';
+    this.opener?.focus();
   }
 }

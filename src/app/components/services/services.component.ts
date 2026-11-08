@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 export interface Service {
   title: string;
@@ -12,10 +13,17 @@ export interface Service {
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RevealDirective],
   templateUrl: './services.component.html',
 })
 export class ServicesComponent {
+  num(i: number): string { return String(i + 1).padStart(2, '0'); }
+
+  go(e: Event): void {
+    e.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   services: Service[] = [
     {
       title: 'Webs y Landing Pages',

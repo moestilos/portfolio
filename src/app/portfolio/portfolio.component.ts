@@ -10,12 +10,16 @@ import { ExperienceComponent } from '../components/experience/experience.compone
 import { ContactComponent } from '../components/contact/contact.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import { SupabaseService } from '../services/supabase.service';
+import { RevealDirective } from '../shared/reveal.directive';
+
+const BACK_TOP_FROM_PX = 600;
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
   imports: [
     CommonModule,
+    RevealDirective,
     NavbarComponent,
     HeroComponent,
     ProjectsComponent,
@@ -27,12 +31,6 @@ import { SupabaseService } from '../services/supabase.service';
     FooterComponent,
   ],
   template: `
-    <!-- Animated background blobs -->
-    <div class="bg-blob bg-blob-1" aria-hidden="true"></div>
-    <div class="bg-blob bg-blob-2" aria-hidden="true"></div>
-    <div class="bg-blob bg-blob-3" aria-hidden="true"></div>
-    <div class="bg-blob bg-blob-4" aria-hidden="true"></div>
-
     <app-navbar />
     <main>
       <app-hero />
@@ -42,68 +40,50 @@ import { SupabaseService } from '../services/supabase.service';
       <app-services />
       <app-experience />
       <app-contact />
+
+      <section class="wrap" style="margin-top:96px" aria-labelledby="end-t">
+        <div class="end" reveal>
+          <div class="end-dots" aria-hidden="true">
+            @for (d of endDots; track $index) {<i></i>}
+          </div>
+          <div>
+            <h2 id="end-t">¿Tienes un proyecto o una oferta? Hablemos.</h2>
+            <p>Te respondo en menos de 24 h. Sevilla, en remoto para toda España.</p>
+          </div>
+          <a class="btn btn-p" href="#contact" (click)="toContact($event)">Escribirme
+            <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></a>
+        </div>
+      </section>
     </main>
     <app-footer />
 
-    <!-- Back to top -->
-    <button
-      class="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300"
-      [style.opacity]="showBackTop ? '1' : '0'"
-      [style.pointerEvents]="showBackTop ? 'auto' : 'none'"
-      style="background:var(--accent); color:#000;"
-      (click)="scrollTop()"
-      aria-label="Back to top">
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-        <polyline points="18 15 12 9 6 15"/>
-      </svg>
+    <button class="top-btn" [class.off]="!showBackTop" type="button" (click)="scrollTop()" aria-label="Volver arriba" [attr.tabindex]="showBackTop ? null : -1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
     </button>
   `,
 })
 export class PortfolioComponent implements OnInit {
   showBackTop = false;
+  endDots = Array(24);
 
   constructor(private supa: SupabaseService) {}
 
   ngOnInit(): void {
-    // Track visit (once per browser session)
+    // Cuenta la visita (una vez por sesión del navegador)
     this.supa.trackPageView();
-    // Scroll reveal
-    setTimeout(() => this.initScrollReveal(), 50);
   }
 
   @HostListener('window:scroll')
   onScroll(): void {
-    this.showBackTop = window.scrollY > 400;
+    this.showBackTop = window.scrollY > BACK_TOP_FROM_PX;
   }
 
   scrollTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  private initScrollReveal(): void {
-    const els = Array.from(
-      document.querySelectorAll<HTMLElement>('.reveal, .reveal-left, .reveal-right')
-    );
-    els.forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight) {
-        el.classList.add('visible');
-      }
-    });
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el    = entry.target as HTMLElement;
-            const delay = Number(el.dataset['delay'] ?? 0);
-            setTimeout(() => el.classList.add('visible'), delay);
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.04, rootMargin: '0px' }
-    );
-    els.forEach(el => {
-      if (!el.classList.contains('visible')) observer.observe(el);
-    });
+  toContact(e: Event): void {
+    e.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   }
 }

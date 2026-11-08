@@ -1,240 +1,78 @@
-<!-- ── PROJECTS ── -->
-<section id="projects" class="section-pad">
-  <div class="container-main">
-
-    <!-- Section header -->
-    <div class="flex items-center gap-5 mb-16 reveal">
-      <span class="section-num">02</span>
-      <div class="section-rule"></div>
-      <span class="text-xs font-semibold tracking-widest uppercase"
-            style="color:var(--text-3); white-space:nowrap;">Proyectos</span>
+<section class="sec" id="projects">
+  <div class="wrap">
+    <div class="sec-head" reveal>
+      <div>
+        <span class="eyebrow">Proyectos</span>
+        <h2 class="h2">Trabajo real, <span class="mut">en producción y con clientes.</span></h2>
+      </div>
+      <p>Desde un SaaS vivo hasta migraciones de datos de miles de registros. Pulsa cualquiera para ver los detalles.</p>
     </div>
 
-    <!-- Project list -->
-    <div class="flex flex-col" style="border-top:1px solid var(--border);">
+    <div class="pj-grid">
       @for (p of projects; track p.num; let i = $index) {
-
-        <div class="reveal" [style.transitionDelay]="(i * 55) + 'ms'">
-
-          <!-- ── Collapsed row ── -->
-          <div class="proj-row" [class.active]="expanded === i"
-               [style.border-bottom]="expanded === i ? 'none' : '1px solid var(--border)'">
-            <button
-              class="w-full text-left py-5 sm:py-6 flex items-center gap-4 sm:gap-6"
-              style="background:none; border:none; cursor:pointer; outline:none; padding-left:14px;"
-              (click)="toggle(i)">
-
-              <span class="proj-num text-xs font-semibold shrink-0 tabular-nums"
-                    style="font-family:var(--mono); width:22px;">{{ p.num }}</span>
-
-              <div class="flex flex-col gap-0.5 flex-1 min-w-0">
-                <span class="proj-name text-base sm:text-lg font-bold">{{ p.name }}</span>
-                <span class="text-xs" style="color:var(--text-3);">{{ p.tagline }}</span>
-              </div>
-
-              <div class="hidden sm:flex items-center gap-4 shrink-0">
-                <span class="text-xs tabular-nums" style="color:var(--text-3); font-family:var(--mono);">{{ p.year }}</span>
-                <span class="tag">{{ p.type }}</span>
-              </div>
-
-              <span class="proj-toggle shrink-0 w-7 h-7 rounded-md flex items-center justify-center"
-                    style="border:1px solid var(--border);">
-                <svg width="11" height="11" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor" stroke-width="2.5"
-                     class="transition-transform duration-300"
-                     [style.transform]="expanded === i ? 'rotate(45deg)' : ''">
-                  <line x1="12" y1="5" x2="12" y2="19"/>
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                </svg>
-              </span>
-            </button>
+        <button type="button" class="bn pj" [class.wide]="wide(i)" reveal (click)="open(p)" [attr.aria-label]="'Ver ' + p.name">
+          <div class="pj-media">
+            @if (p.image) {
+              <img [src]="p.image" [alt]="'Captura de ' + p.name" loading="lazy">
+            } @else {
+              <div class="pj-ph"><b>{{ p.name }}</b></div>
+            }
+            <span class="pj-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
           </div>
-
-          <!-- ── Expanded panel ── -->
-          @if (expanded === i) {
-            <div class="proj-expand" style="border-bottom:1px solid var(--border); padding:0 0.5rem;">
-              <div class="pb-6 sm:pb-8 pt-2">
-                <div class="rounded-xl overflow-hidden" style="border:1px solid var(--border); background:var(--surface);">
-
-                  <!-- TOP: Browser mockup + project info side by side -->
-                  <div class="proj-detail-grid">
-
-                    <!-- LEFT: Info -->
-                    <div class="p-4 sm:p-7 flex flex-col gap-4 sm:gap-5" style="justify-content:center;">
-                      <div>
-                        <span class="text-xs tabular-nums"
-                              style="color:var(--text-3); font-family:var(--mono); display:block; margin-bottom:6px;">
-                          {{ p.type }} · {{ p.year }}
-                        </span>
-                        <h3 class="text-xl sm:text-3xl font-bold tracking-tight"
-                            style="color:var(--text-1); line-height:1.1; margin:0;">
-                          {{ p.name }}
-                        </h3>
-                      </div>
-
-                      <p class="text-sm leading-relaxed" style="color:var(--text-2); max-width:440px; margin:0;">
-                        {{ p.description }}
-                      </p>
-
-                      @if (p.highlights && p.highlights.length) {
-                        <div class="flex flex-col gap-2">
-                          <span class="text-xs font-semibold tracking-widest uppercase"
-                                style="color:var(--text-3); font-family:var(--mono);">
-                            Destacados
-                          </span>
-                          @for (h of p.highlights; track h) {
-                            <div class="flex items-start gap-2.5 text-xs leading-relaxed"
-                                 style="color:var(--text-2);">
-                              <span style="color:var(--accent); font-weight:700; flex-shrink:0; margin-top:1px;">→</span>
-                              <span>{{ h }}</span>
-                            </div>
-                          }
-                        </div>
-                      }
-
-                      <div class="flex flex-wrap gap-2.5 pt-1">
-                        @if (p.demoUrl) {
-                          <a [href]="p.demoUrl" target="_blank" rel="noopener"
-                             class="btn btn-accent text-xs" style="padding:8px 18px;">
-                            Ver demo ↗
-                          </a>
-                        }
-                        @if (p.codeUrl) {
-                          <a [href]="p.codeUrl" target="_blank" rel="noopener"
-                             class="btn btn-ghost text-xs" style="padding:8px 18px;">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.65;">
-                              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                            </svg>
-                            GitHub
-                          </a>
-                        }
-                        <a href="#contact" (click)="go($event,'contact')"
-                           class="btn btn-ghost text-xs" style="padding:8px 18px;">
-                          Quiero algo parecido →
-                        </a>
-                      </div>
-                    </div>
-
-                    <!-- RIGHT: Browser mockup with screenshot -->
-                    @if (p.image) {
-                      <div class="proj-browser-wrap">
-                        <div class="proj-browser">
-                          <!-- Browser bar -->
-                          <div class="proj-browser-bar">
-                            <div class="flex items-center gap-1.5">
-                              <span class="proj-dot" style="background:#ff5f57;"></span>
-                              <span class="proj-dot" style="background:#febc2e;"></span>
-                              <span class="proj-dot" style="background:#28c840;"></span>
-                            </div>
-                            <div class="proj-url-bar">
-                              <svg width="10" height="10" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                   stroke-width="2" style="color:rgba(255,255,255,.2); flex-shrink:0;">
-                                <rect x="3" y="11" width="18" height="11" rx="2"/>
-                                <path d="M7 11V7a5 5 0 0110 0v4"/>
-                              </svg>
-                              <span style="font-size:10px; color:rgba(255,255,255,.3); font-family:var(--mono);
-                                          white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-                                {{ p.demoUrl || p.name.toLowerCase() + '.dev' }}
-                              </span>
-                            </div>
-                          </div>
-                          <!-- Screenshot -->
-                          <div class="proj-browser-screen">
-                            <img [src]="p.image" [alt]="'Captura de ' + p.name"
-                                 onerror="this.parentElement.parentElement.parentElement.style.display='none'"/>
-                          </div>
-                        </div>
-                      </div>
-                    }
-
-                  </div>
-
-                  <!-- BOTTOM: Stack info -->
-                  <div class="p-4 sm:p-7" style="border-top:1px solid var(--border);">
-                    <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-4 sm:gap-6 items-center">
-
-                      <!-- Stack bars -->
-                      <div class="flex flex-col gap-1">
-                        <span class="text-xs font-semibold tracking-widest uppercase"
-                              style="color:var(--text-3); font-family:var(--mono); display:block; margin-bottom:10px;">
-                          Stack
-                        </span>
-                        @for (sl of p.slices; track sl.name) {
-                          <div class="flex items-center gap-2.5 py-0.5">
-                            <div class="flex items-center gap-1.5 shrink-0" style="width:110px;">
-                              <span class="w-1.5 h-1.5 rounded-sm shrink-0"
-                                    [style.background]="sl.color"></span>
-                              <span class="text-xs truncate" style="color:var(--text-2);">{{ sl.name }}</span>
-                            </div>
-                            <div class="flex-1 h-px rounded-full overflow-hidden"
-                                 style="background:rgba(255,255,255,0.07);">
-                              <div class="h-full rounded-full"
-                                   [style.width]="sl.pct + '%'"
-                                   [style.background]="sl.color"
-                                   style="opacity:0.75;"></div>
-                            </div>
-                            <span class="text-xs tabular-nums shrink-0"
-                                  style="color:var(--text-3); width:28px; text-align:right; font-family:var(--mono);">
-                              {{ sl.pct }}%
-                            </span>
-                          </div>
-                        }
-                      </div>
-
-                      <!-- Minimal donut -->
-                      <div class="flex items-center gap-4">
-                        <svg width="56" height="56" viewBox="0 0 108 108" class="shrink-0">
-                          <circle cx="54" cy="54" [attr.r]="R"
-                                  fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="11"/>
-                          @for (seg of segments(p.slices); track seg.name) {
-                            <circle cx="54" cy="54" [attr.r]="R"
-                                    fill="none"
-                                    [attr.stroke]="seg.color"
-                                    stroke-width="11"
-                                    stroke-linecap="round"
-                                    [attr.stroke-dasharray]="seg.dash + ' ' + seg.gap"
-                                    [attr.stroke-dashoffset]="seg.offset"
-                                    style="transform-origin:center; transform:rotate(-90deg);"/>
-                          }
-                          <text x="54" y="49" text-anchor="middle" dominant-baseline="middle"
-                                fill="var(--text-1)" font-size="18" font-weight="700"
-                                font-family="Inter,sans-serif">{{ p.slices.length }}</text>
-                          <text x="54" y="65" text-anchor="middle" dominant-baseline="middle"
-                                fill="var(--text-3)" font-size="9"
-                                font-family="Inter,sans-serif">tech</text>
-                        </svg>
-                        <div class="flex flex-col gap-1.5">
-                          <div class="flex flex-wrap gap-1.5">
-                            @for (sl of p.slices; track sl.name) {
-                              <span class="w-2 h-2 rounded-sm"
-                                    [style.background]="sl.color"
-                                    [title]="sl.name + ' · ' + sl.pct + '%'"></span>
-                            }
-                          </div>
-                          <span class="text-xs" style="color:var(--text-3); font-family:var(--mono);">
-                            {{ p.slices.length }} tecnologías
-                          </span>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+          <div class="pj-body">
+            <div class="pj-meta"><span>{{ p.type }}</span><span>{{ p.year }}</span></div>
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.tagline }}</p>
+            <div class="pj-tags">
+              @for (s of p.slices.slice(0, 4); track s.name) {<span class="tag">{{ s.name }}</span>}
             </div>
-          }
-
-        </div>
+          </div>
+        </button>
       }
     </div>
-
-    <!-- CTA -->
-    <div class="mt-14 reveal">
-      <a href="#contact" (click)="go($event,'contact')" class="btn btn-ghost text-xs">
-        ¿Tienes un proyecto? Hablemos →
-      </a>
-    </div>
-
   </div>
 </section>
+
+@if (selected; as p) {
+  <div class="dm-bg" (click)="close()">
+    <div class="dm" role="dialog" aria-modal="true" [attr.aria-label]="p.name" (click)="$event.stopPropagation()">
+      <button class="icon-btn dm-close" type="button" (click)="close()" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      @if (p.image) {
+        <div class="dm-media"><img [src]="p.image" [alt]="'Captura de ' + p.name"></div>
+      }
+      <div class="dm-body">
+        <div class="pj-meta"><span>{{ p.type }}</span><span>{{ p.year }}</span></div>
+        <h3>{{ p.name }}</h3>
+        <p>{{ p.description }}</p>
+        @if (p.highlights.length) {
+          <ul class="dm-list">
+            @for (h of p.highlights; track h) {
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ h }}</li>
+            }
+          </ul>
+        }
+        @if (p.slices.length) {
+          <div class="stack-bar" aria-hidden="true">
+            @for (s of p.slices; track s.name; let k = $index) {<i [style.flex]="s.pct" [style.background]="s.color" [style.animation-delay.ms]="k * 80"></i>}
+          </div>
+          <div class="stack-legend">
+            @for (s of p.slices; track s.name) {<span><i [style.background]="s.color"></i>{{ s.name }} · {{ s.pct }} %</span>}
+          </div>
+        }
+        @if (p.demoUrl || p.codeUrl) {
+          <div class="dm-acts">
+            @if (p.demoUrl) {
+              <a class="btn btn-p" [href]="p.demoUrl" target="_blank" rel="noopener">Ver en vivo
+                <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            }
+            @if (p.codeUrl) {
+              <a class="btn btn-o" [href]="p.codeUrl" target="_blank" rel="noopener">Ver código</a>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

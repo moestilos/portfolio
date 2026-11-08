@@ -6,32 +6,29 @@
   <title>Guillermo Mateos | Desarrollador Full-Stack · Automatización e IA</title>
   <meta name="description" content="Desarrollador web full-stack especializado en automatización, web scraping y desarrollo asistido por IA. Angular, Next.js, Python, n8n. Sevilla — proyectos en remoto para toda España.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <!-- Prevent purple flash before Angular renders -->
-  <style>
-    html, body, app-root {
-      background: #0a0a0a !important;
-      background-color: #0a0a0a !important;
-    }
-  </style>
-  <link rel="alternate icon" href="favicon.svg">
+  <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/guillermo.webp" as="image" type="image/webp">
+  <!-- Tema antes de pintar (sin parpadeo): el elegido por el visitante o, si no, el del sistema. -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:title" content="Guillermo Mateos · Desarrollador Full-Stack">
   <meta property="og:description" content="Creo aplicaciones web modernas y automatizo el trabajo manual que hay detrás. Angular · Next.js · Python · n8n · Integraciones con IA">
   <meta property="og:type" content="website">
-
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Devicons CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <meta property="og:image" content="images/guillermo.jpg">
 </head>
-<body class="antialiased">
+<body>
   <app-root></app-root>
 </body>
 </html>
