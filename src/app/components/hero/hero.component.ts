@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SupabaseService } from '../../services/supabase.service';
 
-const ROTATE_MS = 2800;
 const TILT_X_DEG = 4;
 const TILT_Y_DEG = 5;
 
@@ -12,33 +11,11 @@ const TILT_Y_DEG = 5;
   imports: [CommonModule],
   templateUrl: './hero.component.html',
 })
-export class HeroComponent implements OnInit, OnDestroy {
-  // Final del titular «Desarrollo webs y automatizo …», va cambiando.
-  // Cortas a propósito: todas caben en una línea y el titular no salta al cambiar.
-  private roles = ['lo que hay detrás.', 'tu CRM y ERP.', 'tareas repetitivas.', 'procesos con IA.'];
-  role = this.roles[0];
-  private timer: ReturnType<typeof setInterval> | null = null;
-
-  chips = ['Full-stack', 'Automatización y scraping', 'Integraciones con IA'];
-
-  stack = ['Angular', 'Next.js', 'TypeScript', 'Python', 'FastAPI', 'Laravel', 'n8n', 'Playwright',
-           'PostgreSQL', 'Supabase', 'Docker', 'Claude API', 'Gemini API', 'Odoo', 'HubSpot', 'Tailwind'];
-  stackLoop = [...this.stack, ...this.stack];   // dos copias: la cinta se desplaza el 50 % y empalma
-
+export class HeroComponent {
   rx = '0deg';
   ry = '0deg';
 
   constructor(private supa: SupabaseService) {}
-
-  ngOnInit(): void {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let i = 0;
-    this.timer = setInterval(() => { i = (i + 1) % this.roles.length; this.role = this.roles[i]; }, ROTATE_MS);
-  }
-
-  ngOnDestroy(): void {
-    if (this.timer) clearInterval(this.timer);
-  }
 
   trackCv(): void { this.supa.trackCvDownload(); }
 

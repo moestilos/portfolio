@@ -1,36 +1,16 @@
 <section class="sec" id="experience">
   <div class="wrap">
     <div class="sec-head" reveal>
-      <div>
-        <span class="eyebrow">Trayectoria</span>
-        <h2 class="h2">Experiencia y formación, <span class="mut">de lo más reciente a lo primero.</span></h2>
-      </div>
-      <p>Empresas, proyectos freelance y la formación que hay detrás.</p>
+      <span class="eyebrow">Trayectoria</span>
+      <h2 class="h2">Experiencia <span class="mut">y formación.</span></h2>
     </div>
 
-    <div class="ind tl-tabs" role="tablist" aria-label="Filtrar" [style.--n]="tabs.length" [style.--i]="tabIndex" reveal>
-      <span class="ind-pill" aria-hidden="true"></span>
-      @for (tab of tabs; track tab.key) {
-        <button type="button" role="tab" [attr.aria-selected]="activeTab === tab.key" (click)="setTab(tab.key)">{{ tab.label }}</button>
-      }
-    </div>
-
-    <ol class="tl" style="list-style:none;margin:0;padding:0">
-      @for (item of filteredItems; track activeTab + item.title; let i = $index) {
-        <li class="tl-it" [style.--i]="i">
-          <div class="tl-date">{{ item.date }}</div>
-          <div class="tl-rail"><span class="tl-dot" [class.edu]="item.type === 'edu'"></span></div>
-          <div class="bn tl-card">
-            <div class="top">
-              <span class="badge" [class.work]="item.type === 'work'">{{ item.badge }}</span>
-              <span class="co">{{ item.company }}</span>
-            </div>
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.desc }}</p>
-            @if (item.tags?.length) {
-              <div class="pj-tags">@for (t of item.tags; track t) {<span class="tag">{{ t }}</span>}</div>
-            }
-          </div>
+    <ol class="xp" reveal>
+      @for (item of items; track item.title) {
+        <li>
+          <time>{{ item.date }}</time>
+          <div><b>{{ item.title }}</b><span>{{ item.place }}</span></div>
+          <span class="badge" [class.work]="item.type === 'work'">{{ item.badge }}</span>
         </li>
       }
     </ol>

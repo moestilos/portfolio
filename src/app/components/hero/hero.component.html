@@ -1,34 +1,25 @@
 <section class="hero" id="hero">
   <div class="wrap hero-in">
     <div>
-      <span class="hero-badge fx-up" style="--i:0"><span class="live"></span>Disponible · Sevilla y remoto para toda España</span>
+      <span class="hero-badge fx-up" style="--i:0"><span class="live"></span>Disponible · Sevilla y en remoto</span>
 
-      <h1 class="fx-up" style="--i:1">
-        Desarrollo webs y automatizo
-        <span class="rotor">@for (r of [role]; track r) {<span>{{ r }}</span>}</span>
-      </h1>
+      <h1 class="fx-up" style="--i:1">Desarrollador full-stack. <span class="mut">Webs, automatización e IA.</span></h1>
 
       <p class="hero-lead fx-up" style="--i:2">
-        Soy <b>Guillermo Mateos</b>, desarrollador full-stack. Creo <b>aplicaciones web modernas</b> y automatizo
-        los procesos que hay detrás: scraping, migraciones CRM/ERP e integraciones con IA. Del diseño a producción.
+        Soy <b>Guillermo Mateos</b>. Construyo productos web completos y automatizo el trabajo que hay detrás,
+        del diseño a producción. Fundador de <b>Aguilera Studio</b>.
       </p>
 
       <div class="hero-cta fx-up" style="--i:3">
-        <a class="btn btn-p" href="#contact" (click)="go($event, 'contact')">
-          Hablemos
+        <a class="btn btn-p" href="#projects" (click)="go($event, 'projects')">
+          Ver proyectos
           <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-o" href="#projects" (click)="go($event, 'projects')">Ver proyectos</a>
+        <a class="btn btn-o" href="#contact" (click)="go($event, 'contact')">Contactar</a>
         <a class="btn btn-g" href="images/Guillermo Mateos Santos CV.pdf" download (click)="trackCv()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>
-          Descargar CV
+          CV
         </a>
-      </div>
-
-      <div class="hero-chips fx-up" style="--i:4">
-        @for (c of chips; track c) {
-          <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ c }}</span>
-        }
       </div>
     </div>
 
@@ -36,24 +27,10 @@
       <div class="frame" [style.--rx]="rx" [style.--ry]="ry">
         <img src="images/guillermo.webp" alt="Guillermo Mateos" width="720" height="900" fetchpriority="high">
       </div>
-      <div class="float f1">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></span>
-        <span><b>17.517 productos</b>migrados a Odoo</span>
-      </div>
-      <div class="float f2">
-        <span class="ic"><span class="live"></span></span>
-        <span><b>Motickly</b>SaaS en producción</span>
-      </div>
-      <div class="float f3">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/></svg></span>
-        <span><b>Claude Code</b>flujo con IA a diario</span>
+      <div class="float">
+        <span class="live"></span>
+        <span><b>Aguilera Studio</b>aguilerastudio.dev</span>
       </div>
     </div>
   </div>
 </section>
-
-<div class="marquee" aria-label="Stack técnico">
-  <div class="marquee-track">
-    @for (t of stackLoop; track $index) {<span [attr.aria-hidden]="$index >= stack.length">{{ t }}</span>}
-  </div>
-</div>

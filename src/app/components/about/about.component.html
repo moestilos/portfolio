@@ -1,78 +1,35 @@
-<section class="sec alt" id="about">
+<section class="sec" id="about">
   <div class="wrap">
     <div class="sec-head" reveal>
-      <div>
-        <span class="eyebrow">Sobre mí</span>
-        <h2 class="h2">Desarrollo web que <span class="mut">mueve el negocio.</span></h2>
-      </div>
-      <p>No escribo solo código que funciona: construyo productos digitales con impacto real.</p>
+      <span class="eyebrow">Sobre mí</span>
+      <h2 class="h2">Del diseño a producción, <span class="mut">sin perder de vista el negocio.</span></h2>
     </div>
 
-    <div class="ab-grid">
-      <div class="bn ab-text" reveal>
+    <div class="ab">
+      <div class="ab-text" reveal>
         <p>
-          Soy <b>Guillermo Mateos Santos</b>, desarrollador full-stack afincado en Sevilla. Construyo aplicaciones con
-          <b>Angular</b>, <b>Next.js</b> y <b>Laravel</b>, y automatizo procesos de negocio con <b>Python</b> y <b>n8n</b>:
-          integraciones entre sistemas, scraping a gran escala y migraciones de datos entre CRMs/ERPs como HubSpot y Odoo.
+          Soy <b>desarrollador full-stack en Sevilla</b>. Hago aplicaciones con Angular, Next.js y Astro y automatizo
+          procesos con Python y n8n: integraciones entre sistemas, scraping y migraciones de datos entre CRMs y ERPs.
         </p>
         <p>
-          Trabajo con un <b>flujo agéntico asistido por IA</b> (Claude Code a diario, servidores MCP, LLMs locales con Ollama),
-          lo que me permite pasar de la idea a producción en semanas en lugar de meses, sin renunciar a la calidad del código
-          ni a la seguridad.
-        </p>
-        <p>
-          He trabajado en empresas (CodeArts SL, Guadaltech), migrado el CRM de una empresa agroalimentaria, extraído y
-          normalizado un catálogo de 17.517 productos para una migración a Odoo y publicado un SaaS multi-tenant que está vivo
-          en producción.
-        </p>
-        <p>
-          <b>Disponible para trabajar en España</b>, en remoto, híbrido o presencial en Sevilla, tanto en proyectos freelance
-          como por cuenta ajena. Español nativo, inglés B2 (Cambridge).
+          Trabajo con un <b>flujo asistido por IA</b> (Claude Code a diario y modelos locales cuando hace falta), lo que me
+          permite llevar una idea a producción en semanas sin renunciar a la calidad ni a la seguridad.
         </p>
       </div>
-
-      <div class="bn ab-card" reveal>
-        <div class="ab-id">
-          <img src="images/guillermo-cara.webp" alt="Guillermo Mateos" width="64" height="64" loading="lazy">
-          <div>
-            <b>Guillermo Mateos Santos</b>
-            <small>Full-Stack · Automatización e IA</small>
-          </div>
-        </div>
-        <span class="chip" style="justify-self:start"><span class="live"></span>Disponible ahora</span>
-        <dl class="facts">
-          @for (f of facts; track f.label) {
-            <div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>
-          }
-        </dl>
-        <div class="hero-cta" style="margin:0">
-          <a class="btn btn-p btn-sm" href="#contact" (click)="go($event)">Contactar</a>
-          <a class="btn btn-o btn-sm" href="images/Guillermo Mateos Santos CV.pdf" download>Descargar CV</a>
-        </div>
-      </div>
-
-      <div class="nums">
-        @for (s of stats; track s.label) {
-          <div class="bn num" reveal><b>{{ s.num }}</b><span>{{ s.label }}</span></div>
+      <dl class="facts" reveal>
+        @for (f of facts; track f.label) {
+          <div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>
         }
-      </div>
+      </dl>
+    </div>
 
-      <div class="vals">
-        @for (v of values; track v.title; let i = $index) {
-          <div class="bn val" reveal>
-            <span class="ic" aria-hidden="true">
-              @switch (i) {
-                @case (0) {<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>}
-                @case (1) {<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>}
-                @case (2) {<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>}
-                @default {<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>}
-              }
-            </span>
-            <b>{{ v.title }}</b>
-            <p>{{ v.desc }}</p>
-          </div>
-        }
-      </div>
+    <div class="stack" id="skills">
+      @for (g of stack; track g.group) {
+        <div class="stack-g" reveal>
+          <h3>{{ g.group }}</h3>
+          <div class="tags">@for (t of g.items; track t) {<span class="tag">{{ t }}</span>}</div>
+        </div>
+      }
     </div>
   </div>
 </section>
