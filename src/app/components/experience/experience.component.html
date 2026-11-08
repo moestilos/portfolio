@@ -1,16 +1,34 @@
 <section class="sec" id="experience">
   <div class="wrap">
     <div class="sec-head" reveal>
-      <span class="eyebrow">Trayectoria</span>
-      <h2 class="h2">Experiencia <span class="mut">y formación.</span></h2>
+      <span class="sec-num"><b>02</b> Trayectoria</span>
+      <h2 class="h2">Mi camino <span class="mut">hasta aquí.</span></h2>
+      <p>Experiencia y formación que me han dado las bases para trabajar en proyectos reales.</p>
     </div>
 
-    <ol class="xp" reveal>
-      @for (item of items; track item.title) {
-        <li>
-          <time>{{ item.date }}</time>
-          <div><b>{{ item.title }}</b><span>{{ item.place }}</span></div>
-          <span class="badge" [class.work]="item.type === 'work'">{{ item.badge }}</span>
+    <div class="ind tl-tabs" role="tablist" aria-label="Filtrar trayectoria" [style.--n]="tabs.length" [style.--i]="tabIndex">
+      <span class="ind-pill" aria-hidden="true"></span>
+      @for (tab of tabs; track tab.key) {
+        <button type="button" role="tab" [attr.aria-selected]="activeTab === tab.key" (click)="activeTab = tab.key">{{ tab.label }}</button>
+      }
+    </div>
+
+    <ol class="tl">
+      @for (item of filteredItems; track activeTab + item.title + item.place; let i = $index) {
+        <li class="tl-it" [style.--i]="i">
+          <div class="tl-when">
+            <time>{{ item.date }}</time>
+            <span class="badge" [class.work]="item.type === 'work'">{{ item.badge }}</span>
+          </div>
+          <div>
+            <div class="tl-top">
+              <h3>{{ item.title }}</h3>
+              @if (item.current) {<span class="now-badge"><span class="live"></span>En curso</span>}
+            </div>
+            <span class="tl-place">{{ item.place }}</span>
+            <p>{{ item.desc }}</p>
+            <div class="tags">@for (t of item.tags; track t) {<span class="tag">{{ t }}</span>}</div>
+          </div>
         </li>
       }
     </ol>

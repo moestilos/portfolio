@@ -1,25 +1,38 @@
 <section class="hero" id="hero">
   <div class="wrap hero-in">
     <div>
-      <span class="hero-badge fx-up" style="--i:0"><span class="live"></span>Disponible · Sevilla y en remoto</span>
+      <span class="hero-badge fx-up" style="--i:0"><span class="live"></span>Abierto a nuevos proyectos y oportunidades</span>
 
-      <h1 class="fx-up" style="--i:1">Desarrollador full-stack. <span class="mut">Webs, automatización e IA.</span></h1>
+      <p class="hero-hi fx-up" style="--i:1">Hola, soy</p>
+      <h1 class="name fx-up" style="--i:1">Guillermo Mateos</h1>
+      <p class="hero-role fx-up" style="--i:2">Desarrollador full-stack <span class="mut">· Automatización e IA</span></p>
 
       <p class="hero-lead fx-up" style="--i:2">
-        Soy <b>Guillermo Mateos</b>. Construyo productos web completos y automatizo el trabajo que hay detrás,
-        del diseño a producción. Fundador de <b>Aguilera Studio</b>.
+        Construyo productos web completos y automatizo el trabajo que hay detrás: aplicaciones con Angular, Next.js y
+        Astro, flujos con Python y n8n e integraciones con IA. <b>Del diseño a producción.</b>
       </p>
 
-      <div class="hero-cta fx-up" style="--i:3">
+      <ul class="hero-tags fx-up" style="--i:3">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Sevilla, España</li>
+        <li>Full-stack</li>
+        <li>Freelance o por cuenta ajena</li>
+      </ul>
+
+      <div class="hero-cta fx-up" style="--i:4">
         <a class="btn btn-p" href="#projects" (click)="go($event, 'projects')">
           Ver proyectos
           <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-o" href="#contact" (click)="go($event, 'contact')">Contactar</a>
-        <a class="btn btn-g" href="images/Guillermo Mateos Santos CV.pdf" download (click)="trackCv()">
+        <a class="btn btn-o" href="images/Guillermo Mateos Santos CV.pdf" download (click)="trackCv()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>
-          CV
+          Descargar CV
         </a>
+      </div>
+
+      <div class="hero-stats fx-up" style="--i:5">
+        @for (s of stats; track s.label) {
+          <div><b>{{ s.num }}</b><span>{{ s.label }}</span></div>
+        }
       </div>
     </div>
 
@@ -27,9 +40,11 @@
       <div class="frame" [style.--rx]="rx" [style.--ry]="ry">
         <img src="images/guillermo.webp" alt="Guillermo Mateos" width="720" height="900" fetchpriority="high">
       </div>
-      <div class="float">
-        <span class="live"></span>
-        <span><b>Aguilera Studio</b>aguilerastudio.dev</span>
+      <div class="now">
+        <span class="now-k"><span class="live"></span>Ahora</span>
+        <b>Aguilera Studio</b>
+        <small>Webs, apps y automatizaciones para pymes en Sevilla</small>
+        <div class="tags">@for (t of nowStack; track t) {<span class="tag">{{ t }}</span>}</div>
       </div>
     </div>
   </div>

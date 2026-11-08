@@ -15,6 +15,13 @@ export class HeroComponent {
   rx = '0deg';
   ry = '0deg';
 
+  stats = [
+    { num: '4', label: 'Proyectos destacados' },
+    { num: '20+', label: 'Tecnologías' },
+    { num: '2+', label: 'Años de experiencia' },
+  ];
+  nowStack = ['Angular', 'n8n', 'IA'];
+
   constructor(private supa: SupabaseService) {}
 
   trackCv(): void { this.supa.trackCvDownload(); }

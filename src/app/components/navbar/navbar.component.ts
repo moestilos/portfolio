@@ -28,9 +28,10 @@ export class NavbarComponent implements OnInit {
 
   links: NavLink[] = [
     { label: 'Proyectos',   href: '#projects' },
-    { label: 'Qué hago',    href: '#services' },
-    { label: 'Sobre mí',    href: '#about' },
     { label: 'Trayectoria', href: '#experience' },
+    { label: 'Stack',       href: '#skills' },
+    { label: 'Servicios',   href: '#services' },
+    { label: 'Contacto',    href: '#contact' },
   ];
 
   ngOnInit(): void {
@@ -50,7 +51,7 @@ export class NavbarComponent implements OnInit {
 
   /** Highlights nav link based on current scroll position */
   private trackActiveSection(): void {
-    const sections = ['hero', 'projects', 'services', 'about', 'experience', 'contact'];
+    const sections = ['hero', 'projects', 'experience', 'skills', 'services', 'contact'];
     let current = 'hero';
     sections.forEach(id => {
       const el = document.getElementById(id);

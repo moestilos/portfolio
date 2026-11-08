@@ -1,66 +1,71 @@
 <section class="sec" id="projects">
   <div class="wrap">
     <div class="sec-head" reveal>
-      <span class="eyebrow">Proyectos</span>
+      <span class="sec-num"><b>01</b> Proyectos</span>
       <h2 class="h2">Lo que he construido <span class="mut">y está funcionando.</span></h2>
+      <p>Productos propios y trabajo para clientes reales, de la idea a producción.</p>
     </div>
 
-    <div class="cases">
-      @for (p of projects; track p.name; let i = $index) {
-        <article class="case" [class.flip]="i % 2 === 1" reveal>
-          <div class="case-media">
-            @if (p.image) {
-              <img [src]="p.image" [alt]="'Captura de ' + p.name" loading="lazy">
-            } @else if (p.visual === 'dtf') {
-              <div class="vis" aria-hidden="true">
-                <div class="mock">
-                  <div class="mock-bar"><i></i><i></i><i></i><span>dtfalmetro.es</span></div>
-                  <div class="mock-body">
-                    <small>Impresión DTF · Sevilla</small>
-                    <b>Transfer DTF por metros</b>
-                    <div class="cmyk"><i></i><i></i><i></i><i></i></div>
-                    <div class="mock-row"><span>Rollo de 55 cm</span><strong>desde 7,84 €/m</strong></div>
-                    <div class="mock-row"><span>Pago</span><strong>TPV o transferencia</strong></div>
+    @for (g of groups; track g.label; let gi = $index) {
+      <div class="pgroup" [class.next]="gi > 0">{{ g.label }}</div>
+      <div class="cases">
+        @for (p of g.items; track p.name; let i = $index) {
+          <article class="case" [class.flip]="(g.from + i) % 2 === 1" reveal>
+            <div class="case-media">
+              @if (p.image) {
+                <img [src]="p.image" [alt]="'Captura de ' + p.name" [style.object-position]="p.imagePos" loading="lazy">
+              } @else if (p.visual === 'dtf') {
+                <div class="vis" aria-hidden="true">
+                  <div class="mock">
+                    <div class="mock-bar"><i></i><i></i><i></i><span>dtfalmetro.es</span></div>
+                    <div class="mock-body">
+                      <small>Impresión DTF · Sevilla</small>
+                      <b>Transfer DTF por metros</b>
+                      <div class="cmyk"><i></i><i></i><i></i><i></i></div>
+                      <div class="mock-row"><span>Rollo de 55 cm</span><strong>desde 7,84 €/m</strong></div>
+                      <div class="mock-row"><span>Pago</span><strong>TPV o transferencia</strong></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            } @else {
-              <div class="vis" aria-hidden="true">
-                <div class="flow">
-                  @for (s of flow; track s.t; let k = $index) {
-                    <div class="flow-step" [style.--i]="k">
-                      <span class="n">{{ k + 1 }}</span>
-                      <span>{{ s.t }}<small>{{ s.s }}</small></span>
-                      <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-                    </div>
-                  }
+              } @else {
+                <div class="vis" aria-hidden="true">
+                  <div class="flow">
+                    @for (s of flow; track s.t; let k = $index) {
+                      <div class="flow-step" [style.--i]="k">
+                        <span class="n">{{ k + 1 }}</span>
+                        <span>{{ s.t }}<small>{{ s.s }}</small></span>
+                        <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+                      </div>
+                    }
+                  </div>
                 </div>
-              </div>
-            }
-          </div>
-
-          <div class="case-body">
-            <div class="case-meta">
-              <span>{{ p.kind }}</span><span>{{ p.year }}</span>
-              <span class="status"><span class="live" [class.soon]="p.status !== 'live'"></span>{{ p.statusText }}</span>
-            </div>
-            <h3>{{ p.name }}</h3>
-            <p class="case-lead">{{ p.lead }}</p>
-            <ul class="checks">
-              @for (pt of p.points; track pt) {
-                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ pt }}</li>
               }
-            </ul>
-            <div class="tags">@for (t of p.stack; track t) {<span class="tag">{{ t }}</span>}</div>
-            @if (p.url) {
-              <div class="case-acts">
-                <a class="btn btn-o btn-sm" [href]="p.url" target="_blank" rel="noopener">{{ p.urlText }}
-                  <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            </div>
+
+            <div class="case-body">
+              <div class="case-meta">
+                <span class="case-no">{{ num(g.from + i) }}</span>
+                <span>{{ p.kind }}</span>
+                <span class="status"><span class="live" [class.soon]="p.status !== 'live'"></span>{{ p.statusText }}</span>
               </div>
-            }
-          </div>
-        </article>
-      }
-    </div>
+              <h3>{{ p.name }}</h3>
+              <p class="case-lead">{{ p.desc }}</p>
+              <dl class="case-info">
+                <div><dt>Rol</dt><dd>{{ p.role }}</dd></div>
+                <div><dt>Año</dt><dd>{{ p.year }}</dd></div>
+                <div><dt>Contexto</dt><dd>{{ p.context }}</dd></div>
+              </dl>
+              <div class="tags">@for (t of p.stack; track t) {<span class="tag">{{ t }}</span>}</div>
+              @if (p.url) {
+                <div class="case-acts">
+                  <a class="btn btn-p btn-sm" [href]="p.url" target="_blank" rel="noopener">Ver {{ p.urlText }}
+                    <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+                </div>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    }
   </div>
 </section>

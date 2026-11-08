@@ -31,9 +31,9 @@ const BACK_TOP_FROM_PX = 600;
     <main>
       <app-hero />
       <app-projects />
-      <app-services />
-      <app-about />
       <app-experience />
+      <app-about />
+      <app-services />
       <app-contact />
     </main>
     <app-footer />

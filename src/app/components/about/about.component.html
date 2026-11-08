@@ -1,32 +1,17 @@
-<section class="sec" id="about">
+<section class="sec" id="skills">
   <div class="wrap">
     <div class="sec-head" reveal>
-      <span class="eyebrow">Sobre mí</span>
-      <h2 class="h2">Del diseño a producción, <span class="mut">sin perder de vista el negocio.</span></h2>
+      <span class="sec-num"><b>03</b> Tecnologías</span>
+      <h2 class="h2">Mi stack <span class="mut">técnico.</span></h2>
+      <p>Herramientas y frameworks con los que trabajo en proyectos reales.</p>
     </div>
 
-    <div class="ab">
-      <div class="ab-text" reveal>
-        <p>
-          Soy <b>desarrollador full-stack en Sevilla</b>. Hago aplicaciones con Angular, Next.js y Astro y automatizo
-          procesos con Python y n8n: integraciones entre sistemas, scraping y migraciones de datos entre CRMs y ERPs.
-        </p>
-        <p>
-          Trabajo con un <b>flujo asistido por IA</b> (Claude Code a diario y modelos locales cuando hace falta), lo que me
-          permite llevar una idea a producción en semanas sin renunciar a la calidad ni a la seguridad.
-        </p>
-      </div>
-      <dl class="facts" reveal>
-        @for (f of facts; track f.label) {
-          <div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>
-        }
-      </dl>
-    </div>
-
-    <div class="stack" id="skills">
-      @for (g of stack; track g.group) {
+    <div class="stack v3">
+      @for (g of stack; track g.group; let i = $index) {
         <div class="stack-g" reveal>
-          <h3>{{ g.group }}</h3>
+          <span class="no">{{ num(i) }}</span>
+          <h3 class="t">{{ g.group }}</h3>
+          <p>{{ g.desc }}</p>
           <div class="tags">@for (t of g.items; track t) {<span class="tag">{{ t }}</span>}</div>
         </div>
       }
