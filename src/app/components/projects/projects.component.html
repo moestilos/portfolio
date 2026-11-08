@@ -6,29 +6,17 @@
       <p>Productos propios y trabajo para clientes reales, de la idea a producción.</p>
     </div>
 
-    @for (g of groups; track g.label; let gi = $index) {
-      <div class="pgroup" [class.next]="gi > 0">{{ g.label }}</div>
-      <div class="cases">
-        @for (p of g.items; track p.name; let i = $index) {
-          <article class="case" [class.flip]="(g.from + i) % 2 === 1" reveal>
-            <div class="case-media">
-              @if (p.image) {
-                <img [src]="p.image" [alt]="'Captura de ' + p.name" [style.object-position]="p.imagePos" loading="lazy">
-              } @else if (p.visual === 'dtf') {
-                <div class="vis" aria-hidden="true">
-                  <div class="mock">
-                    <div class="mock-bar"><i></i><i></i><i></i><span>dtfalmetro.es</span></div>
-                    <div class="mock-body">
-                      <small>Impresión DTF · Sevilla</small>
-                      <b>Transfer DTF por metros</b>
-                      <div class="cmyk"><i></i><i></i><i></i><i></i></div>
-                      <div class="mock-row"><span>Rollo de 55 cm</span><strong>desde 7,84 €/m</strong></div>
-                      <div class="mock-row"><span>Pago</span><strong>TPV o transferencia</strong></div>
-                    </div>
-                  </div>
-                </div>
+    <div class="wk-grid">
+      @for (p of projects; track p.id) {
+        <article class="wk" reveal>
+          <a class="wk-shot" [attr.href]="p.url ?? null" [attr.target]="p.url ? '_blank' : null" rel="noopener"
+             [attr.aria-label]="p.url ? 'Visitar ' + p.name : null" [class.static]="!p.url">
+            <div class="browser">
+              <div class="browser-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url">{{ p.host }}</span></div>
+              @if (p.shots) {
+                <img [src]="'proyectos/' + p.id + '.webp'" alt="" width="1440" height="900" loading="lazy" decoding="async">
               } @else {
-                <div class="vis" aria-hidden="true">
+                <div class="wk-vis" aria-hidden="true">
                   <div class="flow">
                     @for (s of flow; track s.t; let k = $index) {
                       <div class="flow-step" [style.--i]="k">
@@ -41,31 +29,33 @@
                 </div>
               }
             </div>
+            @if (p.shots) {
+              <img class="wk-phone" [src]="'proyectos/' + p.id + '-movil.webp'" alt="" width="600" height="1298" loading="lazy" decoding="async">
+            }
+          </a>
 
-            <div class="case-body">
-              <div class="case-meta">
-                <span class="case-no">{{ num(g.from + i) }}</span>
-                <span>{{ p.kind }}</span>
-                <span class="status"><span class="live" [class.soon]="p.status !== 'live'"></span>{{ p.statusText }}</span>
-              </div>
-              <h3>{{ p.name }}</h3>
-              <p class="case-lead">{{ p.desc }}</p>
-              <dl class="case-info">
-                <div><dt>Rol</dt><dd>{{ p.role }}</dd></div>
-                <div><dt>Año</dt><dd>{{ p.year }}</dd></div>
-                <div><dt>Contexto</dt><dd>{{ p.context }}</dd></div>
-              </dl>
+          <div class="wk-body">
+            <div class="wk-meta">
+              <span>{{ p.kind }}</span>
+              <span class="status"><span class="live" [class.soon]="p.status !== 'live'"></span>{{ p.statusText }}</span>
+            </div>
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.text }}</p>
+            <ul class="wk-points">
+              @for (pt of p.points; track pt) {
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{ pt }}</li>
+              }
+            </ul>
+            <div class="wk-foot">
               <div class="tags">@for (t of p.stack; track t) {<span class="tag">{{ t }}</span>}</div>
               @if (p.url) {
-                <div class="case-acts">
-                  <a class="btn btn-p btn-sm" [href]="p.url" target="_blank" rel="noopener">Ver {{ p.urlText }}
-                    <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-                </div>
+                <a class="wk-link" [href]="p.url" target="_blank" rel="noopener">Visitar
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
               }
             </div>
-          </article>
-        }
-      </div>
-    }
+          </div>
+        </article>
+      }
+    </div>
   </div>
 </section>
